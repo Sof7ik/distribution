@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 06 2020 г., 15:58
+-- Время создания: Сен 06 2020 г., 22:43
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.4.5
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `ovchinnikov-parasha`
+-- База данных: `distribution`
 --
 
 -- --------------------------------------------------------
@@ -129,8 +129,8 @@ CREATE TABLE `teacher` (
   `id` int NOT NULL,
   `id_profile` int DEFAULT NULL,
   `fio` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(100) NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_category` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
