@@ -2,7 +2,7 @@
 $user = 'root';
 $pass = '';
 $host = 'localhost';
-$dbname = 'distribution';
+$dbname = 'ovchinnikov-parasha';
 
 $link = mysqli_connect($host, $user, $pass, $dbname);
 
