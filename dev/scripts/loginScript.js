@@ -14,12 +14,9 @@ export function login () {
     formData.append('login', login);
     formData.append('password', password);
 
-    console.log('login =', login);
-    console.log('pass =', password);
-
     fetch('./../dev/scripts/php/login.php', {
         method: "POST",
-        data: formData
+        body: formData
     })
         .then(res => res.json())
         .then(jsoned => console.log(jsoned))
