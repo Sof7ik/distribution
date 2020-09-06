@@ -17,10 +17,14 @@ export function login () {
     console.log('login =', login);
     console.log('pass =', password);
 
-    fetch('./../dev/scripts/php/login.php', {
-        method: "POST",
-        data: formData
-    })
-        .then(res => res.json())
-        .then(jsoned => console.log(jsoned))
+    // fetch('./php/login.php', {
+    //     method: "POST",
+    //     data: formData
+    // })
+    //     .then(res => res.json())
+    //     .then(jsoned => console.log(jsoned))
+
+    if (login == 'pogudina.l@mail.ru' && password == 'test123') {
+        window.location.href = '/dist/lk/lk.php'
+    }
 }
