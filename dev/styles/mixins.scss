@@ -1,0 +1,23 @@
+%borders
+{
+    margin: 10px 10px 0 0;
+
+    border: 1px solid #ccc;
+    box-shadow: 0.3em 0.3em 0.3em #ccc;
+    background-color: #fff;
+}
+
+@mixin flex($ff, $jc, $ai)
+{
+    display: flex;
+    flex-flow: $ff;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin grid($columns, $gap)
+{
+    display: grid;
+    grid-template-columns: $columns;
+    grid-gap: $gap;
+}
