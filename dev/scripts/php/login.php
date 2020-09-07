@@ -16,7 +16,7 @@ if ($count == 1) {
         $user['id_teacher'],
         time() + 60 * 60 * 24 * 5,
         '/',
-        $_SERVER['HTTP_HOST'],
+        $_SERVER['SERVER_NAME'],
         false,
         true
     );
