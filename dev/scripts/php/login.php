@@ -2,10 +2,10 @@
 
 require_once './connection.php';
 
-$login = $_POST['login'];
-$pass = $_POST['password'];
+$email = $_POST['login'];
+$password = $_POST['password'];
 
-$query = mysqli_query($link, "SELECT * FROM `teachers` WHERE `email` = '$login' AND `password` = '$pass'");
+$query = mysqli_query($link, "SELECT * FROM `teachers` WHERE `email` = '$email' AND `password` = '$password'");
 
 $count = mysqli_num_rows($query);
 
