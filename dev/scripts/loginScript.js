@@ -14,18 +14,14 @@ export function login () {
     formData.append('login', login);
     formData.append('password', password);
 
-    // if (login === 'pogudina.l@mail.ru' && password === 'test123')
-    // {
-    //     window.location.href = './lk/lk.php';
-    // }
-
     fetch('./../dev/scripts/php/login.php', {
         method: "POST",
         body: formData
     })
     .then(res => res.json())
-    .then(jsoned => console.log(jsoned))
-    .then( () => {
+    .then(jsoned => {
+        console.log(jsoned)
+        document.cookie = `user = ${JSON.stringify(jsoned)}; path=/; expires = ${new Date().getHours() + 240}`;
         window.location.href = './dist/lk/lk.php';
     })
 }

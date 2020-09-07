@@ -1,3 +1,31 @@
+<?php
+
+    if (!isset($_COOKIE['user'])) {
+        header('Location: ./../../../index.php');
+    }
+    require_once './../../dev/scripts/php/connection.php';
+
+    $result = mysqli_query($link, 
+    "SELECT 
+    `subjects`.`id_subject`, 
+    `subjects`.`subject_name`, 
+    `subjects`.`subject_desc`, 
+    `subjects`.`subject_hours`,
+    `profiles`.`profile_name`
+        
+        FROM 
+        `subjects`, 
+        `profiles` 
+
+    WHERE `subjects`.`id_profile` = `profiles`.`id_profile`;");
+
+    $subjects = mysqli_fetch_all($result);
+
+    // echo "<pre>";
+    // print_r($subjects);
+    // echo "</pre>";
+?>
+
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
@@ -24,36 +52,26 @@
     <header>    
         <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
 
-        <button class="logout">ВЫХОД</button>
+        <p>
+            <?
+                echo json_decode($_COOKIE['user']);
+            ?>
+        </p>
+        <?
+            if (isset($_COOKIE['user'])) {
+                
+                ?>
+                    <button class="logout">ВЫХОД</button>
+                <?
+            }
+        ?>
     </header>
 
     <div class='container'>
 
         <section class="all-subjects">
 
-        <?php
-            require_once './../../dev/scripts/php/connection.php';
-
-            $result = mysqli_query($link, 
-            "SELECT 
-            `subjects`.`id_subject`, 
-            `subjects`.`subject_name`, 
-            `subjects`.`subject_desc`, 
-            `subjects`.`subject_hours`,
-            `profiles`.`profile_name`
-             
-             FROM 
-             `subjects`, 
-             `profiles` 
-
-            WHERE `subjects`.`id_profile` = `profiles`.`id_profile`;");
-
-            $subjects = mysqli_fetch_all($result);
-
-            // echo "<pre>";
-            // print_r($subjects);
-            // echo "</pre>";
-
+        <?
             foreach ($subjects as $value)
             {
                 ?>
@@ -70,7 +88,7 @@
                     <p class="subject-hours"><?=$value[3]?> ч.</p>
 
                 </div>
-                <?php
+                <?
             }
         ?>
 

@@ -1,5 +1,7 @@
-<?php 
-
+<?
+if (!isset($_COOKIE['user'])) {
+    header('Location: ./../../../index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +29,22 @@
 
     <header>
         <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
+        
+        <p>
+            <?
+                var_dump($_COOKIE['user']);
+            ?>
+        </p>
 
-        <button class="logout">ВЫХОД</button>
+        <?
+            if (isset($_COOKIE['user'])) {
+                
+                ?>
+                    <button class="logout">ВЫХОД</button>
+                <?
+            }
+        ?>
+        
     </header>
 
     <div class='container'>
