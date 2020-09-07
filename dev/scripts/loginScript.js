@@ -14,15 +14,18 @@ export function login () {
     formData.append('login', login);
     formData.append('password', password);
 
-    if (login === 'pogudina.l@mail.ru' && password === 'test123')
-    {
-        window.location.href = './lk/lk.php';
-    }
+    // if (login === 'pogudina.l@mail.ru' && password === 'test123')
+    // {
+    //     window.location.href = './lk/lk.php';
+    // }
 
-    // fetch('./../dev/scripts/php/login.php', {
-    //     method: "POST",
-    //     body: formData
-    // })
-    //     .then(res => res.json())
-    //     .then(jsoned => console.log(jsoned))
+    fetch('./../dev/scripts/php/login.php', {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(jsoned => console.log(jsoned))
+    .then( () => {
+        window.location.href = './dist/lk/lk.php';
+    })
 }
