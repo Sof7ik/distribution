@@ -1,5 +1,5 @@
 <?
-if (!isset($_COOKIE['user'])) {
+if (!isset($_COOKIE['id_user'])) {
     header('Location: ./../../../index.php');
 }
 ?>
@@ -28,27 +28,46 @@ if (!isset($_COOKIE['user'])) {
 <body>
 
     <header>
-        <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
-        
-        <p>
-            <?
-                var_dump($_COOKIE['user']);
-            ?>
-        </p>
+        <div class="container">
+            <a href="./../../index.php" style="display: block">
+                <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
+            </a>
+            
+            <p><?=$_COOKIE['id_user'];?></p>
 
-        <?
-            if (isset($_COOKIE['user'])) {
-                
-                ?>
-                    <button class="logout">ВЫХОД</button>
-                <?
-            }
-        ?>
+            <?
+                if (isset($_COOKIE['id_user'])) {
+                    
+                    ?>
+                        <form action="./../../dev/scripts/php/logout.php" method="GET">
+                            <input type="submit" class="logout" value="ВЫХОД">
+                        </form>
+                    <?
+                }
+            ?>
+        </div>
         
     </header>
 
     <div class='container'>
-        <p>Добро пожаловать в личный кабинет</p>
+        
+        <main>
+            <aside class="menu">
+                <nav>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                </nav>
+            </aside>
+
+            <section>
+                <p>Добро пожаловать в личный кабинет</p>
+            </section>
+        </main>
+        
     </div>
 </body>
 </html>

@@ -13,12 +13,12 @@ if ($count == 1) {
     $user = mysqli_fetch_assoc($query);
     setcookie(
         'id_user',
-        $user['id_teacher'],
+        $user['fio'],
         time() + 60 * 60 * 24 * 5,
         '/',
         $_SERVER['SERVER_NAME'],
         false,
         true
     );
-    echo json_encode($user, JSON_UNESCAPED_UNICODE);
+    header('Location: ./../../../../dist/lk/lk.php');
 }

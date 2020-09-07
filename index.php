@@ -1,6 +1,6 @@
 <?
-if (isset($_COOKIE['user'])) {
-    echo $_COOKIE['user']->fio;
+if (isset($_COOKIE['id_user'])) {
+    header('Location: ./dist/lk/lk.php');
 }
 ?>
 
@@ -27,32 +27,36 @@ if (isset($_COOKIE['user'])) {
 </head>
 <body>
     <header>
-        <img src="./img/log_blog.png" alt="logo" class="header-logo">
 
-        <?
-            if (isset($_COOKIE['user'])) {
-                ?>
-                    <button class="logout" id="logout-button">ВЫХОД</button>
-                <?
-            }
-        ?>
-
+        <div class="container">
+            <a href="./" style="display: block">
+                <img src="./img/log_blog.png" alt="logo" class="header-logo">
+            </a>
+            
+            <?
+                if (isset($_COOKIE['id_user'])) {
+                    ?>
+                        <button class="logout" id="logout-button">ВЫХОД</button>
+                    <?
+                }
+            ?>
+        </div>
         
     </header>
     <div class='container'>
-        <form action="" method="POST" id="login-form">
+        <form action="./dev/scripts/php/login.php" method="POST" id="login-form">
 
             <div class="login-wrapper">
                 <label for="login-email" class="login-labels">Логин</label>
-                <input type="email" placeholder="Введите свой E-mail" id="login-email" class="login-input">
+                <input type="email" placeholder="Введите свой E-mail" id="login-email" class="login-input" name="login">
             </div>
             
             <div class="login-wrapper">
                 <label for="login-pass" class="login-labels">Пароль</label>
-                <input type="text" placeholder="Введите свой пароль" id="login-pass" class="login-input">
+                <input type="text" placeholder="Введите свой пароль" id="login-pass" class="login-input" name="password">
             </div>
 
-            <button id="login" class="login">ВОЙТИ</button>
+            <input type="submit" id="login" class="login" value="ВОЙТИ">
 
         </form>
         

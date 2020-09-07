@@ -1,0 +1,24 @@
+@import './base.scss';
+@import './mixins.scss';
+
+aside.menu
+{
+    nav {
+        @include flex(column nowrap, flex-start, flex-start);
+
+        background-color: #0500FF;
+
+        padding: 15px;
+
+        a 
+        {
+            margin-top: 15px;
+
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    }
+    
+    height: 100%;
+}

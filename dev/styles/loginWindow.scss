@@ -1,6 +1,6 @@
 @import './mixins.scss';
 
-form 
+form#login-form
 {
     @include flex(column nowrap, flex-start, center);
 
@@ -31,7 +31,7 @@ input.login-input
     background-color: rgb(45, 45, 45);
 }
 
-button.login
+input#login
 {
     background-color: rgb(58, 58, 58);
     padding: 15px 30px;

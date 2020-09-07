@@ -1,6 +1,6 @@
 <?php
 
-    if (!isset($_COOKIE['user'])) {
+    if (!isset($_COOKIE['id_user'])) {
         header('Location: ./../../../index.php');
     }
     require_once './../../dev/scripts/php/connection.php';
@@ -49,51 +49,69 @@
 </head>
 <body>
 
-    <header>    
-        <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
+    <header>
+        
+        <div class="container">
+            <a href="./../../index.php" style="display: block">
+                <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
+            </a>
 
-        <p>
             <?
-                echo json_decode($_COOKIE['user']);
+                if (isset($_COOKIE['id_user'])) {
+                    
+                    ?>
+                        <form action="./../../dev/scripts/php/logout.php" method="GET">
+                            <input type="submit" class="logout" value="ВЫХОД">
+                        </form>
+                    <?
+                }
             ?>
-        </p>
-        <?
-            if (isset($_COOKIE['user'])) {
-                
-                ?>
-                    <button class="logout">ВЫХОД</button>
-                <?
-            }
-        ?>
+        </div> 
+        
     </header>
 
     <div class='container'>
+        
+        <main>
 
-        <section class="all-subjects">
+            <aside class="menu">
+                <nav>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                </nav>
+            </aside>
 
-        <?
-            foreach ($subjects as $value)
-            {
-                ?>
-                <div class="subject-wrapper" data-subjectId="<?=$value[0]?>">
+            <section class="all-subjects">
 
-                    <div>
-                        <p class="subject-profile"><?=$value[4]?></p>
-
-                        <p class="subject-name"><?=$value[1]?></p>
-
-                        <p class="subject-desc"><?=$value[2]?></p>
-                    </div>
-
-                    <p class="subject-hours"><?=$value[3]?> ч.</p>
-
-                </div>
                 <?
-            }
-        ?>
+                    foreach ($subjects as $value)
+                    {
+                        ?>
+                        <div class="subject-wrapper" data-subjectId="<?=$value[0]?>">
 
-        </section>
+                            <div>
+                                <p class="subject-profile"><?=$value[4]?></p>
 
+                                <p class="subject-name"><?=$value[1]?></p>
+
+                                <p class="subject-desc"><?=$value[2]?></p>
+                            </div>
+
+                            <p class="subject-hours"><?=$value[3]?> ч.</p>
+
+                        </div>
+                        <?
+                    }
+                ?>
+
+            </section>
+
+        </main>
+        
     </div>
 </body>
 </html>

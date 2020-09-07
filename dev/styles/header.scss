@@ -3,9 +3,12 @@
 header 
 {
     background-color: #0500FF;
-
-    @include flex(row wrap, space-between, center);
     padding: 10px;
+
+    div {
+        @include flex(row wrap, space-between, center);
+    }
+    
 }
 
 img.header-logo 
@@ -13,7 +16,7 @@ img.header-logo
     width: 70px;
 }
 
-button.logout 
+input.logout 
 {
     background-color: #00A3FF;
     border-radius: 10px;
