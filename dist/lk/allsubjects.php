@@ -36,21 +36,23 @@
 
             $result = mysqli_query($link, 
             "SELECT 
-            id_subject, 
-            `subject`.`name`, 
-            `subject`.descripton, 
-            `subject`.`hours`,
-             `profile`.`name` 
+            `subjects`.`id_subject`, 
+            `subjects`.`subject_name`, 
+            `subjects`.`subject_desc`, 
+            `subjects`.`subject_hours`,
+            `profiles`.`profile_name`
              
              FROM 
-             `subject`, 
-             `profile`, 
-             `specialization`
+             `subjects`, 
+             `profiles` 
 
-            WHERE `subject`.`id_profile` = `profile`.`id_profile` AND 
-            `subject`.`id_specialization` = `specialization`.`id_specialization`");
+            WHERE `subjects`.`id_profile` = `profiles`.`id_profile`;");
 
             $subjects = mysqli_fetch_all($result);
+
+            // echo "<pre>";
+            // print_r($subjects);
+            // echo "</pre>";
 
             foreach ($subjects as $value)
             {
@@ -77,3 +79,4 @@
     </div>
 </body>
 </html>
+

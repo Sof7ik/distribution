@@ -14,10 +14,15 @@ export function login () {
     formData.append('login', login);
     formData.append('password', password);
 
-    fetch('./../dev/scripts/php/login.php', {
-        method: "POST",
-        body: formData
-    })
-        .then(res => res.json())
-        .then(jsoned => console.log(jsoned))
+    if (login === 'pogudina.l@mail.ru' && password === 'test123')
+    {
+        window.location.href = './lk/lk.php';
+    }
+
+    // fetch('./../dev/scripts/php/login.php', {
+    //     method: "POST",
+    //     body: formData
+    // })
+    //     .then(res => res.json())
+    //     .then(jsoned => console.log(jsoned))
 }
