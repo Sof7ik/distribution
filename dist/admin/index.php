@@ -1,6 +1,6 @@
 <?php
 if (empty($_COOKIE['id_admin'])) {
-    header('Location: /admin.html');
+    header('Location: ./../../../index.php');
 }
 ?>
 
@@ -17,5 +17,12 @@ if (empty($_COOKIE['id_admin'])) {
     <a href="/">Добавить специальность</a>
     <a href="/">Добавить предмет</a>
     <a href="/">Добавить учителя</a>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <a href="./../lk/lk.php">В личный кабинет</a>
 </body>
 </html>

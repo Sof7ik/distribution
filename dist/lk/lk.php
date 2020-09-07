@@ -1,5 +1,5 @@
 <?
-if (!isset($_COOKIE['id_user'])) {
+if (empty($_COOKIE['id_user']) && empty($_COOKIE['id_admin'])) {
     header('Location: ./../../../index.php');
 }
 ?>
@@ -36,7 +36,7 @@ if (!isset($_COOKIE['id_user'])) {
             <p><?=$_COOKIE['id_user'];?></p>
 
             <?
-                if (isset($_COOKIE['id_user'])) {
+                if (!empty($_COOKIE['id_user']) && !empty($_COOKIE['id_admin'])) {
                     
                     ?>
                         <form action="./../../dev/scripts/php/logout.php" method="GET">

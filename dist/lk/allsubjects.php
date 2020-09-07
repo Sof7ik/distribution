@@ -1,6 +1,6 @@
 <?php
 
-    if (!isset($_COOKIE['id_user'])) {
+    if (empty($_COOKIE['id_user']) && empty($_COOKIE['id_admin'])) {
         header('Location: ./../../../index.php');
     }
     require_once './../../dev/scripts/php/connection.php';
@@ -57,14 +57,14 @@
             </a>
 
             <?
-                if (isset($_COOKIE['id_user'])) {
+               if (!empty($_COOKIE['id_user']) && !empty($_COOKIE['id_admin'])) {
                     
-                    ?>
-                        <form action="./../../dev/scripts/php/logout.php" method="GET">
-                            <input type="submit" class="logout" value="ВЫХОД">
-                        </form>
-                    <?
-                }
+                ?>
+                    <form action="./../../dev/scripts/php/logout.php" method="GET">
+                        <input type="submit" class="logout" value="ВЫХОД">
+                    </form>
+                <?
+            }
             ?>
         </div> 
         
