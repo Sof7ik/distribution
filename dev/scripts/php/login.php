@@ -11,5 +11,14 @@ $count = mysqli_num_rows($query);
 
 if ($count == 1) {
     $user = mysqli_fetch_assoc($query);
+    setcookie(
+        'id_user',
+        $user['id_teacher'],
+        time() + 60 * 60 * 24 * 5,
+        '/',
+        $_SERVER['HTTP_HOST'],
+        false,
+        true
+    );
     echo json_encode($user, JSON_UNESCAPED_UNICODE);
 }
