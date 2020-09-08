@@ -61,7 +61,7 @@ if (empty($_COOKIE['id_user']) && empty($_COOKIE['id_admin'])) {
         
     </header>
 
-    <div class='container'>
+    <!-- <div class='container'> -->
         
         <main>
             <aside class="menu">
@@ -76,6 +76,6 @@ if (empty($_COOKIE['id_user']) && empty($_COOKIE['id_admin'])) {
             </section>
         </main>
         
-    </div>
+    <!-- </div> -->
 </body>
 </html>

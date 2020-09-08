@@ -1,6 +1,6 @@
 <?php
 if (empty($_COOKIE['id_admin'])) {
-    header('Location: ./../../../index.php');
+    header('Location: ./../../../../index.php');
 }
 ?>
 
@@ -19,29 +19,28 @@ if (empty($_COOKIE['id_admin'])) {
     <meta http-equiv='content-language' content='ru'/>
     <meta http-equiv='pragma' content='no-cache'/>
 
-    <title>Админ-панель</title>
+    <title>Создать новую специальность</title>
 
-    <link rel='stylesheet' href='./../style.min.css'>
+    <link rel='stylesheet' href='./../../style.min.css'>
 
     <script src='' defer></script>
 </head>
 <body>
-
-    <header>
+<header>
         <div class="container">
             <a href="./" style="display: block">
-                <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
+                <img src="./../../../img/log_blog.png" alt="logo" class="header-logo">
             </a>
             
             <p>
                 <?php
                     if (isset($_COOKIE['id_user'])) {
                         ?>
-                        <a href='./../lk/index.php'><?=$_COOKIE['id_user']?></a>
+                        <a href='./../../lk/index.php'><?=$_COOKIE['id_user']?></a>
                         <?php
                     } else if (isset($_COOKIE['id_admin'])) {
                         ?>
-                        <a href='./../lk/index.php'><?=$_COOKIE['id_admin']?></a>
+                        <a href='./../../admin/index.php'><?=$_COOKIE['id_admin']?></a>
                         <?php
                     }
                 ?>
@@ -61,25 +60,36 @@ if (empty($_COOKIE['id_admin'])) {
         
     </header>
 
-    <!-- <div class='container'> -->
-        
-        <main>
-            <aside class="menu">
-                <nav>
-                    <a href="/">Добавить группу</a>
-                    <a href="/">Добавить профиль, в котором ещё предметы там...</a>
-                    <a href="./add/add_specialization.php">Добавить специальность</a>
-                    <a href="/">Добавить предмет</a>
-                    <a href="/">Добавить учителя</a>
-                </nav>
-            </aside>
+    <main>
+        <aside class="menu">
+            <nav>
+                <a href="/">Добавить группу</a>
+                <a href="/">Добавить профиль, в котором ещё предметы там...</a>
+                <a href="./add_specialization.php">Добавить специальность</a>
+                <a href="/">Добавить предмет</a>
+                <a href="/">Добавить учителя</a>
+            </nav>
+        </aside>
 
-            <section>
-                <p>Добро пожаловать в админку</p>
-            </section>
-        </main>
-        
-    <!-- </div> -->
+        <section>
+            <p>Добавить новую специальность</p>
 
+            <form action="./../../../dev/scripts/php/add_specialization.php" method="POST">
+                
+                <label for="">Код специальности</label>
+                <br>
+                <input type="text" name="specCode">
+                <br>
+
+                <label for="">Название специальности</label>
+                <br>
+                <input type="text" name="specName">
+                <br>
+
+                <input type="submit" value="Создать">
+
+            </form>
+        </section>
+    </main>
 </body>
 </html>
