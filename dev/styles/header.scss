@@ -5,6 +5,10 @@ header
     background-color: #0500FF;
     padding: 10px;
 
+    a {
+        color: #fff;
+    }
+
     div {
         @include flex(row wrap, space-between, center);
     }

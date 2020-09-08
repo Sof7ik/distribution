@@ -33,7 +33,7 @@ if ($count == 1) {
             false,
             true
         );
-        header('Location: ./../../../../dist/lk/lk.php');
+        header('Location: ./../../../../dist/lk/index.php');
     }
 
     

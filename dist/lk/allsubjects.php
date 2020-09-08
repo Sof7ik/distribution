@@ -52,12 +52,26 @@
     <header>
         
         <div class="container">
-            <a href="./../../index.php" style="display: block">
+            <a href="./" style="display: block">
                 <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
             </a>
 
+            <p>
+                <?php
+                    if (isset($_COOKIE['id_user'])) {
+                        ?>
+                        <a href='./../lk/lk.php'><?=$_COOKIE['id_user']?></a>
+                        <?php
+                    } else if (isset($_COOKIE['id_admin'])) {
+                        ?>
+                        <a href='./../admin/index.php'><?=$_COOKIE['id_admin']?></a>
+                        <?php
+                    }
+                ?>
+            </p>
+
             <?
-               if (!empty($_COOKIE['id_user']) && !empty($_COOKIE['id_admin'])) {
+               if (!empty($_COOKIE['id_user']) || !empty($_COOKIE['id_admin'])) {
                     
                 ?>
                     <form action="./../../dev/scripts/php/logout.php" method="GET">
@@ -70,18 +84,14 @@
         
     </header>
 
-    <div class='container'>
+    <!-- <div class='container'> -->
         
         <main>
 
             <aside class="menu">
                 <nav>
                     <a href="./allsubjects.php">Все предметы</a>
-                    <a href="./allsubjects.php">Все предметы</a>
-                    <a href="./allsubjects.php">Все предметы</a>
-                    <a href="./allsubjects.php">Все предметы</a>
-                    <a href="./allsubjects.php">Все предметы</a>
-                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allteachers.php">Все преподаватели</a>
                 </nav>
             </aside>
 
@@ -112,7 +122,7 @@
 
         </main>
         
-    </div>
+    <!-- </div> -->
 </body>
 </html>
 

@@ -45,6 +45,9 @@ header {
   background-color: #0500FF;
   padding: 10px;
 }
+header a {
+  color: #fff;
+}
 header div {
   display: flex;
   flex-flow: row wrap;
@@ -105,14 +108,15 @@ input#login {
 
 section.all-subjects {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 15px;
+  padding: 20px 0 0 40px;
 }
 
 div.subject-wrapper {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   background-color: #656565;
@@ -139,6 +143,7 @@ div.subject-wrapper p.subject-desc {
 div.subject-wrapper p.subject-name {
   color: #fff;
   font-size: 23px;
+  max-width: 300px;
 }
 
 *, *::after, *::before {
@@ -200,4 +205,7 @@ aside.menu nav a {
   background-color: #fff;
   padding: 10px;
   border-radius: 10px;
+  text-align: center;
+  min-width: 200px;
+  max-width: 200px;
 }

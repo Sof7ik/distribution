@@ -2,12 +2,14 @@
 
 section.all-subjects
 {
-    @include grid(1fr 1fr 1fr, 15px);
+    @include grid(1fr 1fr 1fr 1fr, 15px);
+
+    padding: 20px 0 0 40px;
 }
 
 div.subject-wrapper
 {
-    @include flex(row nowrap, space-evenly, center);
+    @include flex(row nowrap, space-between, center);
 
     padding: 10px;
 
@@ -42,5 +44,6 @@ div.subject-wrapper
     {
         color: #fff;
         font-size: 23px;
+        max-width: 300px;
     }
 }

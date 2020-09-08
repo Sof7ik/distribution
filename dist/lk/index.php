@@ -1,5 +1,5 @@
-<?php
-if (empty($_COOKIE['id_admin'])) {
+<?
+if (empty($_COOKIE['id_user']) && empty($_COOKIE['id_admin'])) {
     header('Location: ./../../../index.php');
 }
 ?>
@@ -19,7 +19,7 @@ if (empty($_COOKIE['id_admin'])) {
     <meta http-equiv='content-language' content='ru'/>
     <meta http-equiv='pragma' content='no-cache'/>
 
-    <title>Админ-панель</title>
+    <title>Личный кабинет</title>
 
     <link rel='stylesheet' href='./../style.min.css'>
 
@@ -41,7 +41,7 @@ if (empty($_COOKIE['id_admin'])) {
                         <?php
                     } else if (isset($_COOKIE['id_admin'])) {
                         ?>
-                        <a href='./../lk/index.php'><?=$_COOKIE['id_admin']?></a>
+                        <a href='./../admin/index.php'><?=$_COOKIE['id_admin']?></a>
                         <?php
                     }
                 ?>
@@ -66,11 +66,8 @@ if (empty($_COOKIE['id_admin'])) {
         <main>
             <aside class="menu">
                 <nav>
-                    <a href="/">Добавить группу</a>
-                    <a href="/">Добавить профиль, в котором ещё предметы там...</a>
-                    <a href="/">Добавить специальность</a>
-                    <a href="/">Добавить предмет</a>
-                    <a href="/">Добавить учителя</a>
+                    <a href="./allsubjects.php">Все предметы</a>
+                    <a href="./allteachers.php">Все преподаватели</a>
                 </nav>
             </aside>
 
@@ -80,6 +77,5 @@ if (empty($_COOKIE['id_admin'])) {
         </main>
         
     </div>
-
 </body>
 </html>
