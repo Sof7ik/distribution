@@ -14,13 +14,11 @@
     FROM 
     
     `teachers`, 
-    `categories`, 
-    `teacher-category`
+    `categories`
     
     WHERE 
     
-    `teachers`.`id_teacher` = `teacher-category`.`id_teacher` AND 
-    `teacher-category`.`id_category` = `categories`.`id_category`;");
+    `teachers`.`id_category` = `categories`.`id_category`;");
 
     $teachers = mysqli_fetch_all($result);
 ?>

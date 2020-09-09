@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 09 2020 г., 11:07
+-- Время создания: Сен 09 2020 г., 12:09
 -- Версия сервера: 5.7.19
 -- Версия PHP: 7.1.7
 
@@ -190,28 +190,6 @@ INSERT INTO `subjects` (`id_subject`, `id_profile`, `subject_name`, `subject_des
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `teacher-category`
---
-
-CREATE TABLE `teacher-category` (
-  `id_teacher` int(11) NOT NULL,
-  `id_category` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `teacher-category`
---
-
-INSERT INTO `teacher-category` (`id_teacher`, `id_category`) VALUES
-(1, 3),
-(2, 2),
-(3, 1),
-(4, 2),
-(5, 3);
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `teacher-profile`
 --
 
@@ -231,7 +209,8 @@ INSERT INTO `teacher-profile` (`id_teacher`, `id_profile`) VALUES
 (3, 2),
 (4, 3),
 (5, 3),
-(5, 5);
+(5, 5),
+(6, 4);
 
 -- --------------------------------------------------------
 
@@ -242,6 +221,7 @@ INSERT INTO `teacher-profile` (`id_teacher`, `id_profile`) VALUES
 CREATE TABLE `teachers` (
   `id_teacher` int(11) NOT NULL,
   `fio` varchar(255) NOT NULL,
+  `id_category` int(11) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `id_role` int(11) DEFAULT NULL
@@ -251,13 +231,13 @@ CREATE TABLE `teachers` (
 -- Дамп данных таблицы `teachers`
 --
 
-INSERT INTO `teachers` (`id_teacher`, `fio`, `email`, `password`, `id_role`) VALUES
-(1, 'Овчинников Антон Викторович', 'strelokk.45@mail.ru', 'test1', 2),
-(2, 'Погудина Лада \r\nГеннадьевна', 'pogudina.l@mail.ru', 'test2', 2),
-(3, 'Солодова Дарья Сергеевна', 'solodovads@mail.ru', 'test3', 1),
-(4, 'Овсепян Вардуи Робертовна', 'varduiiiii@gmail.com', 'test4', 2),
-(5, 'Светлана Нифантьевна', 'sveeeeeeeeeta123@mail.ru', 'test5', 2),
-(6, 'Зудилина Елена Александровна', 'zudilina.ea@mail.ru', 'test6', 1);
+INSERT INTO `teachers` (`id_teacher`, `fio`, `id_category`, `email`, `password`, `id_role`) VALUES
+(1, 'Овчинников Антон Викторович', 3, 'strelokk.45@mail.ru', '$2y$10$98NQVrUHcK4Uc5jExgkv5ufasMGLE.WsJNztIza1ArgugiHinKROy', 2),
+(2, 'Погудина Лада \r\nГеннадьевна', 2, 'pogudina.l@mail.ru', '$2y$10$dal8HjulqchXsE7qq.H4n.6q.GtLlE06ftJVH6siQA1hu1ZoP.MOO', 2),
+(3, 'Солодова Дарья Сергеевна', 1, 'solodovads@mail.ru', '$2y$10$hIRUNymyejnIBrzFUwwnGe6wAv4rgcFcQ4qy0wd5vtJQyxqwTA1IW', 1),
+(4, 'Овсепян Вардуи Робертовна', 3, 'varduiiiii@gmail.com', '$2y$10$XyriEaL9ZoPodD8vA3PRLOuYp5q/mAIcwFKuELu4X08s3aA9LwgY2', 2),
+(5, 'Светлана Нифантьевна', 1, 'sveeeeeeeeeta123@mail.ru', '$2y$10$U3iI7Ue6nR3RL369WnI..etosG8xtl3z/tpBcNGQ0WJimrg7Mw1Di', 2),
+(6, 'Зудилина Елена Александровна', 3, 'zudilina.ea@mail.ru', '$2y$10$MLNrtl9dCP9dnnIuVkjEz.cHCcrS/nMTkFEYdtdUtuwA5DIH8XEVG', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -309,13 +289,6 @@ ALTER TABLE `subjects`
   ADD KEY `id_profile` (`id_profile`);
 
 --
--- Индексы таблицы `teacher-category`
---
-ALTER TABLE `teacher-category`
-  ADD KEY `id_category` (`id_category`),
-  ADD KEY `teacher-category_ibfk_2` (`id_teacher`);
-
---
 -- Индексы таблицы `teacher-profile`
 --
 ALTER TABLE `teacher-profile`
@@ -327,7 +300,8 @@ ALTER TABLE `teacher-profile`
 --
 ALTER TABLE `teachers`
   ADD PRIMARY KEY (`id_teacher`),
-  ADD KEY `Id_role` (`id_role`);
+  ADD KEY `Id_role` (`id_role`),
+  ADD KEY `id_category` (`id_category`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -357,7 +331,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id_teacher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_teacher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
@@ -382,13 +356,6 @@ ALTER TABLE `subjects`
   ADD CONSTRAINT `subjects_ibfk_1` FOREIGN KEY (`id_profile`) REFERENCES `profiles` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `teacher-category`
---
-ALTER TABLE `teacher-category`
-  ADD CONSTRAINT `teacher-category_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `teacher-category_ibfk_2` FOREIGN KEY (`id_teacher`) REFERENCES `teachers` (`id_teacher`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Ограничения внешнего ключа таблицы `teacher-profile`
 --
 ALTER TABLE `teacher-profile`
@@ -399,7 +366,8 @@ ALTER TABLE `teacher-profile`
 -- Ограничения внешнего ключа таблицы `teachers`
 --
 ALTER TABLE `teachers`
-  ADD CONSTRAINT `teachers_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `roles` (`id_role`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `teachers_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `roles` (`id_role`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `teachers_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

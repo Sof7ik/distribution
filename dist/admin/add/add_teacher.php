@@ -19,7 +19,7 @@ if (empty($_COOKIE['id_admin'])) {
     <meta http-equiv='content-language' content='ru'/>
     <meta http-equiv='pragma' content='no-cache'/>
 
-    <title>Создать новую специальность</title>
+    <title>Добавить преподавателя</title>
 
     <link rel='stylesheet' href='./../../style.min.css'>
 
@@ -72,21 +72,26 @@ if (empty($_COOKIE['id_admin'])) {
         </aside>
 
         <section>
-            <p>Добавить новую специальность</p>
+            <p>Добавить нового преподавателя</p>
 
-            <form action="./../../../dev/scripts/php/add_specialization.php" method="POST">
+            <form action="./../../../dev/scripts/php/add_teacher.php" method="POST">
                 
-                <label for="">Код специальности</label>
+                <label for="">Фамилия Имя Отчество</label>
                 <br>
-                <input type="text" name="specCode" required>
-                <br>
-
-                <label for="">Название специальности</label>
-                <br>
-                <input type="text" name="specName" required>
+                <input type="text" name="teacherName" required>
                 <br>
 
-                <input type="submit" value="Создать">
+                <label for="">Email</label>
+                <br>
+                <input type="email" name="teacherEmail" required>
+                <br>
+
+                <label for="">Пароль</label>
+                <br>
+                <input type="email" name="teacherPassword" required>
+                <br>
+
+                <input type="submit" value="Добавить">
 
             </form>
         </section>

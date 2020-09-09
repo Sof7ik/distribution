@@ -70,7 +70,7 @@ if (empty($_COOKIE['id_admin'])) {
                     <a href="/">Добавить профиль, в котором ещё предметы там...</a>
                     <a href="./add/add_specialization.php">Добавить специальность</a>
                     <a href="/">Добавить предмет</a>
-                    <a href="/">Добавить учителя</a>
+                    <a href="./add/add_teacher.php">Добавить учителя</a>
                 </nav>
             </aside>
 
