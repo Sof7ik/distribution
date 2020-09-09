@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 07 2020 г., 22:32
--- Версия сервера: 8.0.19
--- Версия PHP: 7.4.5
+-- Время создания: Сен 09 2020 г., 11:07
+-- Версия сервера: 5.7.19
+-- Версия PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categories` (
-  `id_category` int NOT NULL,
+  `id_category` int(11) NOT NULL,
   `category_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -70,7 +71,7 @@ INSERT INTO `groups` (`id_group`, `id_specialization`) VALUES
 --
 
 CREATE TABLE `profiles` (
-  `id_profile` int NOT NULL,
+  `id_profile` int(11) NOT NULL,
   `profile_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -92,7 +93,7 @@ INSERT INTO `profiles` (`id_profile`, `profile_name`) VALUES
 --
 
 CREATE TABLE `roles` (
-  `id_role` int NOT NULL,
+  `id_role` int(11) NOT NULL,
   `role_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -130,7 +131,7 @@ INSERT INTO `specializations` (`id_specialization`, `specialization_name`) VALUE
 --
 
 CREATE TABLE `subject-specialization` (
-  `id_subject` int NOT NULL,
+  `id_subject` int(11) NOT NULL,
   `id_specialization` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -163,11 +164,11 @@ INSERT INTO `subject-specialization` (`id_subject`, `id_specialization`) VALUES
 --
 
 CREATE TABLE `subjects` (
-  `id_subject` int NOT NULL,
-  `id_profile` int NOT NULL,
+  `id_subject` int(11) NOT NULL,
+  `id_profile` int(11) NOT NULL,
   `subject_name` varchar(255) NOT NULL,
   `subject_desc` varchar(255) DEFAULT NULL,
-  `subject_hours` int NOT NULL
+  `subject_hours` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -193,9 +194,20 @@ INSERT INTO `subjects` (`id_subject`, `id_profile`, `subject_name`, `subject_des
 --
 
 CREATE TABLE `teacher-category` (
-  `id_teacher` int NOT NULL,
-  `id_category` int NOT NULL
+  `id_teacher` int(11) NOT NULL,
+  `id_category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `teacher-category`
+--
+
+INSERT INTO `teacher-category` (`id_teacher`, `id_category`) VALUES
+(1, 3),
+(2, 2),
+(3, 1),
+(4, 2),
+(5, 3);
 
 -- --------------------------------------------------------
 
@@ -204,9 +216,22 @@ CREATE TABLE `teacher-category` (
 --
 
 CREATE TABLE `teacher-profile` (
-  `id_teacher` int NOT NULL,
-  `id_profile` int NOT NULL
+  `id_teacher` int(11) NOT NULL,
+  `id_profile` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `teacher-profile`
+--
+
+INSERT INTO `teacher-profile` (`id_teacher`, `id_profile`) VALUES
+(1, 1),
+(1, 2),
+(2, 4),
+(3, 2),
+(4, 3),
+(5, 3),
+(5, 5);
 
 -- --------------------------------------------------------
 
@@ -215,11 +240,11 @@ CREATE TABLE `teacher-profile` (
 --
 
 CREATE TABLE `teachers` (
-  `id_teacher` int NOT NULL,
+  `id_teacher` int(11) NOT NULL,
   `fio` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `id_role` int NOT NULL
+  `id_role` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -227,8 +252,12 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`id_teacher`, `fio`, `email`, `password`, `id_role`) VALUES
-(6, 'Овчиников Антон Викторович', 'strelokk45@mail.ru', 'test1', 2),
-(7, 'Зудилина Елена Александровна', 'zudilina@mail.ru', 'test2', 1);
+(1, 'Овчинников Антон Викторович', 'strelokk.45@mail.ru', 'test1', 2),
+(2, 'Погудина Лада \r\nГеннадьевна', 'pogudina.l@mail.ru', 'test2', 2),
+(3, 'Солодова Дарья Сергеевна', 'solodovads@mail.ru', 'test3', 1),
+(4, 'Овсепян Вардуи Робертовна', 'varduiiiii@gmail.com', 'test4', 2),
+(5, 'Светлана Нифантьевна', 'sveeeeeeeeeta123@mail.ru', 'test5', 2),
+(6, 'Зудилина Елена Александровна', 'zudilina.ea@mail.ru', 'test6', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -298,7 +327,7 @@ ALTER TABLE `teacher-profile`
 --
 ALTER TABLE `teachers`
   ADD PRIMARY KEY (`id_teacher`),
-  ADD KEY `id_role` (`id_role`);
+  ADD KEY `Id_role` (`id_role`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -308,32 +337,27 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_category` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id_profile` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT для таблицы `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id_role` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id_subject` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
+  MODIFY `id_subject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id_teacher` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `id_teacher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
