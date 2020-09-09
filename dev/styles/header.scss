@@ -1,0 +1,32 @@
+@import './mixins.scss';
+
+header 
+{
+    background-color: #0500FF;
+    padding: 10px;
+
+    a {
+        color: #fff;
+    }
+
+    div {
+        @include flex(row wrap, space-between, center);
+    }
+    
+}
+
+img.header-logo 
+{
+    width: 70px;
+}
+
+input.logout 
+{
+    background-color: #00A3FF;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 13px 40px;
+
+    color: #Fff;
+    font-family: 'Roboto', serif;
+}

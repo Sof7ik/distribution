@@ -1,0 +1,63 @@
+@import './mixins.scss';
+// fonts
+
+// Yanone Kaffeesat Light, Regular, Bold
+// @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400;700&display=swap');
+//Roboto
+// @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*, *::after, *::before
+{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+a
+{
+	text-decoration: none;
+
+	color: #000000;
+}
+
+ul
+{
+	list-style-type: none;
+}
+
+button 
+{
+	outline: none;
+    border: none;
+}
+
+input
+{
+	border: none;
+	outline: none;
+}
+
+html, body 
+{
+	// height: 100%;
+	// width: 100%;
+}
+
+body
+{
+	font-family: 'Roboto', serif;
+
+	background-color: rgb(32, 32, 32);
+	color: #fff;
+}
+
+.container
+{
+    max-width: 1440px;
+	margin: 0 auto;
+}
+
+main 
+{
+	@include flex(row nowrap, flex-start, flex-start);
+}
