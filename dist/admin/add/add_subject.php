@@ -2,6 +2,10 @@
 if (empty($_COOKIE['id_admin'])) {
     header('Location: ./../../../../index.php');
 }
+
+require_once './../../../dev/scripts/php/connection.php';
+
+$profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +23,7 @@ if (empty($_COOKIE['id_admin'])) {
     <meta http-equiv='content-language' content='ru'/>
     <meta http-equiv='pragma' content='no-cache'/>
 
-    <title>Создать новую специальность</title>
+    <title>Добавить предмет</title>
 
     <link rel='stylesheet' href='./../../style.min.css'>
 
@@ -72,21 +76,47 @@ if (empty($_COOKIE['id_admin'])) {
         </aside>
 
         <section>
-            <h2>Добавить новую специальность</h2>
+            <h2>Добавить новый предмет</h2>
 
-            <form action="./../../../dev/scripts/php/add_specialization.php" method="POST" class="add">
+            <form action="./../../../dev/scripts/php/add_subject.php" method="POST" class="add">
+
+                <div class="subjectNameDescWrapper">
+
+                    <div class="subjectName">
+                        <label for="">Введите название предмета</label>
+                        <textarea name="subjectName" id="" class="add_input" required></textarea>
+                    </div>
+                    
+                    <div class="subjectDesc">
+                        <label for="">Введите описание предмета</label>
+                        <textarea name="subjectDesc" id="" class="add_input"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="subjectProfile">
+
+                    <label for="">Выберите профиль предмета</label>
+
+                    <select type="email" name="subjectProfile" class="add_input" required>
+                        <option></option>
+                        <?php
+                            foreach ($profiles as $profile) {
+                                ?>
+                                    <option value="<?php echo $profile[0]; ?>"> <?php echo $profile[1]; ?> </option>
+                                <?php
+                            }
+                        ?>
+                    </select>
+
+                </div>
                 
-                <label for="">Код специальности</label>
-                <br>
-                <input type="text" name="specCode" class="add_input" required>
-                <br>
+                <div class="subjectHours">
+                    <label for="">Введите часы предмета</label>
+                    <input type="number" name="subjectHours" class="add_input" required>
+                </div>
 
-                <label for="">Название специальности</label>
-                <br>
-                <input type="text" name="specName" class="add_input" required>
-                <br>
-
-                <input type="submit" value="Создать">
+                <input type="submit" value="Добавить" class="add_button">
 
             </form>
         </section>

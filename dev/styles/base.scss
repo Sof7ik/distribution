@@ -59,5 +59,8 @@ body
 
 main 
 {
+	section {
+		padding: 20px 0 0 40px;
+	}
 	@include flex(row nowrap, flex-start, flex-start);
 }

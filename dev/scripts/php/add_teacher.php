@@ -12,7 +12,6 @@ $checkTeacher = mysqli_query($link,
 if (mysqli_num_rows($checkTeacher) == 0) {
 
     $pass = password_hash($teacherPassword, PASSWORD_DEFAULT);
-    echo $pass;
 
     $query = mysqli_query($link, 
     "INSERT INTO `teachers`
@@ -27,7 +26,7 @@ if (mysqli_num_rows($checkTeacher) == 0) {
 }
 
 if($query) {
-    // header('Location: ./../../../../dist/admin/add/add_teacher.php');
+    header('Location: ./../../../../dist/admin/add/add_teacher.php');
 }
 
 ?>

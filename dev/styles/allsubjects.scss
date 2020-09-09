@@ -3,8 +3,6 @@
 section.all-subjects
 {
     @include grid(1fr 1fr 1fr 1fr, 15px);
-
-    padding: 20px 0 0 40px;
 }
 
 div.subject-wrapper
@@ -14,6 +12,8 @@ div.subject-wrapper
     padding: 10px;
 
     background-color: #656565;
+
+    min-width: 300px;
     
     div
     {
@@ -45,5 +45,11 @@ div.subject-wrapper
         color: #fff;
         font-size: 23px;
         max-width: 300px;
+    }
+
+    p.subject-hours
+    {
+        min-width: 50px;
+        text-align: right;
     }
 }

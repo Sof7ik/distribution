@@ -1,0 +1,71 @@
+@import './mixins.scss';
+
+form.add 
+{
+    margin-top: 30px;
+}
+
+label {
+    display: block;
+}
+
+div.subjectNameDescWrapper
+{
+    @include flex(row wrap, flex-start, flex-start);
+    
+
+    input {
+        width: 100%;
+    }
+}
+
+div.subjectDesc
+{
+    margin-left: 30px;
+}
+
+div.subjectNameDescWrapper,
+div.subjectProfile
+{
+    margin-bottom: 20px;
+}
+
+textarea.add_input {
+    padding: 5px;
+
+    resize: vertical;
+
+    max-width: 350px;
+    min-width: 350px;
+
+    max-height: 100px;
+    min-height: 100px;
+
+    border: none;
+    outline: none;
+
+    font-size: 18px;
+}
+
+input.add_input, select.add_input {
+    padding: 5px;
+    min-width: 300px;
+    font-size: 16px;
+}
+
+input.add_input[type="number"] 
+{
+    min-width: 80px;
+    max-width: 80px;
+}
+
+input.add_button
+{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(63, 63, 63);
+    color: #fff;
+    font-size: 16px;
+
+    margin-top: 10px;
+}

@@ -72,23 +72,23 @@ if (empty($_COOKIE['id_admin'])) {
         </aside>
 
         <section>
-            <p>Добавить нового преподавателя</p>
+            <h2>Добавить нового преподавателя</h2>
 
-            <form action="./../../../dev/scripts/php/add_teacher.php" method="POST">
+            <form action="./../../../dev/scripts/php/add_teacher.php" method="POST" class="add">
                 
                 <label for="">Фамилия Имя Отчество</label>
                 <br>
-                <input type="text" name="teacherName" required>
+                <input type="text" name="teacherName" class="add_input" required>
                 <br>
 
                 <label for="">Email</label>
                 <br>
-                <input type="email" name="teacherEmail" required>
+                <input type="email" name="teacherEmail" class="add_input" required>
                 <br>
 
                 <label for="">Пароль</label>
                 <br>
-                <input type="email" name="teacherPassword" required>
+                <input type="email" name="teacherPassword" class="add_input" required>
                 <br>
 
                 <input type="submit" value="Добавить">
