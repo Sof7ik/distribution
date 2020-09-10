@@ -1,10 +1,22 @@
 @import './mixins.scss';
 
+body.auth
+{
+    & .container
+    {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 form#login-form
 {
     @include flex(column nowrap, flex-start, center);
 
-    padding-top: 200px;
+    margin: 50px 25px;
+    min-height: 300px;
 
     div.login-wrapper:first-child {
         margin-bottom: 40px;

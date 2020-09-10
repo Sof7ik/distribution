@@ -49,42 +49,39 @@
 </head>
 <body>
 
-    <?php include './includes/header.php'; ?>
+    <?php include './includes/nav.php'; ?>
+    
+    <main>
 
-    <!-- <div class='container'> -->
-        
-        <main>
+        <?php include './includes/header.php'; ?>
 
-            <?php include './includes/nav.php'; ?>
+        <section class="all-subjects">
 
-            <section class="all-subjects">
+            <?
+                foreach ($subjects as $value)
+                {
+                    ?>
+                    <div class="subject-wrapper" data-subjectId="<?=$value[0]?>">
 
-                <?
-                    foreach ($subjects as $value)
-                    {
-                        ?>
-                        <div class="subject-wrapper" data-subjectId="<?=$value[0]?>">
+                        <div>
+                            <p class="subject-profile"><?=$value[4]?></p>
 
-                            <div>
-                                <p class="subject-profile"><?=$value[4]?></p>
+                            <p class="subject-name"><?=$value[1]?></p>
 
-                                <p class="subject-name"><?=$value[1]?></p>
-
-                                <p class="subject-desc"><?=$value[2]?></p>
-                            </div>
-
-                            <p class="subject-hours"><?=$value[3]?> ч.</p>
-
+                            <p class="subject-desc"><?=$value[2]?></p>
                         </div>
-                        <?
-                    }
-                ?>
 
-            </section>
+                        <p class="subject-hours"><?=$value[3]?> ч.</p>
 
-        </main>
-        
-    <!-- </div> -->
+                    </div>
+                    <?
+                }
+            ?>
+
+        </section>
+
+    </main>
+    
 </body>
 </html>
 

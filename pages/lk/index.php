@@ -27,19 +27,17 @@ if (empty($_COOKIE['id_user']) && empty($_COOKIE['id_admin'])) {
 </head>
 <body>
 
-    <?php include './includes/header.php'; ?>
-
-    <!-- <div class='container'> -->
+    <?php include './includes/nav.php'; ?>
         
-        <main>
+    <main>
 
-            <?php include './includes/nav.php'; ?>
+        <?php include './includes/header.php'; ?>
 
-            <section>
-                <p>Добро пожаловать в личный кабинет</p>
-            </section>
-        </main>
+        <section>
+            <p>Добро пожаловать в личный кабинет</p>
+        </section>
+
+    </main>
         
-    <!-- </div> -->
 </body>
 </html>

@@ -1,10 +1,10 @@
-@import './mixins.scss';
+@import "./mixins.scss";
 // fonts
 
 // Yanone Kaffeesat Light, Regular, Bold
-@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400;700&display=swap");
 //Roboto
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 *, *::after, *::before
 {
@@ -25,10 +25,10 @@ ul
 	list-style-type: none;
 }
 
-button 
+button
 {
+	border: none;
 	outline: none;
-    border: none;
 }
 
 input
@@ -37,30 +37,147 @@ input
 	outline: none;
 }
 
-html, body 
+html, body
 {
 	// height: 100%;
 	// width: 100%;
 }
 
+html
+{
+	height: 100%;
+}
+
 body
 {
-	font-family: 'Roboto', serif;
+	font-family: "Roboto", serif;
+	min-height: 100%;
+	color: #FFFFFF;
+	background-color: #1d2329;
 
-	background-color: rgb(32, 32, 32);
-	color: #fff;
+	display: flex;
+	flex-flow: row nowrap;
 }
 
 .container
 {
-    max-width: 1440px;
+	width: 100%;
+	max-width: 1440px;
 	margin: 0 auto;
 }
 
-main 
+main
 {
-	section {
+	display: flex;
+	flex-flow: column nowrap;
+
+	flex-grow: 1;
+	section
+	{
 		padding: 20px 0 0 40px;
 	}
-	@include flex(row nowrap, flex-start, flex-start);
+}
+
+aside
+{
+	display: flex;
+	flex-flow: column nowrap;
+
+	min-width: 230px;
+	align-self: stretch;
+	background-color: #16191c;
+
+	max-width: 300px;
+	& img
+	{
+		opacity: 0.5;
+		margin: 10px auto;
+		margin-top: 35px;
+		height: 50px;
+		transition: 0.3s opacity;
+		&:hover
+		{
+			opacity: 0.8;
+		}
+	}
+
+	& nav
+	{
+		flex-grow: 1;
+		padding-top: 20px;
+		display: flex;
+		flex-flow: column nowrap;
+
+		& a
+		{
+			color: #FFFFFF;
+			padding: 15px 25px;
+			padding-right: 50px;
+			opacity: 0.5;
+			transition: 0.5s background, 0.3s opacity;
+			&:hover
+			{
+				background-color: rgba($color: #FFFFFF, $alpha: 0.1);
+				opacity: 1;
+			}
+		}
+	}
+
+	& form
+	{
+		& input
+		{
+			color: #FFFFFF;
+			padding: 20px 25px;
+			opacity: 0.5;
+			cursor: pointer;
+			width: 100%;
+			transition: 0.5s background, 0.3s opacity;
+			background-color: transparent;
+			&:hover
+			{
+				background-color: rgba($color: #FFFFFF, $alpha: 0.1);
+				opacity: 1;
+			}
+		}
+	}
+}
+
+header
+{
+	& .container
+	{
+		height: 100%;
+		min-height: 45px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		& p
+		{
+			height: 100%;
+			width: 100%;
+			& a
+			{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				opacity: 0.6;
+				width: 100%;
+				color: #FFFFFF;
+				transition: 0.6s opacity;
+				&:hover
+				{
+					opacity: 1;
+				}
+			}
+		}
+
+	}
+	& hr
+	{
+		margin: 0 10px;
+		opacity: 0.2;
+		height: 1px;
+	}
 }
