@@ -10,7 +10,14 @@
     </nav>
     
     <?php
-        if (!empty($_COOKIE['id_user']) || !empty($_COOKIE['id_admin'])) {
+
+        if (isset($_COOKIE['id_admin']))
+        {
+            echo "<a    style='text-align: center; padding-right: 25px; font-size: 14px; text-transform: uppercase' 
+                        href='./../admin/index.php'>Режим редактирования</a>";
+        }
+
+        if (isset($_COOKIE['id_user']) || isset($_COOKIE['id_admin'])) {
 
             ?>
             <form action="./../../../php/logout.php" method="GET">

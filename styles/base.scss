@@ -83,11 +83,13 @@ aside
 	display: flex;
 	flex-flow: column nowrap;
 
-	min-width: 230px;
+	min-width: 300px;
+	max-width: 300px;
+
 	align-self: stretch;
 	background-color: #16191c;
 
-	max-width: 300px;
+
 	& img
 	{
 		opacity: 0.5;
@@ -107,22 +109,22 @@ aside
 		padding-top: 20px;
 		display: flex;
 		flex-flow: column nowrap;
-
-		& a
-		{
-			color: #FFFFFF;
-			padding: 15px 25px;
-			padding-right: 50px;
-			opacity: 0.5;
-			transition: 0.5s background, 0.3s opacity;
-			&:hover
-			{
-				background-color: rgba($color: #FFFFFF, $alpha: 0.1);
-				opacity: 1;
-			}
-		}
 	}
 
+	& a
+	{
+		color: #FFFFFF;
+		padding: 15px 25px;
+		padding-right: 50px;
+		opacity: 0.5;
+		transition: 0.5s background, 0.3s opacity;
+		&:hover
+		{
+			background-color: rgba($color: #FFFFFF, $alpha: 0.1);
+			opacity: 1;
+		}
+	}
+	
 	& form
 	{
 		& input

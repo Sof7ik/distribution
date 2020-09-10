@@ -13,6 +13,13 @@
     </nav>
 
     <?php
+
+        if (isset($_COOKIE['id_admin']))
+        {
+            echo "<a    style='text-align: center; padding-right: 25px; font-size: 14px; text-transform: uppercase' 
+                        href='./../lk/index.php'>Режим просмотра</a>";
+        }
+
         if (!empty($_COOKIE['id_user']) || !empty($_COOKIE['id_admin'])) {
 
             ?>
