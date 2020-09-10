@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 09 2020 г., 12:09
--- Версия сервера: 5.7.19
--- Версия PHP: 7.1.7
+-- Время создания: Сен 10 2020 г., 19:51
+-- Версия сервера: 10.3.22-MariaDB
+-- Версия PHP: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -113,16 +112,17 @@ INSERT INTO `roles` (`id_role`, `role_name`) VALUES
 
 CREATE TABLE `specializations` (
   `id_specialization` varchar(8) NOT NULL,
-  `specialization_name` varchar(255) NOT NULL
+  `specialization_name` varchar(255) NOT NULL,
+  `specialization_code` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `specializations`
 --
 
-INSERT INTO `specializations` (`id_specialization`, `specialization_name`) VALUES
-('08.01.71', 'операционная деятельность в логистике'),
-('09.02.07', 'Информационные системы и программирвоание');
+INSERT INTO `specializations` (`id_specialization`, `specialization_name`, `specialization_code`) VALUES
+('08.01.71', 'операционная деятельность в логистике', 7),
+('09.02.07', 'Информационные системы и программирвоание', 19);
 
 -- --------------------------------------------------------
 
@@ -237,7 +237,8 @@ INSERT INTO `teachers` (`id_teacher`, `fio`, `id_category`, `email`, `password`,
 (3, 'Солодова Дарья Сергеевна', 1, 'solodovads@mail.ru', '$2y$10$hIRUNymyejnIBrzFUwwnGe6wAv4rgcFcQ4qy0wd5vtJQyxqwTA1IW', 1),
 (4, 'Овсепян Вардуи Робертовна', 3, 'varduiiiii@gmail.com', '$2y$10$XyriEaL9ZoPodD8vA3PRLOuYp5q/mAIcwFKuELu4X08s3aA9LwgY2', 2),
 (5, 'Светлана Нифантьевна', 1, 'sveeeeeeeeeta123@mail.ru', '$2y$10$U3iI7Ue6nR3RL369WnI..etosG8xtl3z/tpBcNGQ0WJimrg7Mw1Di', 2),
-(6, 'Зудилина Елена Александровна', 3, 'zudilina.ea@mail.ru', '$2y$10$MLNrtl9dCP9dnnIuVkjEz.cHCcrS/nMTkFEYdtdUtuwA5DIH8XEVG', 1);
+(6, 'Зудилина Елена Александровна', 3, 'zudilina.ea@mail.ru', '$2y$10$MLNrtl9dCP9dnnIuVkjEz.cHCcrS/nMTkFEYdtdUtuwA5DIH8XEVG', 1),
+(10, 'Мелешкин Илья Петрович', 2, 'meleshkin@gmail.com', '$2y$10$6jLjmf9BXRGGGmAcOM.WTu2ooxaBuwbRqkXWvy2VdUeaY43xR4khW', 2);
 
 --
 -- Индексы сохранённых таблиц
@@ -312,26 +313,31 @@ ALTER TABLE `teachers`
 --
 ALTER TABLE `categories`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT для таблицы `profiles`
 --
 ALTER TABLE `profiles`
   MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT для таблицы `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT для таблицы `subjects`
 --
 ALTER TABLE `subjects`
   MODIFY `id_subject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id_teacher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_teacher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
