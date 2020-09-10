@@ -1,4 +1,8 @@
-<?php if (empty($_COOKIE['id_admin'])) { header('Location: ./../../../index.php'); } ?>
+<?php 
+if (empty($_COOKIE['id_admin'])) { header('Location: ./../../../index.php'); }
+require_once './../../php/connection.php'; 
+$profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
+?>
 
 <!DOCTYPE html>
 <html lang='ru'>
@@ -35,21 +39,35 @@
             <form action="./../../php/add_teacher.php" method="POST" class="add">
                 
                 <label for="">Фамилия Имя Отчество</label>
-                <br>
                 <input type="text" name="teacherName" class="add_input" required>
                 <br>
 
                 <label for="">Email</label>
-                <br>
                 <input type="email" name="teacherEmail" class="add_input" required>
                 <br>
 
                 <label for="">Пароль</label>
-                <br>
                 <input type="text" name="teacherPassword" class="add_input" required>
                 <br>
 
-                <input type="submit" value="Добавить">
+                <div class="subjectProfile">
+
+                    <label for="">Выберите профиль преподавателя</label>
+
+                    <select type="email" name="teacherProfile" class="add_input" required>
+                        <option></option>
+                        <?php
+                            foreach ($profiles as $profile) {
+                                ?>
+                                    <option value="<?php echo $profile[0]; ?>"> <?php echo $profile[1]; ?> </option>
+                                <?php
+                            }
+                        ?>
+                    </select>
+
+                </div>
+
+                <input type="submit" value="Добавить" class="add_button">
 
             </form>
         </section>

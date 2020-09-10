@@ -49,14 +49,23 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
                 <label for="">Название специальности</label>
                 <br>
 
-
-                <select name="specName" class="add_input" required>
+                <select name="specName" class="add_input" id="selectSpec" required>
                 <option></option>
                 <?php
                             
                     foreach ($specNames as $specName) {
+                        if(strlen((string)$specName[2]) == 1)
+                        {
+                            $specCode = "0" . $specName[2];
+                        }
+                        else if (strlen((string)$specName[2]) == 2)
+                        {
+                            $specCode = $specName[2];
+                        }
+                        
                         ?>
-                            <option value="<?= $specName[0]; ?>"> <?= $specName[0]; ?> - <?= $specName[1]; ?> </option>
+                            <option 
+                                data-specCode="<?=$specCode; ?>" value="<?= $specName[0]; ?>"> <?= $specName[0]; ?> - <?= $specName[1]; ?> </option>
                         <?php
                             }
                         ?>
@@ -70,18 +79,21 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
     </main>
 
     <script>
-                var numberSp = 3;//первая цифра
-
-                var today = new Date();
-                var year = today.getFullYear();
-                var strYear = String(year);
-                var lastCharYear=strYear.charAt(strYear.length-1); //вторая цифра
-
-                var numberSpec = 19; //надо взять список спец
-
-                var numberGroup = numberSp + lastCharYear + numberSpec;
-                var Group = Number(numberGroup) //номер группы
-                document.querySelector('#groupCode').value = Group
-                </script>   
+            document.getElementById('selectSpec').addEventListener('input', () => {
+                console.log('changed');
+            })
+            
+    </script>   
 </body>
 </html>
+
+<!-- const numberSp = 3;//первая цифра
+
+                let year = String(new Date().getFullYear());
+                let lastCharYear=strYear.charAt(strYear.length-1); //вторая цифра
+
+                let numberSpec = 1; //надо взять список спец
+
+                let numberGroup = numberSp + lastCharYear + numberSpec;
+                
+                document.getElementById('groupCode').value = numberGroup; -->

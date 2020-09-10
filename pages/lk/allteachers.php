@@ -21,6 +21,10 @@
     `teachers`.`id_category` = `categories`.`id_category`;");
 
     $teachers = mysqli_fetch_all($result);
+
+    // echo "<pre>";
+    // print_r($teachers);
+    // echo "</pre>";
 ?>
 
 <!DOCTYPE html>

@@ -5,9 +5,20 @@
             <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
         </a>
 
-        <p>
-            <a href='./index.php'> <?=$_COOKIE['id_user']?> </a>
-        </p>
+        <div class="center">
+            <p>
+                <a href='./index.php'> <?
+                if(isset($_COOKIE['id_user'])) {
+                    echo $_COOKIE['id_user'];
+                }
+                else if(isset($_COOKIE['id_admin'])){
+                    echo $_COOKIE['id_admin'];
+                };
+                ?> </a>
+            </p>
+        </div>
+        
+
 
         <?php
         if (!empty($_COOKIE['id_user']) || !empty($_COOKIE['id_admin'])) {
