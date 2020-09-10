@@ -25,15 +25,17 @@ form#login-form
 
 label.login-labels 
 {
+    text-align: center;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 input.login-input
 {
-    border: 2px solid #4b2e83;
+    border: 2px solid transparent;
     border-radius: 10px;
     padding: 10px;
+    padding-left: 20px;
     min-width: 300px;
 
     color: #fff;
@@ -41,18 +43,33 @@ input.login-input
     font-size: 15px;
 
     background-color: rgb(45, 45, 45);
+    transition: 0.3s border;
+    
+    &:hover
+    {
+        border: 2px solid #4b2e83;
+    }
 }
 
 input#login
 {
+    cursor: pointer;
     background-color: rgb(58, 58, 58);
-    padding: 15px 30px;
+    padding: 15px 50px;
 
-    margin-top: 20px;
+    margin-top: 40px;
     border-radius: 10px;
 
-    font-size: 18px;
+    width: 100%;
+    
+    font-size: 14px;
     font-weight: bold;
     color: #fff;
     letter-spacing: unset;
+
+    transition: 0.8s background;
+    &:hover
+    {
+        background-color:#4b2e83;
+    }
 }
