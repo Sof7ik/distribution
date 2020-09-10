@@ -48,9 +48,13 @@ html
 	height: 100%;
 }
 
-body
+body, input, a
 {
 	font-family: "Roboto", serif;
+}
+
+body
+{
 	min-height: 100%;
 	color: #FFFFFF;
 	background-color: #1d2329;
@@ -58,7 +62,6 @@ body
 	display: flex;
 	flex-flow: row nowrap;
 }
-
 .container
 {
 	width: 100%;
@@ -111,7 +114,13 @@ aside
 		flex-flow: column nowrap;
 	}
 
-	& a
+	& .logo-wrapper
+	{
+		width: fit-content;
+		margin: 0 auto;
+	}
+	
+	& a:not(.logo-wrapper)
 	{
 		color: #FFFFFF;
 		padding: 15px 25px;

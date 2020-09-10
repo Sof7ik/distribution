@@ -1,6 +1,6 @@
 <aside class="menu">
 
-    <a href="./" style="display: flex">
+    <a href="./" style="display: flex" class="logo-wrapper">
         <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
     </a>
 
