@@ -22,7 +22,16 @@ if (mysqli_num_rows($checkTeacher) == 0) {
     `email`, 
     `password`, 
     `id_role`) 
-    VALUES (NULL, '$teacherName', $teacherProfile, '$teacherEmail', '$pass', 2)");
+    VALUES (NULL, '$teacherName', 1, '$teacherEmail', '$pass', 2)");
+
+    mysqli_query(
+        $link, 
+        "INSERT INTO `teacher-profile`
+        VALUES (
+            (SELECT id_teacher FROM teachers ORDER BY id_teacher DESC LIMIT 1), 
+            $teacherProfile
+        )"
+    );
 } else {
     echo 'Такой преподаватель уже есть! Проверьте правильность введенных данных!';
 }
