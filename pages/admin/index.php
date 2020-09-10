@@ -23,20 +23,17 @@
 </head>
 <body>
 
-    <?php include './includes/header.php'; ?>
-
-    <!-- <div class='container'> -->
+    <?php include './includes/nav.php'; ?>
         
-        <main>
+    <main>
 
-            <?php include './includes/nav.php'; ?>
-
-            <section>
-                <p>Добро пожаловать в админку</p>
-            </section>
-        </main>
+        <?php include './includes/header.php'; ?>
         
-    <!-- </div> -->
+        <section>
+            <p>Добро пожаловать в админку</p>
+        </section>
+
+    </main>
 
 </body>
 </html>

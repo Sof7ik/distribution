@@ -29,11 +29,11 @@ $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
 </head>
 <body>
 
-    <?php include './includes/header.php'; ?>
+    <?php include './includes/nav.php'; ?>
 
     <main>
 
-        <?php include './includes/nav.php'; ?>
+        <?php include './includes/header.php'; ?>
 
         <section>
             <h2>Добавить новый предмет</h2>

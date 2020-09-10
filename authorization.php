@@ -17,15 +17,15 @@
 
     <script src='./styles/style.css' defer></script>
 </head>
-<body>
+<body class="auth">
     
-    <header>
+    <!-- <header>
         <div class="container">
             <a href="./" style="display: block">
                 <img src="./img/log_blog.png" alt="logo" class="header-logo">
             </a>
         </div>
-    </header>
+    </header> -->
 
     <div class='container'>
         <form action="./php/login.php" method="POST" id="login-form">

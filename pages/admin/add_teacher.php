@@ -27,13 +27,14 @@ $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
 </head>
 <body>
 
-    <?php include './includes/header.php'; ?>
-
+    <?php include './includes/nav.php'; ?>
+    
     <main>
 
-        <?php include './includes/nav.php'; ?>
+        <?php include './includes/header.php'; ?>
 
         <section>
+            
             <h2>Добавить нового преподавателя</h2>
 
             <form action="./../../php/add_teacher.php" method="POST" class="add">
@@ -70,7 +71,10 @@ $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
                 <input type="submit" value="Добавить" class="add_button">
 
             </form>
+
         </section>
+
     </main>
+
 </body>
 </html>

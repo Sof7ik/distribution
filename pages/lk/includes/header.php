@@ -1,9 +1,6 @@
 <header>
 
     <div class="container">
-        <a href="./" style="display: block">
-            <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
-        </a>
 
         <div class="center">
             <p>
@@ -17,19 +14,9 @@
                 ?> </a>
             </p>
         </div>
-        
 
-
-        <?php
-        if (!empty($_COOKIE['id_user']) || !empty($_COOKIE['id_admin'])) {
-
-            ?>
-            <form action="./../../../php/logout.php" method="GET">
-                <input type="submit" class="logout" value="ВЫХОД">
-            </form>
-            <?php
-        }
-        ?>
     </div>
 
+    <hr>
+    
 </header>

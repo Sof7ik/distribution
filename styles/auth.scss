@@ -1,0 +1,75 @@
+@import './mixins.scss';
+
+body.auth
+{
+    & .container
+    {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+form#login-form
+{
+    @include flex(column nowrap, flex-start, center);
+
+    margin: 50px 25px;
+    min-height: 300px;
+
+    div.login-wrapper:first-child {
+        margin-bottom: 40px;
+    }
+}
+
+label.login-labels 
+{
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input.login-input
+{
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    min-width: 300px;
+
+    color: #fff;
+    letter-spacing: 0.05rem;
+    font-size: 15px;
+
+    background-color: rgb(45, 45, 45);
+    transition: 0.3s border;
+    
+    &:hover
+    {
+        border: 2px solid #4b2e83;
+    }
+}
+
+input#login
+{
+    cursor: pointer;
+    background-color: rgb(58, 58, 58);
+    padding: 15px 50px;
+
+    margin-top: 40px;
+    border-radius: 10px;
+
+    width: 100%;
+    
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: unset;
+
+    transition: 0.8s background;
+    &:hover
+    {
+        background-color:#4b2e83;
+    }
+}

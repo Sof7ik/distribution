@@ -23,12 +23,13 @@
 </head>
 <body>
 
-    <?php include './includes/header.php'; ?>
+    
+    <?php include './includes/nav.php'; ?>
 
     <main>
 
-        <?php include './includes/nav.php'; ?>
-
+        <?php include './includes/header.php'; ?>
+        
         <section>
             <h2>Добавить новую специальность</h2>
 

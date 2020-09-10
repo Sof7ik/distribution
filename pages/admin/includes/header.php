@@ -1,24 +1,25 @@
 <header>
-    
-    <div class="container">
-        <a href="./" style="display: block">
-            <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
-        </a>
-        
-        <p>
-            <a href='./index.php'><?=$_COOKIE['id_admin']?></a>
-        </p>
 
+    <div class="container">
+
+        <p>
         <?php
-            if (!empty($_COOKIE['id_user']) || !empty($_COOKIE['id_admin'])) {
-                
+            if (isset($_COOKIE['id_user'])) 
+            {
                 ?>
-                    <form action="./../../../php/logout.php" method="GET">
-                        <input type="submit" class="logout" value="ВЫХОД">
-                    </form>
+                <a href='./index.php'><?=$_COOKIE['id_user']?></a>
+                <?php
+            } else if (isset($_COOKIE['id_admin'])) 
+            {
+                ?>
+                <a href='./index.php'><?=$_COOKIE['id_admin']?></a>
                 <?php
             }
         ?>
+        </p>
+
     </div>
+
+    <hr>
     
 </header>
