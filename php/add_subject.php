@@ -1,6 +1,4 @@
-
-
-<?php 
+<?php
 
 require_once './connection.php';
 
@@ -13,7 +11,6 @@ $checkSubject = mysqli_query($link,
 "SELECT `id_subject` FROM `subjects` WHERE `subject_name` = '$subjectName'");
 
 if (mysqli_num_rows($checkSubject) == 0) {
-
     $query = mysqli_query($link, 
     "INSERT INTO `subjects`
     (`id_subject`, `id_profile`, `subject_name`, `subject_desc`, `subject_hours`) 
@@ -25,7 +22,5 @@ if (mysqli_num_rows($checkSubject) == 0) {
 }
 
 if($query) {
-    header('Location: ./../../../../dist/admin/add/add_teacher.php');
+    header('Location: ./../../pages/admin/add_subject.php');
 }
-
-?>

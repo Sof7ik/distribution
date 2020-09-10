@@ -3,7 +3,7 @@
     if (empty($_COOKIE['id_user']) && empty($_COOKIE['id_admin'])) {
         header('Location: ./../../../index.php');
     }
-    require_once './../../dev/scripts/php/connection.php';
+    require_once './../../php/connection.php';
 
     $result = mysqli_query($link, 
     "SELECT 
@@ -40,41 +40,17 @@
 
     <title>Все преподаватели</title>
 
-    <link rel='stylesheet' href='./../style.min.css'>
+    <link rel='stylesheet' href='./../../styles/style.css'>
 
     <script src='' defer></script>
 </head>
 <body>
 
-    <header>
-        
-        <div class="container">
-            <a href="./" style="display: block">
-                <img src="./../../img/log_blog.png" alt="logo" class="header-logo">
-            </a>
-
-            <?
-               if (!empty($_COOKIE['id_user']) || !empty($_COOKIE['id_admin'])) {
-                    
-                ?>
-                    <form action="./../../dev/scripts/php/logout.php" method="GET">
-                        <input type="submit" class="logout" value="ВЫХОД">
-                    </form>
-                <?
-            }
-            ?>
-        </div> 
-        
-    </header>
+    <?php include './includes/header.php'; ?>
 
     <main>
 
-        <aside class="menu">
-            <nav>
-                <a href="./allsubjects.php">Все предметы</a>
-                <a href="./allteachers.php">Все преподаватели</a>
-            </nav>
-        </aside>
+        <?php include './includes/nav.php'; ?>
 
         <section class="all-subjects">
 

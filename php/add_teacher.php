@@ -26,7 +26,7 @@ if (mysqli_num_rows($checkTeacher) == 0) {
 }
 
 if($query) {
-    header('Location: ./../../../../dist/admin/add/add_teacher.php');
+    header('Location: ./../../pages/admin/add_teacher.php');
 }
 
 ?>

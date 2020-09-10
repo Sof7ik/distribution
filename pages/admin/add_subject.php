@@ -1,9 +1,7 @@
 <?php
-if (empty($_COOKIE['id_admin'])) {
-    header('Location: ./../../../../index.php');
-}
+if (empty($_COOKIE['id_admin'])) { header('Location: ./../../../index.php'); }
 
-require_once './../../../dev/scripts/php/connection.php';
+require_once './../../php/connection.php';
 
 $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
 ?>
@@ -25,60 +23,22 @@ $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
 
     <title>Добавить предмет</title>
 
-    <link rel='stylesheet' href='./../../style.min.css'>
+    <link rel='stylesheet' href='./../../styles/style.css'>
 
     <script src='' defer></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="./" style="display: block">
-                <img src="./../../../img/log_blog.png" alt="logo" class="header-logo">
-            </a>
-            
-            <p>
-                <?php
-                    if (isset($_COOKIE['id_user'])) {
-                        ?>
-                        <a href='./../../lk/index.php'><?=$_COOKIE['id_user']?></a>
-                        <?php
-                    } else if (isset($_COOKIE['id_admin'])) {
-                        ?>
-                        <a href='./../../admin/index.php'><?=$_COOKIE['id_admin']?></a>
-                        <?php
-                    }
-                ?>
-            </p>
 
-            <?php
-                if (!empty($_COOKIE['id_user']) || !empty($_COOKIE['id_admin'])) {
-                    
-                    ?>
-                        <form action="./../../dev/scripts/php/logout.php" method="GET">
-                            <input type="submit" class="logout" value="ВЫХОД">
-                        </form>
-                    <?php
-                }
-            ?>
-        </div>
-        
-    </header>
+    <?php include './includes/header.php'; ?>
 
     <main>
-        <aside class="menu">
-            <nav>
-                <a href="./add_group.php">Добавить группу</a>
-                <a href="./add_profile.php">Добавить профиль, в котором ещё предметы там...</a>
-                <a href="./add_specialization.php">Добавить специальность</a>
-                <a href="./add_subject.php">Добавить предмет</a>
-                <a href="./add_teacher.php">Добавить учителя</a>
-            </nav>
-        </aside>
+
+        <?php include './includes/nav.php'; ?>
 
         <section>
             <h2>Добавить новый предмет</h2>
 
-            <form action="./../../../dev/scripts/php/add_subject.php" method="POST" class="add">
+            <form action="./../../php/add_subject.php" method="POST" class="add">
 
                 <div class="subjectNameDescWrapper">
 
