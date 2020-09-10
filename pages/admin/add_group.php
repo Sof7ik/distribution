@@ -42,13 +42,11 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
             <form action="./../../php/add_group.php" method="POST" class="add">
 
                 <label for="">Номер группы</label>
-                <br>
-                <input type="text" name="groupCode" class="add_input" value="" id="groupCode" pattern="[0-9]{4}" required >
-                <br>
+                <input type="number" name="groupCode" class="add_input" value="" id="groupCode" pattern="[0-9]{4}" required >
+                
+                <div class="br"></div>
 
                 <label for="">Название специальности</label>
-                <br>
-
                 <select name="specName" class="add_input" id="selectSpec" required>
                 <option></option>
                 <?php
@@ -70,7 +68,6 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
                             }
                         ?>
                     </select>
-                <br>
 
                 <input type="submit" value="Добавить">
 

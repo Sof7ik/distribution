@@ -41,23 +41,22 @@ $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
             <form action="./../../php/add_subject.php" method="POST" class="add">
 
                 <div class="subjectNameDescWrapper">
-
                     <div class="subjectName">
                         <label for="">Введите название предмета</label>
                         <textarea name="subjectName" id="" class="add_input" required></textarea>
                     </div>
-                    
+                    <div class="br"></div>
+
                     <div class="subjectDesc">
                         <label for="">Введите описание предмета</label>
                         <textarea name="subjectDesc" id="" class="add_input"></textarea>
                     </div>
-
+                    <div class="br"></div>
                 </div>
 
+                
                 <div class="subjectProfile">
-
                     <label for="">Выберите профиль предмета</label>
-
                     <select type="email" name="subjectProfile" class="add_input" required>
                         <option></option>
                         <?php
@@ -68,9 +67,9 @@ $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
                             }
                         ?>
                     </select>
-
                 </div>
-                
+                <div class="br"></div>
+
                 <div class="subjectHours">
                     <label for="">Введите часы предмета</label>
                     <input type="number" name="subjectHours" class="add_input" required>

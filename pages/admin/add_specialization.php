@@ -36,14 +36,11 @@
             <form action="./../../php/add_specialization.php" method="POST" class="add">
                 
                 <label for="">Код специальности</label>
-                <br>
-                <input type="text" name="specCode" class="add_input" required>
-                <br>
+                <input type="number" name="specCode" class="add_input" required>
+                <div class="br"></div>
 
                 <label for="">Название специальности</label>
-                <br>
                 <input type="text" name="specName" class="add_input" required>
-                <br>
 
                 <input type="submit" value="Создать">
 

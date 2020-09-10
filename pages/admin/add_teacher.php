@@ -41,15 +41,15 @@ $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
                 
                 <label for="">Фамилия Имя Отчество</label>
                 <input type="text" name="teacherName" class="add_input" required>
-                <br>
+                <div class="br"></div>
 
                 <label for="">Email</label>
                 <input type="email" name="teacherEmail" class="add_input" required>
-                <br>
+                <div class="br"></div>
 
                 <label for="">Пароль</label>
                 <input type="text" name="teacherPassword" class="add_input" required>
-                <br>
+                <div class="br"></div>
 
                 <div class="subjectProfile">
 
