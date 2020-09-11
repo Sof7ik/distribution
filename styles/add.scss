@@ -64,6 +64,16 @@ label {
     margin-bottom: 8px;
 }
 
+div.subjectProfile
+{
+    margin-bottom: 10px;
+
+    &:last-child
+    {
+        margin-bottom: unset;
+    }
+}
+
 div.subjectNameDescWrapper
 {
     @include flex(column wrap, flex-start, flex-start);
@@ -81,12 +91,6 @@ div.subjectDesc, div.subjectName
     {
         width: 100%;
     }
-}
-
-div.subjectNameDescWrapper,
-div.subjectProfile
-{
-    margin-bottom: 20px;
 }
 
 textarea.add_input {
@@ -131,4 +135,16 @@ input.add_button
     font-size: 16px;
 
     margin-top: 10px;
+}
+
+button.add_oneMore
+{
+    background-color: transparent;
+
+    span
+    {
+        font-size: 30px;
+        display: block;
+        color: #fff;
+    }
 }

@@ -1,7 +1,6 @@
 <?php 
 if (empty($_COOKIE['id_admin'])) { header('Location: ./../../../index.php'); }
 require_once './../../php/connection.php'; 
-$profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
 $categories = mysqli_fetch_all(mysqli_query($link, "SELECT * from `categories`;"));
 ?>
 
@@ -24,7 +23,10 @@ $categories = mysqli_fetch_all(mysqli_query($link, "SELECT * from `categories`;"
 
     <link rel='stylesheet' href='./../../styles/style.css'>
 
-    <script src='' defer></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+    <script src='./../../js/main.js' defer></script>
 </head>
 <body>
 
@@ -67,16 +69,15 @@ $categories = mysqli_fetch_all(mysqli_query($link, "SELECT * from `categories`;"
                         ?>
                     </select>
 
-                    <button class="add_oneMore"></button>
-
                 </div>
+                <div class="br"></div>
 
                 <div id="profiles">
                     <div class="subjectProfile">
 
                         <label for="">Выберите профиль преподавателя</label>
 
-                        <select type="email" name="teacherProfile" class="add_input" required>
+                        <select type="email" name="teacherProfile[]" class="add_input" required>
                             <option></option>
                             <?php
                                 foreach ($profiles as $profile) {
@@ -88,12 +89,9 @@ $categories = mysqli_fetch_all(mysqli_query($link, "SELECT * from `categories`;"
                         </select>
 
                     </div>
+
+                    <button class="add_oneMore" id="addProfile"><span class="material-icons">add_box</span></button>
                 </div>
-
-
-                
-
-                
 
                 <input type="submit" value="Добавить" class="add_button">
 
