@@ -41,16 +41,10 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
 
             <form action="./../../php/add_group.php" method="POST" class="add">
 
-                <label for="">Номер группы</label>
-                <input type="number" name="groupCode" class="add_input" value="" id="groupCode" pattern="[0-9]{4}" required >
-                
-                <div class="br"></div>
-
                 <label for="">Название специальности</label>
                 <select name="specName" class="add_input" id="selectSpec" required>
                 <option></option>
                 <?php
-                            
                     foreach ($specNames as $specName) {
                         if(strlen((string)$specName[2]) == 1)
                         {
@@ -65,10 +59,15 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
                             <option 
                                 data-specCode="<?=$specCode; ?>" value="<?= $specName[0]; ?>"> <?= $specName[0]; ?> - <?= $specName[1]; ?> </option>
                         <?php
-                            }
-                        ?>
-                    </select>
+                    }
+                ?>
+                </select>
 
+                <div class="br"></div>
+
+                <label for="">Номер группы</label>
+                <input type="number" name="groupCode" class="add_input" value="" id="groupCode" pattern="[0-9]{4}" required >
+                
                 <input type="submit" value="Добавить">
 
             </form>
@@ -76,21 +75,17 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
     </main>
 
     <script>
-            document.getElementById('selectSpec').addEventListener('input', () => {
-                console.log('changed');
-            })
-            
+        function renderGroupNumber () {
+            console.log('changed');
+            let numberSp = 3;//первая цифра
+            let year = String(new Date().getFullYear());
+            let lastCharYear=year.charAt(year.length-1); //вторая цифра
+            // let numberSpec = activeOption.datalist.speccode; //надо взять список спец
+            document.getElementById('groupCode').value = numberSp + lastCharYear + '19';
+        }
+        
+
+        document.getElementById('selectSpec').addEventListener('input', renderGroupNumber);
     </script>   
 </body>
 </html>
-
-<!-- const numberSp = 3;//первая цифра
-
-                let year = String(new Date().getFullYear());
-                let lastCharYear=strYear.charAt(strYear.length-1); //вторая цифра
-
-                let numberSpec = 1; //надо взять список спец
-
-                let numberGroup = numberSp + lastCharYear + numberSpec;
-                
-                document.getElementById('groupCode').value = numberGroup; -->

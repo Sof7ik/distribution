@@ -2,6 +2,7 @@
 if (empty($_COOKIE['id_admin'])) { header('Location: ./../../../index.php'); }
 require_once './../../php/connection.php'; 
 $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
+$categories = mysqli_fetch_all(mysqli_query($link, "SELECT * from `categories`;"));
 ?>
 
 <!DOCTYPE html>
@@ -53,20 +54,46 @@ $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
 
                 <div class="subjectProfile">
 
-                    <label for="">Выберите профиль преподавателя</label>
+                    <label for="">Выберите категорию преподавателя</label>
 
-                    <select type="email" name="teacherProfile" class="add_input" required>
+                    <select type="email" name="teacherCategory" class="add_input" required>
                         <option></option>
                         <?php
-                            foreach ($profiles as $profile) {
+                            foreach ($categories as $category) {
                                 ?>
-                                    <option value="<?php echo $profile[0]; ?>"> <?php echo $profile[1]; ?> </option>
+                                    <option value="<?php echo $category[0]; ?>"> <?php echo $category[1]; ?> </option>
                                 <?php
                             }
                         ?>
                     </select>
 
+                    <button class="add_oneMore"></button>
+
                 </div>
+
+                <div id="profiles">
+                    <div class="subjectProfile">
+
+                        <label for="">Выберите профиль преподавателя</label>
+
+                        <select type="email" name="teacherProfile" class="add_input" required>
+                            <option></option>
+                            <?php
+                                foreach ($profiles as $profile) {
+                                    ?>
+                                        <option value="<?php echo $profile[0]; ?>"> <?php echo $profile[1]; ?> </option>
+                                    <?php
+                                }
+                            ?>
+                        </select>
+
+                    </div>
+                </div>
+
+
+                
+
+                
 
                 <input type="submit" value="Добавить" class="add_button">
 

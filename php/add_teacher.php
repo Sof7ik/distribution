@@ -6,6 +6,7 @@ $teacherName = $_POST['teacherName'];
 $teacherEmail = $_POST['teacherEmail'];
 $teacherPassword = $_POST['teacherPassword'];
 $teacherProfile = $_POST['teacherProfile'];
+$teacherCategory = $_POST['teacherCategory'];
 
 $checkTeacher = mysqli_query($link, 
 "SELECT `id_teacher` FROM `teachers` WHERE `fio` = '$teacherName'");
@@ -22,7 +23,7 @@ if (mysqli_num_rows($checkTeacher) == 0) {
     `email`, 
     `password`, 
     `id_role`) 
-    VALUES (NULL, '$teacherName', 1, '$teacherEmail', '$pass', 2)");
+    VALUES (NULL, '$teacherName', $teacherCategory, '$teacherEmail', '$pass', 2)");
 
     mysqli_query(
         $link, 
