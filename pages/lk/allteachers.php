@@ -18,13 +18,13 @@
     
     WHERE 
     
-    `teachers`.`id_category` = `categories`.`id_category`;");
+    `teachers`.`id_category` = `categories`.`id_category`
+    
+    ORDER BY `teachers`.`id_teacher`
+
+    ;");
 
     $teachers = mysqli_fetch_all($result);
-
-    // echo "<pre>";
-    // print_r($teachers);
-    // echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -45,8 +45,9 @@
     <title>Все преподаватели</title>
 
     <link rel='stylesheet' href='./../../styles/style.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <script src='' defer></script>
+    
 </head>
 <body>
 
@@ -101,6 +102,12 @@
                             <p class="subject-desc"><?=$teacher[2]?></p>
                         </div>
 
+                        <button class="removeSubject" id="removeTeacher">
+                            <span class="material-icons">
+                                person_remove
+                            </span>
+                        </button>
+
                     </div>
                     <?
                 }
@@ -109,6 +116,34 @@
         </section>
 
     </main>
-    
+    <script defer>  
+        document.querySelectorAll('button.removeSubject').forEach((elem, id, array) => {
+            elem.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                let teacherId = event.target.parentElement.parentElement.dataset.subjectid;
+                console.log('teacherId: ', teacherId);
+                let teacher = event.target.parentElement.parentElement.childNodes[1].childNodes[3].textContent;
+                console.log('teacher: ', teacher);
+
+                let confirmation = prompt(`Вы действительно хотите удалить преподавателя ${teacher}? 
+
+Если да, введите 'Да'`);
+                if(confirmation === 'Да')
+                {
+                    console.log('Совпало');
+                    fetch(`./../../php/delete/deleteTeacher.php?teacherId="${teacherId}"`)
+                    .then(res => res.text())
+                    .then(res => {
+                        console.log(res)
+                        document.location.reload();
+                    })
+                    
+                }
+                
+            })
+        })
+    </script>
+
 </body>
 </html>

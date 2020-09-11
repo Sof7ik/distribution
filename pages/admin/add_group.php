@@ -41,33 +41,33 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
 
             <form action="./../../php/add_group.php" method="POST" class="add">
 
-                <label for="">Номер группы</label>
-                <input type="number" name="groupCode" class="add_input" value="" id="groupCode" pattern="[0-9]{4}" required >
-                
-                <div class="br"></div>
-
                 <label for="">Название специальности</label>
                 <select name="specName" class="add_input" id="selectSpec" required>
-                <option></option> 
-                <?php
+                    <option></option> 
+                    <?php
                             
-                    foreach ($specNames as $specName) {
-                        if(strlen((string)$specName[2]) == 1)
-                        {
-                            $specCode = "0" . $specName[2];
-                        }
-                        else if (strlen((string)$specName[2]) == 2)
-                        {
-                            $specCode = $specName[2];
-                        }
-                        
-                        ?>
-                            <option 
-                                data-id="<?=$specCode; ?>" value="<?= $specName[0]; ?>"> <?= $specName[0]; ?> - <?= $specName[1]; ?> </option>
-                        <?php
+                        foreach ($specNames as $specName) {
+                            if(strlen((string)$specName[2]) == 1)
+                            {
+                                $specCode = "0" . $specName[2];
                             }
-                        ?>
-                    </select>
+                            else if (strlen((string)$specName[2]) == 2)
+                            {
+                                $specCode = $specName[2];
+                            }
+                            
+                            ?>
+                                <option 
+                                    data-id="<?=$specCode; ?>" value="<?= $specName[0]; ?>"> <?= $specName[0]; ?> - <?= $specName[1]; ?> </option>
+                            <?php
+                        }
+                    ?>
+                </select>
+
+                <div class="br"></div>
+
+                <label for="">Номер группы</label>
+                <input type="text" name="groupCode" class="add_input" value="" id="groupCode" pattern="[0-9]{4}" required >
 
                 <input type="submit" value="Добавить">
 

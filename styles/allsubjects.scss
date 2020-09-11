@@ -64,6 +64,19 @@ div.subject-wrapper
     }
 }
 
+button.removeSubject
+{
+    &:hover
+    {
+        cursor: pointer;
+    }
+    
+    span
+    {
+        color: #fff;
+    }
+}
+
 @media screen and (max-width: 1600px)
 {
     section.all-subjects

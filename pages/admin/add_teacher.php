@@ -1,6 +1,7 @@
 <?php 
 if (empty($_COOKIE['id_admin'])) { header('Location: ./../../../index.php'); }
-require_once './../../php/connection.php'; 
+require_once './../../php/connection.php';
+$profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
 $categories = mysqli_fetch_all(mysqli_query($link, "SELECT * from `categories`;"));
 ?>
 
@@ -26,7 +27,7 @@ $categories = mysqli_fetch_all(mysqli_query($link, "SELECT * from `categories`;"
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
-    <script src='./../../js/main.js' defer></script>
+    <script src='./../../js/addTeacher/add_select-dist.js' defer></script>
 </head>
 <body>
 
