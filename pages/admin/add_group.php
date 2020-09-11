@@ -48,7 +48,7 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
 
                 <label for="">Название специальности</label>
                 <select name="specName" class="add_input" id="selectSpec" required>
-                <option></option>
+                <option></option> 
                 <?php
                             
                     foreach ($specNames as $specName) {
@@ -63,7 +63,7 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
                         
                         ?>
                             <option 
-                                data-specCode="<?=$specCode; ?>" value="<?= $specName[0]; ?>"> <?= $specName[0]; ?> - <?= $specName[1]; ?> </option>
+                                data-id="<?=$specCode; ?>" value="<?= $specName[0]; ?>"> <?= $specName[0]; ?> - <?= $specName[1]; ?> </option>
                         <?php
                             }
                         ?>
@@ -76,17 +76,17 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
     </main>
 
     <script>
-            function renderGroupNumber () {
-            console.log('changed');
-            let numberSp = 3;//первая цифра
-            let year = String(new Date().getFullYear());
-            let lastCharYear=year.charAt(year.length-1); //вторая цифра
-            // let numberSpec = activeOption.datalist.speccode; //надо взять список спец
-            document.getElementById('groupCode').value = numberSp + lastCharYear + '19';
+            function renderGroupNumber (e) {
+                console.log('changed');
+                let numberSp = 3;//первая цифра
+                let year = String(new Date().getFullYear());
+                let lastCharYear=year.charAt(year.length-1); //вторая цифра
+                let numberSpec = e.target.options[e.target.options.selectedIndex].dataset.id
+
+                document.getElementById('groupCode').value = numberSp + lastCharYear + numberSpec;
             }
 
-
-            document.getElementById('selectSpec').addEventListener('input', renderGroupNumber);    
+            document.querySelector('#selectSpec').addEventListener('input', renderGroupNumber);    
     </script>   
 </body>
 </html>
