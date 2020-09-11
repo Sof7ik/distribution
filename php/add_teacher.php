@@ -5,6 +5,7 @@ require_once './connection.php';
 $teacherName = $_POST['teacherName'];
 $teacherEmail = $_POST['teacherEmail'];
 $teacherPassword = $_POST['teacherPassword'];
+$teacherProfile = $_POST['teacherProfile'];
 
 $checkTeacher = mysqli_query($link, 
 "SELECT `id_teacher` FROM `teachers` WHERE `fio` = '$teacherName'");
@@ -17,16 +18,26 @@ if (mysqli_num_rows($checkTeacher) == 0) {
     "INSERT INTO `teachers`
     (`id_teacher`, 
     `fio`, 
+    `id_category`,
     `email`, 
     `password`, 
     `id_role`) 
-    VALUES (NULL, '$teacherName', '$teacherEmail', '$pass', 2)");
+    VALUES (NULL, '$teacherName', 1, '$teacherEmail', '$pass', 2)");
+
+    mysqli_query(
+        $link, 
+        "INSERT INTO `teacher-profile`
+        VALUES (
+            (SELECT id_teacher FROM teachers ORDER BY id_teacher DESC LIMIT 1), 
+            $teacherProfile
+        )"
+    );
 } else {
     echo 'Такой преподаватель уже есть! Проверьте правильность введенных данных!';
 }
 
 if($query) {
-    header('Location: ./../../../../dist/admin/add/add_teacher.php');
+    header('Location: ./../../pages/admin/add_teacher.php');
 }
 
 ?>

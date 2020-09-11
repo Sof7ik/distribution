@@ -24,7 +24,7 @@ if ($count == 1) {
                 false,
                 true
             );
-            header('Location: ./../../../../dist/admin/index.php');
+            header('Location: ./../../pages/admin/index.php');
         } else if ($user['id_role'] == 2) {
             setcookie(
                 'id_user',
@@ -35,7 +35,7 @@ if ($count == 1) {
                 false,
                 true
             );
-            header('Location: ./../../../../dist/lk/index.php');
+            header('Location: ./../../pages/lk/index.php');
         }
     }
 

@@ -22,7 +22,5 @@ if (mysqli_num_rows($checkSpec) == 0) {
 }
 
 if($query) {
-    header('Location: ./../../../../dist/admin/add/add_specialization.php');
+    header('Location: ./../../pages/admin/add_specialization.php');
 }
-
-?>

@@ -1,0 +1,134 @@
+@import './mixins.scss';
+
+form.add 
+{
+    max-width: 700px;
+
+    margin-top: 30px;
+    & .br
+    {
+        padding-bottom: 45px;
+    }
+
+    & input, & select, & textarea
+    {
+        border: 2px solid transparent;
+        border-radius: 10px;
+        padding: 10px;
+        padding-left: 20px;
+        color: #2d2d2d;
+        letter-spacing: 0.05rem;
+        font-size: 15px;
+        background-color: #ffffff;
+        transition: 0.3s border;
+        width: 100%;
+
+        transition: 0.3s border, 0.6s border-radius;
+    
+        &:hover, &:focus, &:active
+        {
+            border-radius: 0;
+            border: 2px solid #4b2e83;
+        }
+    }
+
+    & input[type=submit]
+    {
+        cursor: pointer;
+        background-color: rgb(58, 58, 58);
+        padding: 15px 50px;
+    
+        margin-top: 40px;
+        border-radius: 10px;
+    
+        width: 100%;
+        
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        letter-spacing: unset;
+    
+        transition: 0.8s background, 0.6s border-radius;;
+        &:hover, &:focus, &:active
+        {
+            border-radius: 0;
+            background-color:#4b2e83;
+        }
+    }
+}
+
+label {
+    opacity: 0.8;
+    margin-left: 3px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+div.subjectNameDescWrapper
+{
+    @include flex(column wrap, flex-start, flex-start);
+    
+
+    input {
+        width: 100%;
+    }
+}
+
+div.subjectDesc, div.subjectName
+{
+    width: 100%;
+    & textarea
+    {
+        width: 100%;
+    }
+}
+
+div.subjectNameDescWrapper,
+div.subjectProfile
+{
+    margin-bottom: 20px;
+}
+
+textarea.add_input {
+    padding: 5px;
+
+    resize: vertical;
+
+    min-height: 100px;
+    height: 120px;
+    max-height: 250px;
+
+    border: none;
+    outline: none;
+
+    font-size: 18px;
+}
+
+div.subjectName textarea
+{
+    min-height: 40px;
+    height: 40px;
+    max-height: 80px;
+}
+
+input.add_input, select.add_input {
+    padding: 5px;
+    font-size: 16px;
+}
+
+input.add_input[type="number"] 
+{
+    min-width: 80px;
+    max-width: 180px;
+}
+
+input.add_button
+{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(63, 63, 63);
+    color: #fff;
+    font-size: 16px;
+
+    margin-top: 10px;
+}
