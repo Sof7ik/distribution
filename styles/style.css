@@ -338,6 +338,34 @@ button.removeSubject span {
     grid-gap: 15px;
   }
 }
+div.sort-subjects {
+  margin-top: 25px;
+  display: flex;
+  flex-flow: row nowrap;
+  -webkit-user-select: none;
+          user-select: none;
+}
+div.sort-subjects .sort-subjects__all, div.sort-subjects .sort-subjects__group {
+  padding-top: 5px;
+  padding-bottom: 25px;
+  min-width: 50%;
+  flex-grow: 1;
+}
+div.sort-subjects .sort-subjects__all p, div.sort-subjects .sort-subjects__group p {
+  cursor: move;
+  border-radius: 3px;
+  background-color: #2c343a;
+  margin-bottom: 7px;
+  padding: 15px 25px;
+}
+div.sort-subjects .sort-subjects__group {
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  padding-right: 10px;
+}
+div.sort-subjects .sort-subjects__all {
+  padding-left: 10px;
+}
+
 *, *::after, *::before {
   box-sizing: border-box;
   margin: 0;

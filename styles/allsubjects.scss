@@ -125,3 +125,39 @@ button.removeSubject
         @include grid(1fr, 15px);
     }
 }
+
+div.sort-subjects
+{
+    margin-top: 25px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    .sort-subjects__all, .sort-subjects__group
+    {
+        padding-top: 5px;
+        padding-bottom: 25px;
+        min-width: 50%;
+        flex-grow: 1;
+
+        & p
+        {
+            cursor: move;
+            border-radius: 3px;
+            background-color: #2c343a;
+            margin-bottom: 7px;
+            padding: 15px 25px;
+        }
+    }
+    .sort-subjects__group
+    {
+        border-right: 1px solid rgba(255,255,255, 0.2);
+        padding-right: 10px;
+    }
+    .sort-subjects__all
+    {
+        padding-left: 10px;
+    }
+
+    user-select: none;
+}
+

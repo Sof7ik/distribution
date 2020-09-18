@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 10 2020 г., 19:51
--- Версия сервера: 10.3.22-MariaDB
--- Версия PHP: 7.1.33
+-- Время создания: Сен 18 2020 г., 20:37
+-- Версия сервера: 10.4.12-MariaDB
+-- Версия PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,6 +40,25 @@ INSERT INTO `categories` (`id_category`, `category_name`) VALUES
 (1, 'Без категории'),
 (2, 'Первая категория'),
 (3, 'Высшая категория');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `group-subject`
+--
+
+CREATE TABLE `group-subject` (
+  `id_group` varchar(6) NOT NULL,
+  `id_subject` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `group-subject`
+--
+
+INSERT INTO `group-subject` (`id_group`, `id_subject`) VALUES
+('3719', 6),
+('3719', 1);
 
 -- --------------------------------------------------------
 
@@ -251,6 +270,13 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id_category`);
 
 --
+-- Индексы таблицы `group-subject`
+--
+ALTER TABLE `group-subject`
+  ADD KEY `id_group` (`id_group`),
+  ADD KEY `id_subject` (`id_subject`);
+
+--
 -- Индексы таблицы `groups`
 --
 ALTER TABLE `groups`
@@ -341,6 +367,13 @@ ALTER TABLE `teachers`
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
+
+--
+-- Ограничения внешнего ключа таблицы `group-subject`
+--
+ALTER TABLE `group-subject`
+  ADD CONSTRAINT `group-subject_ibfk_1` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id_subject`),
+  ADD CONSTRAINT `group-subject_ibfk_2` FOREIGN KEY (`id_group`) REFERENCES `groups` (`id_group`);
 
 --
 -- Ограничения внешнего ключа таблицы `groups`
