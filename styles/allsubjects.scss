@@ -161,3 +161,21 @@ div.sort-subjects
     user-select: none;
 }
 
+.update-subjects-group
+{
+    cursor: pointer;
+    background-color: #3a3a3a;
+    padding: 15px 50px;
+    border-radius: 10px;
+    width: 200px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: unset;
+    transition: 0.8s background, 0.6s border-radius;
+    &:hover
+    {
+        border-radius: 0;
+        background-color: #4b2e83;
+    }
+}

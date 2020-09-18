@@ -79,7 +79,12 @@ $subjects = mysqli_fetch_all($resultS);
         <?php include './includes/header.php'; ?>
 
         <section>
-            <h2>Вы редактируете группу <?=$idGroup?> </h2>
+            
+            <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; align-items: center">
+                <h2>Вы редактируете группу <?=$idGroup?> </h2>
+                <button class="update-subjects-group"> Сохранить </button>
+            </div>
+
 
             <div class="sort-subjects">
                 <div class="sort-subjects__group">
