@@ -101,7 +101,6 @@ aside nav {
 }
 aside .logo-wrapper {
   width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
 }
@@ -246,13 +245,13 @@ section {
   width: 100%;
 }
 
-section.all-subjects {
+section.all-subjects, section.all-groups {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 15px;
 }
 
-div.subject-wrapper {
+div.subject-wrapper, a.groups-wrapper {
   border-radius: 10px;
   display: flex;
   flex-flow: row nowrap;
@@ -262,34 +261,53 @@ div.subject-wrapper {
   background-color: #2c343a;
   min-width: 300px;
 }
-div.subject-wrapper div {
+div.subject-wrapper div, a.groups-wrapper div {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: flex-start;
   height: 100%;
 }
-div.subject-wrapper div p {
+div.subject-wrapper div p, a.groups-wrapper div p {
   margin-bottom: 12px;
 }
-div.subject-wrapper div p:last-child {
+div.subject-wrapper div p:last-child, a.groups-wrapper div p:last-child {
   margin-bottom: unset;
 }
-div.subject-wrapper p.subject-profile, div.subject-wrapper p.subject-desc {
+div.subject-wrapper p.subject-profile, div.subject-wrapper p.subject-desc, div.subject-wrapper p.group-profile, div.subject-wrapper p.group-desc, a.groups-wrapper p.subject-profile, a.groups-wrapper p.subject-desc, a.groups-wrapper p.group-profile, a.groups-wrapper p.group-desc {
   color: #A5A5A5;
   font-size: 12px;
 }
-div.subject-wrapper p.subject-desc {
+div.subject-wrapper p.subject-desc, div.subject-wrapper p.group-desc, a.groups-wrapper p.subject-desc, a.groups-wrapper p.group-desc {
   max-width: 200px;
 }
-div.subject-wrapper p.subject-name {
+div.subject-wrapper p.subject-name, div.subject-wrapper p.group-name, a.groups-wrapper p.subject-name, a.groups-wrapper p.group-name {
   color: #fff;
   font-size: 23px;
   max-width: 300px;
 }
-div.subject-wrapper p.subject-hours {
+div.subject-wrapper p.subject-hours, div.subject-wrapper p.group-hours, a.groups-wrapper p.subject-hours, a.groups-wrapper p.group-hours {
   min-width: 50px;
   text-align: right;
+}
+div.subject-wrapper p.group-profile, div.subject-wrapper p.group-name, div.subject-wrapper p.group-desc, a.groups-wrapper p.group-profile, a.groups-wrapper p.group-name, a.groups-wrapper p.group-desc {
+  max-width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+}
+
+a.groups-wrapper {
+  opacity: 0.8;
+  transition: 0.3s all;
+}
+a.groups-wrapper:hover {
+  box-shadow: 3px 3px #a5a5a5;
+  opacity: 1;
+}
+
+a.groups-wrapper div {
+  width: 100%;
 }
 
 button.removeSubject:hover {
@@ -300,21 +318,21 @@ button.removeSubject span {
 }
 
 @media screen and (max-width: 1600px) {
-  section.all-subjects {
+  section.all-subjects, section.all-groups {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 15px;
   }
 }
 @media screen and (max-width: 1400px) {
-  section.all-subjects {
+  section.all-subjects, section.all-groups {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
   }
 }
 @media screen and (max-width: 1000px) {
-  section.all-subjects {
+  section.all-subjects, section.all-groups {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 15px;
@@ -419,7 +437,6 @@ aside nav {
 }
 aside .logo-wrapper {
   width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
 }

@@ -5,13 +5,13 @@ section
     padding: 25px;
     width: 100%;
 }
-section.all-subjects
+section.all-subjects, section.all-groups
 {
     
     @include grid(1fr 1fr 1fr 1fr, 15px);
 }
 
-div.subject-wrapper
+div.subject-wrapper, a.groups-wrapper
 {
     border-radius: 10px;
 
@@ -39,17 +39,18 @@ div.subject-wrapper
         }
     }
     
-    p.subject-profile, p.subject-desc
+    p.subject-profile, p.subject-desc, p.group-profile, p.group-desc
     {
         color: #A5A5A5;
         font-size: 12px;
     }
 
-    p.subject-desc {
+    p.subject-desc,  p.group-desc 
+    {
         max-width: 200px;
     }
 
-    p.subject-name
+    p.subject-name, p.group-name
     {
         color: #fff;
         font-size: 23px;
@@ -57,11 +58,35 @@ div.subject-wrapper
 
     }
 
-    p.subject-hours
+    p.subject-hours, p.group-hours
     {
         min-width: 50px;
         text-align: right;
     }
+    p.group-profile, p.group-name, p.group-desc
+    {
+        max-width: 100%;
+        text-transform: uppercase;
+        text-align: center;
+        width: 100%;
+    }
+
+
+
+}
+a.groups-wrapper
+{
+    &:hover
+    {
+        box-shadow: 3px 3px rgb(165, 165, 165);
+        opacity: 1;
+    }
+    opacity: 0.8;
+    transition: 0.3s all;
+}
+a.groups-wrapper div
+{
+    width: 100%;
 }
 
 button.removeSubject
@@ -79,7 +104,7 @@ button.removeSubject
 
 @media screen and (max-width: 1600px)
 {
-    section.all-subjects
+    section.all-subjects, section.all-groups
     {
         @include grid(1fr 1fr 1fr, 15px);
     }
@@ -87,7 +112,7 @@ button.removeSubject
 
 @media screen and (max-width: 1400px)
 {
-    section.all-subjects
+    section.all-subjects, section.all-groups
     {
         @include grid(1fr 1fr, 15px);
     }
@@ -95,7 +120,7 @@ button.removeSubject
 
 @media screen and (max-width: 1000px)
 {
-    section.all-subjects
+    section.all-subjects, section.all-groups
     {
         @include grid(1fr, 15px);
     }
