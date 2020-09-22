@@ -11,6 +11,7 @@
         <a href="./add_subject.php">Добавить предмет</a>
         <a href="./allgroups.php">Распределить предметы</a>
         <a href="./add_teacher.php">Добавить учителя</a>
+        <a href="./create_table.php">Софрмировать таблицу преподавательской нагрузки</a>
 
     </nav>
 
