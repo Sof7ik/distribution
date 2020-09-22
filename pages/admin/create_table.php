@@ -95,6 +95,7 @@ WHERE
 
         <?php
             $total = [ [ '', [] ] ];
+            
             // $total = 
             // [
             //     [
@@ -106,53 +107,74 @@ WHERE
             //     ]
             // ];
 
-            // array_push(
-            //     $total[0][1], 
-            //     ['Овсепян Вардуи Робертовна', 'Физика', 80]
-            // );
-
+            array_push(
+                $total[0],
+                '3007',
+                [
+                    ['Овсепян Вардуи Робертовна', 'Физика', 80]
+                ]
+            );
             foreach ($subjects as $index => $subject) {
+                echo "<br>";
+                echo "--Foreach subjects";
+
                 foreach($teachers as $key => $teacher) {
+                    echo "<br>";
+                    echo "-----------Foreach teachers";
                     if($subject[4] === $teacher[2])
                     {
-                        if ($total[$index][0] == $subject[0])
+                        echo "<br>";
+                        echo "-----------Профили совпали";
+
+                        foreach($total as $group)
                         {
-                            echo "<br>";
-                            echo "Группа совпала, запихиваем новую запись";
-                            echo "<br>";
-                            echo 'Предмет ' . $subjects[$index][1] . ' у группы ' . $subjects[$index][0];
-                            echo "<br>";
-                            // array_push(
-                            //     $total[$index][2], 
-                            //     [
-                            //         $teacher[1], $subject[1], $subject[2]
-                            //     ]
-                            // );
-                            
-                        } 
-                        else 
-                        {
-                            echo "<br>";
-                            echo "Группа не совпала, запихиваем новую группу";
-                            echo "<br>";
-                            echo 'Предмет ' . $subjects[$index][1] . ' у группы ' . $subjects[$index][0];
-                            echo "<br>";
-                            // array_push(
-                            //     $total, 
-                            //     [
-                            //         $subject[0],
-                            //         [
-                            //             $teacher[1], $subject[1], $subject[2]
-                            //         ]
-                            //     ]
-                            // );
+                            echo "<pre>";
+                                print_r($group);
+                            echo "</pre>";
                         }
+                        
+                        // foreach ($total as $k => $group)
+                        // {
+                        //     if ($total[$k][0] == $subject[0])
+                        //     {
+                        //         echo "<br>";
+                        //         echo "Группа совпала, запихиваем новую запись";
+                        //         echo "<br>";
+                        //         echo 'Предмет ' . $subjects[$index][1] . ' у группы ' . $subjects[$index][0];
+                        //         echo "<br>";
+                        //         array_push(
+                        //             $total[$k][1], 
+                        //             [
+                        //                 $teacher[1], $subject[1], $subject[2]
+                        //             ]
+                        //         );
+                        //     } 
+                        //     else 
+                        //     {
+                        //         echo "<br>";
+                        //         echo "Группа не совпала, запихиваем новую группу";
+                        //         echo "<br>";
+                        //         echo 'Предмет ' . $subjects[$index][1] . ' у группы ' . $subjects[$index][0];
+                        //         echo "<br>";
+                        //         array_push(
+                        //             $total, 
+                        //             [
+                        //                 $subject[0],
+                        //                 [
+                        //                     $teacher[1], $subject[1], $subject[2]
+                        //                 ]
+                        //             ]
+                        //         );
+                        //     }
+                        // }
+                        
                         
                         // echo "<br>";
                         // echo "Группа " . $subject[0];
                         // echo "<br>";
                         // echo $teacher[1] . "; Профиль - " . $teacher[3] . "; Предмет достался - " . $subject[1] . " с профилем " . $subject[3];
                         // echo "<br>";
+                        break;
                     }
                 }
             }
