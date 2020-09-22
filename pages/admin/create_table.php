@@ -94,26 +94,41 @@ WHERE
         </div>
 
         <?php
-            $total = [ [ '', [] ] ];
+            $total = 
+            [
+                [
+                    '3007',
+                    [
+                        ['ХУХУХУХУХ ХУХУХУХУХ ХУХУХУХУХ', 'ххххххх', 00],
+                        ['ZZZZZZZZZZZ ZZZZZZ ZZZZZZZZZZZZZZZZ', 'dfasdsdfsfs', 90]
+                    ]
+                ],
+                [
+                    '3019',
+                    [
+                        ['ХУХУХУХУХ ХУХУХУХУХ ХУХУХУХУХ', 'ххххххх', 00],
+                        ['ZZZZZZZZZZZ ZZZZZZ ZZZZZZZZZZZZZZZZ', 'dfasdsdfsfs', 90]
+                    ]
+                ],
+                [
+                    '3019',
+                    [
+                        ['ХУХУХУХУХ ХУХУХУХУХ ХУХУХУХУХ', 'ххххххх', 00]
+                    ]
+                ]
+            ];
             
             // $total = 
-            // [
-            //     [
+            // Array [
+            //     Array [
             //         '3007', 
-            //         [
+            //         Array [
             //             ['prepod', 'predmet', 'hours'],
             //             ['prepod', 'predmet', 'hours']
             //         ]
             //     ]
             // ];
 
-            array_push(
-                $total[0],
-                '3007',
-                [
-                    ['Овсепян Вардуи Робертовна', 'Физика', 80]
-                ]
-            );
             foreach ($subjects as $index => $subject) {
                 echo "<br>";
                 echo "--Foreach subjects";
@@ -125,49 +140,47 @@ WHERE
                     {
                         echo "<br>";
                         echo "-----------Профили совпали";
-
-                        foreach($total as $group)
+                        
+                        foreach ($total as $k => $group)
                         {
-                            echo "<pre>";
-                                print_r($group);
-                            echo "</pre>";
+                            echo "<br>";
+                                echo 'total $k = ' . $k;
+                            echo "<br>";
+
+                            if ($total[$k][0] == $subject[0])
+                            {
+                                echo "<br>";
+                                echo "Группа совпала, запихиваем новую запись";
+                                echo ' ' . $subject[0] . "<br>";
+                                // echo 'Предмет ' . $subjects[$index][1] . ' у группы ' . $subjects[$index][0];
+                                // echo "<br>";
+                                array_push(
+                                    $total[$k][1], 
+                                    [$teacher[1], $subject[1], $subject[2]]
+                                );
+                            } 
+                            else 
+                            {
+                                echo "<br>";
+                                echo "Группа не совпала, запихиваем новую группу";
+                                echo "<br>";
+                                echo ' ' . $subject[0] . "<br>";
+                                // echo 'Предмет ' . $subjects[$index][1] . ' у группы ' . $subjects[$index][0];
+                                // echo "<br>";
+                                array_push(
+                                    $total,
+                                    [
+                                        $subject[0],
+                                        [
+                                            $teacher[1], $subject[1], $subject[2]
+                                        ]
+                                    ]
+                                );
+                                echo "<pre>";
+                                    print_r($total);
+                                echo "</pre>";
+                            }
                         }
-                        
-                        // foreach ($total as $k => $group)
-                        // {
-                        //     if ($total[$k][0] == $subject[0])
-                        //     {
-                        //         echo "<br>";
-                        //         echo "Группа совпала, запихиваем новую запись";
-                        //         echo "<br>";
-                        //         echo 'Предмет ' . $subjects[$index][1] . ' у группы ' . $subjects[$index][0];
-                        //         echo "<br>";
-                        //         array_push(
-                        //             $total[$k][1], 
-                        //             [
-                        //                 $teacher[1], $subject[1], $subject[2]
-                        //             ]
-                        //         );
-                        //     } 
-                        //     else 
-                        //     {
-                        //         echo "<br>";
-                        //         echo "Группа не совпала, запихиваем новую группу";
-                        //         echo "<br>";
-                        //         echo 'Предмет ' . $subjects[$index][1] . ' у группы ' . $subjects[$index][0];
-                        //         echo "<br>";
-                        //         array_push(
-                        //             $total, 
-                        //             [
-                        //                 $subject[0],
-                        //                 [
-                        //                     $teacher[1], $subject[1], $subject[2]
-                        //                 ]
-                        //             ]
-                        //         );
-                        //     }
-                        // }
-                        
                         
                         // echo "<br>";
                         // echo "Группа " . $subject[0];
@@ -180,6 +193,7 @@ WHERE
             }
 
             echo "<pre>";
+                echo "------Итоговый Массив------";
                 print_r($total);
             echo "</pre>";
 
