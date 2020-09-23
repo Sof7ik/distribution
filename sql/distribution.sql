@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 18 2020 г., 21:54
--- Версия сервера: 10.4.12-MariaDB
--- Версия PHP: 7.4.5
+-- Время создания: Сен 23 2020 г., 13:11
+-- Версия сервера: 5.7.19
+-- Версия PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -114,7 +115,7 @@ CREATE TABLE `profiles` (
 
 INSERT INTO `profiles` (`id_profile`, `profile_name`) VALUES
 (1, 'Программирование'),
-(2, 'Информатика'),
+(2, 'Информационные технологии'),
 (3, 'Естественные науки'),
 (4, 'Математические дисциплины'),
 (5, 'Общеобразовательные предметы');
@@ -239,12 +240,12 @@ CREATE TABLE `teacher-profile` (
 INSERT INTO `teacher-profile` (`id_teacher`, `id_profile`) VALUES
 (1, 1),
 (1, 2),
-(2, 4),
 (3, 2),
 (4, 3),
 (5, 3),
-(5, 5),
-(6, 4);
+(2, 4),
+(6, 4),
+(11, 5);
 
 -- --------------------------------------------------------
 
@@ -267,12 +268,13 @@ CREATE TABLE `teachers` (
 
 INSERT INTO `teachers` (`id_teacher`, `fio`, `id_category`, `email`, `password`, `id_role`) VALUES
 (1, 'Овчинников Антон Викторович', 3, 'strelokk.45@mail.ru', '$2y$10$98NQVrUHcK4Uc5jExgkv5ufasMGLE.WsJNztIza1ArgugiHinKROy', 2),
-(2, 'Погудина Лада \r\nГеннадьевна', 2, 'pogudina.l@mail.ru', '$2y$10$dal8HjulqchXsE7qq.H4n.6q.GtLlE06ftJVH6siQA1hu1ZoP.MOO', 2),
+(2, 'Погудина Лада Геннадьевна', 2, 'pogudina.l@mail.ru', '$2y$10$dal8HjulqchXsE7qq.H4n.6q.GtLlE06ftJVH6siQA1hu1ZoP.MOO', 2),
 (3, 'Солодова Дарья Сергеевна', 1, 'solodovads@mail.ru', '$2y$10$hIRUNymyejnIBrzFUwwnGe6wAv4rgcFcQ4qy0wd5vtJQyxqwTA1IW', 1),
 (4, 'Овсепян Вардуи Робертовна', 3, 'varduiiiii@gmail.com', '$2y$10$XyriEaL9ZoPodD8vA3PRLOuYp5q/mAIcwFKuELu4X08s3aA9LwgY2', 2),
-(5, 'Светлана Нифантьевна', 1, 'sveeeeeeeeeta123@mail.ru', '$2y$10$U3iI7Ue6nR3RL369WnI..etosG8xtl3z/tpBcNGQ0WJimrg7Mw1Di', 2),
+(5, 'Полякова Светлана Нифантьевна', 1, 'sveeeeeeeeeta123@mail.ru', '$2y$10$U3iI7Ue6nR3RL369WnI..etosG8xtl3z/tpBcNGQ0WJimrg7Mw1Di', 2),
 (6, 'Зудилина Елена Александровна', 3, 'zudilina.ea@mail.ru', '$2y$10$MLNrtl9dCP9dnnIuVkjEz.cHCcrS/nMTkFEYdtdUtuwA5DIH8XEVG', 1),
-(10, 'Мелешкин Илья Петрович', 2, 'meleshkin@gmail.com', '$2y$10$6jLjmf9BXRGGGmAcOM.WTu2ooxaBuwbRqkXWvy2VdUeaY43xR4khW', 2);
+(10, 'Мелешкин Илья Петрович', 2, 'meleshkin@gmail.com', '$2y$10$6jLjmf9BXRGGGmAcOM.WTu2ooxaBuwbRqkXWvy2VdUeaY43xR4khW', 2),
+(11, 'Руссков Виктор Васильевич', 2, 'ruuskov@mail.ru', '$2y$10$T5Mveh6vpItg9KAmlWuuTeqjLA/xruaQeFXkZcgaEFfdLqKvW91JC', 2);
 
 --
 -- Индексы сохранённых таблиц
@@ -334,6 +336,7 @@ ALTER TABLE `subjects`
 -- Индексы таблицы `teacher-profile`
 --
 ALTER TABLE `teacher-profile`
+  ADD PRIMARY KEY (`id_teacher`,`id_profile`),
   ADD KEY `id_profile` (`id_profile`),
   ADD KEY `teacher-profile_ibfk_2` (`id_teacher`);
 
@@ -354,31 +357,26 @@ ALTER TABLE `teachers`
 --
 ALTER TABLE `categories`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT для таблицы `profiles`
 --
 ALTER TABLE `profiles`
   MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT для таблицы `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT для таблицы `subjects`
 --
 ALTER TABLE `subjects`
   MODIFY `id_subject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id_teacher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
+  MODIFY `id_teacher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
