@@ -88,6 +88,7 @@ $subjects = mysqli_fetch_all($resultS);
 
             <div class="sort-subjects">
                 <div class="sort-subjects__group">
+                    <h3 style="text-align: center; margin-bottom: 15px;"> Предметы у группы </h3>
                     <?
                         foreach ($groups as $value)
                         {
@@ -99,6 +100,7 @@ $subjects = mysqli_fetch_all($resultS);
                 </div>
 
                 <div class="sort-subjects__all">
+                    <h3 style="text-align: center; margin-bottom: 15px;"> Все предметы </h3>
                     <?
                         foreach ($subjects as $value)
                         {
