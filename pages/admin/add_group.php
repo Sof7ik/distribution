@@ -47,11 +47,15 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
                     <?php
                             
                         foreach ($specNames as $specName) {
-                            if(strlen((string)$specName[2]) == 1)
+                            if(strlen($specName[2]) == 1)
                             {
                                 $specCode = "0" . $specName[2];
                             }
-                            else if (strlen((string)$specName[2]) == 2)
+                            else if (strlen($specName[2]) == 2)
+                            {
+                                $specCode = $specName[2];
+                            }
+                            else
                             {
                                 $specCode = $specName[2];
                             }
@@ -67,9 +71,11 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
                 <div class="br"></div>
 
                 <label for="">Номер группы</label>
-                <input type="text" name="groupCode" class="add_input" value="" id="groupCode" pattern="[0-9]{4}" required >
+                <input type="text" name="groupCode" class="add_input" value="" id="groupCode" required >
 
                 <input type="submit" value="Добавить">
+
+                <!-- pattern="[0-9]{4}" -->
 
             </form>
         </section>
