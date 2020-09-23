@@ -4,39 +4,48 @@ if (empty($_COOKIE['id_admin'])) { header('Location: ./../../../index.php'); }
 
 require_once './../../php/connection.php';
 
-$subjects = mysqli_fetch_all(mysqli_query($link, 
-"SELECT 
-    `groups`.`id_group`, 
-    `subjects`.`subject_name`, 
-    `subjects`.`subject_hours`, 
-    `profiles`.`profile_name`, 
-    `profiles`.`id_profile` 
-FROM 
-    `groups`, 
-    `subjects`, 
-    `group-subject`, 
-    `profiles` 
-WHERE 
-    `group-subject`.`id_group` = groups.`id_group` AND 
-    `group-subject`.`id_subject`= subjects.`id_subject` AND 
-    `subjects`.`id_profile`= profiles.id_profile
-ORDER BY
-    `groups`.`id_group`;
-"));
+$subjects = mysqli_fetch_all(
+    mysqli_query(
+        $link,
+        "SELECT 
+            `groups`.`id_group`, 
+            `subjects`.`subject_name`, 
+            `subjects`.`subject_hours`, 
+            `profiles`.`profile_name`, 
+            `profiles`.`id_profile` 
+        FROM 
+            `groups`, 
+            `subjects`, 
+            `group-subject`, 
+            `profiles` 
+        WHERE 
+            `group-subject`.`id_group` = `groups`.`id_group` AND 
+            `group-subject`.`id_subject`= `subjects`.`id_subject` AND 
+            `subjects`.`id_profile`= `profiles`.`id_profile`
+        ORDER BY
+            `groups`.`id_group`;"
+    ),
+    MYSQLI_ASSOC
+);
 
-$teachers = mysqli_fetch_all(mysqli_query($link, 
-"SELECT
-    `teachers`.`id_teacher`,
-    `fio`,
-    `profiles`.`id_profile`,
-    `profile_name`
-FROM
-    `teachers`,
-    `profiles`,
-    `teacher-profile`
-WHERE
-    `teachers`.id_teacher = `teacher-profile`.`id_teacher` AND
-    `teacher-profile`.`id_profile` = `profiles`.`id_profile`;"))
+$teachers = mysqli_fetch_all(
+    mysqli_query(
+        $link,
+        "SELECT
+            `teachers`.`id_teacher`,
+            `fio`,
+            `profiles`.`id_profile`,
+            `profile_name`
+        FROM
+            `teachers`,
+            `profiles`,
+            `teacher-profile`
+        WHERE
+            `teachers`.id_teacher = `teacher-profile`.`id_teacher` AND
+            `teacher-profile`.`id_profile` = `profiles`.`id_profile`;"
+    ),
+    MYSQLI_ASSOC
+);
 
 ?>
 
@@ -94,38 +103,13 @@ WHERE
         </div>
 
         <?php
-            // $total = 
-            // [
-            //     [
-            //         '3007',
-            //         [
-            //             ['ХУХУХУХУХ ХУХУХУХУХ ХУХУХУХУХ', 'ххххххх', 00],
-            //             ['ZZZZZZZZZZZ ZZZZZZ ZZZZZZZZZZZZZZZZ', 'dfasdsdfsfs', 90]
-            //         ]
-            //     ],
-            //     [
-            //         '3019',
-            //         [
-            //             ['ХУХУХУХУХ ХУХУХУХУХ ХУХУХУХУХ', 'ххххххх', 00],
-            //             ['ZZZZZZZZZZZ ZZZZZZ ZZZZZZZZZZZZZZZZ', 'dfasdsdfsfs', 90]
-            //         ]
-            //     ],
-            //     [
-            //         '3021',
-            //         [
-            //             ['ХУХУХУХУХ ХУХУХУХУХ ХУХУХУХУХ', 'ххххххх', 00]
-            //         ]
-            //     ]
-            // ];
-
-            $total = 
+            $total =
             [
                 [
-                    '',
-                    [
-
+                    'fio' => '',
+                    'subjects' => [
                     ],
-                    00
+                    'hours' => 00
                 ]
             ];
 
@@ -139,13 +123,13 @@ WHERE
                     echo "<br>";
                     echo "--Foreach teachers";
 
-                    if($teacher[2] === $subject[4])
+                    if($teacher['id_profile'] === $subject['id_profile'])
                     {
                         echo "<br>";
                         echo "-----------Профили совпали";
                         echo "<br>";
                         echo "<br>";
-                        echo "Предмет <b>" . $subject[1] . "</b> с профилем <b>" . $subject[3] . "</b> группы <b>" . $subject[0] . "</b> достался <b>" . $teacher[1] . "</b> с профилем <b>" . $teacher[3] . "</b>";
+                        echo "Предмет <b>" . $subject['subject_name'] . "</b> с профилем <b>" . $subject['profile_name'] . "</b> группы <b>" . $subject['id_group'] . "</b> достался <b>" . $teacher['fio'] . "</b> с профилем <b>" . $teacher['profile_name'] . "</b>";
 
                         $isInArray = false;
                         $teacherPosInArray = 0;
@@ -155,10 +139,10 @@ WHERE
                             echo "<br>";
                             echo 'total index = ' . $k;
                             echo "<br>";
-                            if ($total[$k][0] === $teacher[1])
+                            if ($total[$k]['fio'] === $teacher['fio'])
                             {
                                 $isInArray = true;
-                                $teacherPosInArray = $k;
+                                    $teacherPosInArray = $k;
                             }
                         }
 
@@ -167,8 +151,8 @@ WHERE
                             echo "Препод в массиве total совпал на " . $k . " итерации";
 
                             array_push(
-                                $total[$teacherPosInArray][1],
-                                [$subject[1], $subject[0], $subject[2], $subject[4], $teacher[2]]
+                                $total[$teacherPosInArray]['subjects'],
+                                [$subject['subject_name'], $subject['id_group'], $subject['subject_hours']]
                             );
 
                             echo "<br>";
@@ -183,9 +167,9 @@ WHERE
                             array_push(
                                 $total,
                                 [
-                                    $teacher[1],
-                                    [
-                                        [$subject[1], $subject[0], $subject[2], $subject[4], $teacher[2]]
+                                    'fio' => $teacher['fio'],
+                                    'subjects' => [
+                                        [$subject['subject_name'], $subject['id_group'], $subject['subject_hours']]
                                     ]
                                 ]
                             );
@@ -201,106 +185,14 @@ WHERE
                 }
             }
 
-            // if ($isInArray)
-            //             {
-            //                 echo "Препод в массиве total совпал на " . $k . " итерации";
-
-            //                 array_push(
-            //                     $total[$k][1],
-            //                     [$subject[1], $subject[0], $subject[2]]
-            //                 );
-
-            //                 echo "<br>";
-            //                 break;
-            //             }
-            //             else 
-            //             {
-            //                 echo "Препод в массиве total не совпал, суем новый супермассив";
-
-            //                 array_push(
-            //                     $total,
-            //                     [
-            //                         $teacher[1],
-            //                         [
-            //                             [$subject[1], $subject[0], $subject[2]]
-            //                         ]
-            //                     ]
-            //                 );
-
-            //                 echo "<br>";
-            //                 break;
-            //             }
-
-            // foreach ($teachers as $index => $teacher)
-            // {
-
-            //     echo "<br>";
-            //     echo "--Foreach teachers";
-
-            //     foreach ($subjects as $key => $subject)
-            //     {
-            //         echo "<br>";
-            //         echo "-----------Foreach subjects";
-
-            //         if($teacher[2] === $subject[4])
-            //         {
-            //             echo "<br>";
-            //             echo "-----------Профили совпали";
-
-            //             foreach ($total as $k => $group)
-            //             {
-            //                 $isInArray = false;
-            //                 echo "<br>";
-            //                 echo 'total index = ' . $k;
-            //                 echo "<br>";
-            //                 if ($total[$k][0] === $teacher[1])
-            //                 {
-            //                     $isInArray = true;
-            //                 }
-            //             }
-            //             if ($isInArray)
-            //             {
-            //                 echo "Препод в массиве total совпал на " . $k . " итерации";
-
-            //                 array_push(
-            //                     $total[$k][1],
-            //                     [$subject[1], $subject[0], $subject[2]]
-            //                 );
-
-            //                 echo "<br>";
-            //                 break;
-            //             }
-            //             else 
-            //             {
-            //                 echo "Препод в массиве total не совпал, суем новый супермассив";
-
-            //                 array_push(
-            //                     $total,
-            //                     [
-            //                         $teacher[1],
-            //                         [
-            //                             [$subject[1], $subject[0], $subject[2]]
-            //                         ]
-            //                     ]
-            //                 );
-
-            //                 echo "<br>";
-            //                 break;
-            //             }
-
-            //             break;
-            //         }
-            //     }
-            // }
-
             foreach($total as $n => $prepod)
             {
                 $sum = 0;
-                foreach($prepod[1] as $j => $subject)
+                foreach($prepod['subjects'] as $j => $subject)
                 {
                     $sum += $subject[2];
                 }
-                $total[$n][2] = $sum;
+                $total[$n]['hours'] = $sum;
             }
 
             echo "<pre>";
