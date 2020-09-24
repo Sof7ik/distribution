@@ -5,11 +5,11 @@ require_once __DIR__ . './connection.php';
 $id = $_POST['id'];
 $subjects = json_decode($_POST['subjects']);
 
-$query = "DELETE FROM `group-subject` WHERE `group-subject`.`id_group` = $id;";
+$query = "DELETE FROM `group-subject` WHERE `group-subject`.`id_group` = '$id';";
 
 foreach ($subjects as $subject)
 {
-    $query .= "INSERT INTO `group-subject` (`id_group`, `id_subject`) VALUES ('$id', '$subject');";
+    $query .= "INSERT INTO `group-subject` (`id_group`, `id_subject`) VALUES ('$id', $subject);";
 }
 
 

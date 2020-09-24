@@ -20,7 +20,7 @@ updateButton.addEventListener('click', () =>
     document.querySelectorAll('.sort-subjects__group > p').forEach(s => subjects.push(s.dataset.subjectid));
 
     let data = new FormData();
-    data.append("id", +urlParams.get('id'));
+    data.append("id", urlParams.get('id'));
     data.append("subjects", JSON.stringify(subjects));
 
     async function sendGroupSubjectData()
