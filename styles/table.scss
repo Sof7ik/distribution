@@ -1,0 +1,35 @@
+.workload_teacher
+{
+	display: grid;
+
+	margin-top: 25px;
+
+	grid-gap: 1px;
+	grid-template-columns: minmax(min-content, max-content) 1fr minmax(100px, min-content) minmax(100px, min-content);
+}
+
+.workload_teacher > p
+{
+	padding: 10px 25px;
+}
+
+.workload_teacher > p:nth-child(4n+3)
+{
+	text-align: center;
+}
+
+.workload_teacher > p:nth-child(4n+4)
+{
+	text-align: center;
+}
+
+
+.workload_teacher > p:not(.br):not(.heading):nth-child(4n+4)::after
+{
+	content: " ч";
+}
+
+.workload_teacher > p.tchr, .workload_teacher > p.data, .workload_teacher > p.heading
+{
+	background-color: #2C343A;
+}

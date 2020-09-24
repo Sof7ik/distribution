@@ -1,52 +1,7 @@
 <?php
 
 if (empty($_COOKIE['id_admin'])) { header('Location: ./../../../index.php'); }
-
-require_once './../../php/connection.php';
-
-$subjects = mysqli_fetch_all(
-    mysqli_query(
-        $link,
-        "SELECT 
-            `groups`.`id_group`, 
-            `subjects`.`subject_name`, 
-            `subjects`.`subject_hours`, 
-            `profiles`.`profile_name`, 
-            `profiles`.`id_profile` 
-        FROM 
-            `groups`, 
-            `subjects`, 
-            `group-subject`, 
-            `profiles` 
-        WHERE 
-            `group-subject`.`id_group` = `groups`.`id_group` AND 
-            `group-subject`.`id_subject`= `subjects`.`id_subject` AND 
-            `subjects`.`id_profile`= `profiles`.`id_profile`
-        ORDER BY
-            `groups`.`id_group`;"
-    ),
-    MYSQLI_ASSOC
-);
-
-$teachers = mysqli_fetch_all(
-    mysqli_query(
-        $link,
-        "SELECT
-            `teachers`.`id_teacher`,
-            `fio`,
-            `profiles`.`id_profile`,
-            `profile_name`
-        FROM
-            `teachers`,
-            `profiles`,
-            `teacher-profile`
-        WHERE
-            `teachers`.id_teacher = `teacher-profile`.`id_teacher` AND
-            `teacher-profile`.`id_profile` = `profiles`.`id_profile`;"
-    ),
-    MYSQLI_ASSOC
-);
-
+include_once('./../../php/generate_table.php');
 ?>
 
 <!DOCTYPE html>
@@ -78,128 +33,40 @@ $teachers = mysqli_fetch_all(
 
         <?php include './includes/header.php'; ?>
 
-        <div style="display: flex; flex-flow: row nowrap;">
+        <section>
+            <h2 style="padding: 15px 0;"> Преподавательская нагрузка </h2>
 
-            <section>
-                <?php
-                
-                    echo "<pre>";
-                        print_r($subjects);
-                    echo "</pre>";
+            <div class="workload_teacher">
 
-                ?>
-            </section>
 
-            <section>
-                <?php
-                
-                    echo "<pre>";
-                        print_r($teachers);
-                    echo "</pre>";
+            <p class="heading"> ФИО препода </p>
+            <p class="heading"> Предмет </p>
+            <p class="heading"> Группа </p>
+            <p class="heading"> Часы </p>
 
-                ?>
-            </section>
+            <p class="br"/><p class="br"/><p class="br"/><p class="br"/>
 
-        </div>
-
-        <?php
-            $total =
-            [
-                [
-                    'fio' => '',
-                    'subjects' => [
-                    ],
-                    'hours' => 00
-                ]
-            ];
-
-            foreach ($subjects as $key => $subject)
-            {
-                echo "<br>";
-                echo "-----------Foreach subjects";
-
-                foreach ($teachers as $index => $teacher)
+            <?php
+                foreach($total as $tchr)
                 {
-                    echo "<br>";
-                    echo "--Foreach teachers";
-
-                    if($teacher['id_profile'] === $subject['id_profile'])
+                    $nameIsOut = false;
+                    foreach($tchr['subjects'] as $subjs)
                     {
-                        echo "<br>";
-                        echo "-----------Профили совпали";
-                        echo "<br>";
-                        echo "<br>";
-                        echo "Предмет <b>" . $subject['subject_name'] . "</b> с профилем <b>" . $subject['profile_name'] . "</b> группы <b>" . $subject['id_group'] . "</b> достался <b>" . $teacher['fio'] . "</b> с профилем <b>" . $teacher['profile_name'] . "</b>";
+                        echo ($nameIsOut) ? '<p class="tchr"> </p>' : '<p class="tchr">'. $tchr['fio'] .'</p>';
+                        $nameIsOut = true;
 
-                        $isInArray = false;
-                        $teacherPosInArray = 0;
 
-                        foreach ($total as $k => $group)
+                        foreach($subjs as $s)
                         {
-                            echo "<br>";
-                            echo 'total index = ' . $k;
-                            echo "<br>";
-                            if ($total[$k]['fio'] === $teacher['fio'])
-                            {
-                                $isInArray = true;
-                                    $teacherPosInArray = $k;
-                            }
+                            echo '<p class="data">' . $s . '</p>';
                         }
-
-                        if ($isInArray)
-                        {
-                            echo "Препод в массиве total совпал на " . $k . " итерации";
-
-                            array_push(
-                                $total[$teacherPosInArray]['subjects'],
-                                [$subject['subject_name'], $subject['id_group'], $subject['subject_hours']]
-                            );
-
-                            echo "<br>";
-                            echo "-_-_-_-_-_-_-_-_-_-";
-                            echo "<br>";
-                            break;
-                        }
-                        else 
-                        {
-                            echo "Препод в массиве total не совпал, суем новый супермассив";
-
-                            array_push(
-                                $total,
-                                [
-                                    'fio' => $teacher['fio'],
-                                    'subjects' => [
-                                        [$subject['subject_name'], $subject['id_group'], $subject['subject_hours']]
-                                    ]
-                                ]
-                            );
-
-                            echo "<br>";
-                            echo "-_-_-_-_-_-_-_-_-_-";
-                            echo "<br>";
-                            break;
-                        }
-                        
-                        break;
                     }
+                    echo '<p class="br"/><p class="br"/><p class="br"/><p class="br"/>';
                 }
-            }
+            ?>
+            </div>
 
-            foreach($total as $n => $prepod)
-            {
-                $sum = 0;
-                foreach($prepod['subjects'] as $j => $subject)
-                {
-                    $sum += $subject[2];
-                }
-                $total[$n]['hours'] = $sum;
-            }
-
-            echo "<pre>";
-                print_r($total);
-            echo "</pre>";
- 
-        ?>
+        </section>
 
     </main>
 
