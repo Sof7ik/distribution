@@ -61,6 +61,7 @@ include_once('./../../php/generate_table.php');
                             echo '<p class="data">' . $s . '</p>';
                         }
                     }
+                    echo '<p class="br"/><p class="br"/><p class="data"> Итого: </p> <p class="data">'.$tchr['hours'].'</p>';
                     echo '<p class="br"/><p class="br"/><p class="br"/><p class="br"/>';
                 }
             ?>
