@@ -19,7 +19,7 @@ FROM
 WHERE
     `subjects`.`id_subject` = `subject-specialization`.`id_subject` 
 AND 
-    `specializations`.`id_specialization` = `specializations`.`id_specialization` 
+    `subject-specialization`.`id_specialization` = `specializations`.`id_specialization` 
 AND 
     `subject-specialization`.`id_specialization` = '$idSpec';");
 
@@ -65,7 +65,7 @@ $specs = mysqli_fetch_all($resultSpecs);
     <link rel='stylesheet' href='./../../styles/style.css'>
 
     <script src='./../../js/lib/Sortable.min.js' defer></script>
-    <script src='./../../js/group-subjects.js' defer></script>
+    <script src='./../../js/spec-subjects.js' defer></script>
 </head>
 <body>
 
