@@ -8,7 +8,7 @@ $subjectProfile = $_POST['subjectProfile'];
 $subjectHours = $_POST['subjectHours'];
 
 $checkSubject = mysqli_query($link, 
-"SELECT `id_subject` FROM `subjects` WHERE `subject_name` = '$subjectName' AND `subject_hours` = $subjectHours");
+"SELECT `id_subject` FROM `subjects` WHERE `subject_name` = '$subjectName'");
 
 if (mysqli_num_rows($checkSubject) == 0) {
     $query = mysqli_query($link, 

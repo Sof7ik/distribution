@@ -15,16 +15,13 @@ $resultSbjc = mysqli_query($link,
 FROM
     `subject-specialization`,
     `subjects`,
-    `specializations`,
-    `groups`
+    `specializations`
 WHERE
     `subjects`.`id_subject` = `subject-specialization`.`id_subject` 
 AND 
     `specializations`.`id_specialization` = `specializations`.`id_specialization` 
-AND
-`groups`.i
 AND 
-    `specializations`.`id_specialization` = '$idSpec';");
+    `subject-specialization`.`id_specialization` = '$idSpec';");
 
 $resultSpecs = mysqli_query($link, 
 "SELECT 
@@ -81,14 +78,14 @@ $specs = mysqli_fetch_all($resultSpecs);
         <section>
             
             <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; align-items: center">
-                <h2>Вы редактируете группу <?=$idGroup?> </h2>
+                <h2>Вы редактируете специальность <?=$idGroup?> </h2>
                 <button class="update-subjects-group"> Сохранить </button>
             </div>
 
 
             <div class="sort-subjects">
                 <div class="sort-subjects__group">
-                    <h3 style="text-align: center; margin-bottom: 15px;"> Предметы у группы </h3>
+                    <h3 style="text-align: center; margin-bottom: 15px;"> Предметы у специальност </h3>
                     <?
                         foreach ($subjects as $value)
                         {
