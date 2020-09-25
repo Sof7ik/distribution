@@ -1,6 +1,6 @@
 <?php
 
-require_once './../../php/connection.php';
+require_once __DIR__ . './connection.php';
 
 $subjects = mysqli_fetch_all(
     mysqli_query(

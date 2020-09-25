@@ -36,6 +36,8 @@ include_once('./../../php/generate_table.php');
         <section>
             <h2 style="padding: 15px 0;"> Преподавательская нагрузка </h2>
 
+            <a href="./../../php/createExelFile.php" class="update-subjects-group" style="margin: 15px 0; display: inline-block; min-width: 235px;"> Создать exel файл</a>
+
             <div class="workload_teacher">
 
 
