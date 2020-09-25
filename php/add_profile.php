@@ -5,7 +5,7 @@ require_once './connection.php';
 $profileName = $_POST['profileName'];
 
 $checkProfile = mysqli_query($link,
-"SELECT `id_profile` FROM `profiles` WHERE `id_profile` = '$profileName'");
+"SELECT `id_profile` FROM `profiles` WHERE `profile_name` = '$profileName'");
 
 if (mysqli_num_rows($checkProfile) == 0) {
 

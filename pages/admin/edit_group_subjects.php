@@ -94,7 +94,7 @@ $subjects = mysqli_fetch_all($resultS);
                         foreach ($groups as $value)
                         {
                             ?>
-                                <p class="subject-name" data-subjectId="<?=$value[0]?>"> <?=$value[1]?></p>
+                                <p class="subject-name" data-subjectId="<?=$value[0]?>"> <?=$value[1] . ' ' . $value[3]. "ч.";?></p>
                             <?
                         }
                     ?>
@@ -106,7 +106,7 @@ $subjects = mysqli_fetch_all($resultS);
                         foreach ($subjects as $value)
                         {
                             ?>
-                                <p class="subject-name" data-subjectId="<?=$value[0]?>" ><?=$value[1]?></p>
+                                <p class="subject-name" data-subjectId="<?=$value[0]?>" ><?=$value[1] . ' ' . $value[3] . "ч."?></p>
                             <?
                         }
                     ?>
