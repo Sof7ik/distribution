@@ -4,6 +4,7 @@ if (empty($_COOKIE['id_admin'])) { header('Location: ./../../../index.php'); }
 require_once './../../php/connection.php';
 
 $idGroup = $_GET['id'];
+$idSpec = mysqli_fetch_assoc(mysqli_query($link, "SELECT `id_specialization` FROM `groups` WHERE `groups`.`id_group` = '$idGroup'"))['id_specialization'];
 
 $resultG = mysqli_query($link, 
 "SELECT 
@@ -32,15 +33,26 @@ $resultS = mysqli_query($link,
     `profiles`.`profile_name`
 FROM
     `subjects`,
-    `profiles`
+    `profiles`,
+    `subject-specialization`
 WHERE
-    `subjects`.`id_profile` = `profiles`.`id_profile` AND `subjects`.`id_subject` NOT IN(
-SELECT
-    `id_subject`
-FROM
-    `group-subject`
-WHERE
-    `id_group` = '$idGroup')
+    `subject-specialization`.`id_specialization` = '$idSpec'
+AND
+
+    `subjects`.`id_subject` = `subject-specialization`.`id_subject` 
+AND 
+    `subject-specialization`.`id_specialization` = '$idSpec'
+AND
+
+    `subjects`.`id_profile` = `profiles`.`id_profile` 
+AND 
+    `subjects`.`id_subject` NOT IN(
+                                        SELECT
+                                            `id_subject`
+                                        FROM
+                                            `group-subject`
+                                        WHERE
+                                            `id_group` = '$idGroup')
 ORDER BY `subjects`.`subject_name`");
 
 $groups = mysqli_fetch_all($resultG);
@@ -94,7 +106,7 @@ $subjects = mysqli_fetch_all($resultS);
                         foreach ($groups as $value)
                         {
                             ?>
-                                <p class="subject-name" data-subjectId="<?=$value[0]?>"> <?=$value[1]?></p>
+                                <p class="subject-name" data-subjectId="<?=$value[0]?>"> <?=$value[1]?> <span> (<?=$value[3]?>ч) </span> </p>
                             <?
                         }
                     ?>
@@ -106,7 +118,7 @@ $subjects = mysqli_fetch_all($resultS);
                         foreach ($subjects as $value)
                         {
                             ?>
-                                <p class="subject-name" data-subjectId="<?=$value[0]?>" ><?=$value[1]?></p>
+                                <p class="subject-name" data-subjectId="<?=$value[0]?>" ><?=$value[1]?> <span> (<?=$value[3]?>ч) </span> </p>
                             <?
                         }
                     ?>

@@ -360,6 +360,10 @@ div.sort-subjects .sort-subjects__all p, div.sort-subjects .sort-subjects__group
   margin-bottom: 7px;
   padding: 15px 25px;
 }
+div.sort-subjects .sort-subjects__all p span, div.sort-subjects .sort-subjects__group p span {
+  font-size: 12px;
+  opacity: 0.5;
+}
 div.sort-subjects .sort-subjects__group {
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   padding-right: 10px;

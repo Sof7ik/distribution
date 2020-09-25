@@ -90,7 +90,7 @@ $specs = mysqli_fetch_all($resultSpecs);
                         foreach ($subjects as $value)
                         {
                             ?>
-                                <p class="subject-name" data-subjectId="<?=$value[0]?>"> <?=$value[1]?></p>
+                                <p class="subject-name" data-subjectId="<?=$value[0]?>"> <?=$value[1]?> <span> (<?=$value[3]?>ч) </span> </p>
                             <?
                         }
                     ?>
@@ -102,7 +102,7 @@ $specs = mysqli_fetch_all($resultSpecs);
                         foreach ($specs as $value)
                         {
                             ?>
-                                <p class="subject-name" data-subjectId="<?=$value[0]?>" ><?=$value[1]?></p>
+                                <p class="subject-name" data-subjectId="<?=$value[0]?>" ><?=$value[1]?> <span> (<?=$value[3]?>ч) </span> </p>
                             <?
                         }
                     ?>

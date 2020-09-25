@@ -59,11 +59,11 @@ $specs = mysqli_fetch_all($result);
 
                         <div>
 
-                            <p class="group-profile"><?=$value[1]?></p>
+                            <p class="group-profile"><?=$value[0]?></p>
 
-                            <p class="group-name"><?=$value[0]?></p>
+                            <p class="group-name"><?=$value[1]?></p>
 
-                            <p class="group-desc"><?=$value[3]?></p>
+                            <p class="group-desc"><?=$value[2]?></p>
 
                         </div>
 
