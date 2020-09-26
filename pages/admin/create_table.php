@@ -35,38 +35,36 @@ include_once('./../../php/generate_table.php');
 
         <section>
             <h2 style="padding: 15px 0;"> Преподавательская нагрузка </h2>
-
-            <a href="./../../php/createExelFile.php" class="update-subjects-group" style="margin: 15px 0; display: inline-block; min-width: 235px;"> Создать exel файл</a>
+    
+            <a href="./../../php/createExelFile.php" class="create-teacher-file" style="margin: 15px 0 40px 0"> Создать .exel файл</a>
 
             <div class="workload_teacher">
+                <p class="heading"> ФИО препода </p>
+                <p class="heading"> Предмет </p>
+                <p class="heading"> Группа </p>
+                <p class="heading"> Часы </p>
 
+                <p class="br"/><p class="br"/><p class="br"/><p class="br"/>
 
-            <p class="heading"> ФИО препода </p>
-            <p class="heading"> Предмет </p>
-            <p class="heading"> Группа </p>
-            <p class="heading"> Часы </p>
-
-            <p class="br"/><p class="br"/><p class="br"/><p class="br"/>
-
-            <?php
-                foreach($total as $tchr)
-                {
-                    $nameIsOut = false;
-                    foreach($tchr['subjects'] as $subjs)
+                <?php
+                    foreach($total as $tchr)
                     {
-                        echo ($nameIsOut) ? '<p class="tchr"> </p>' : '<p class="tchr">'. $tchr['fio'] .'</p>';
-                        $nameIsOut = true;
-
-
-                        foreach($subjs as $s)
+                        $nameIsOut = false;
+                        foreach($tchr['subjects'] as $subjs)
                         {
-                            echo '<p class="data">' . $s . '</p>';
+                            echo ($nameIsOut) ? '<p class="tchr"> </p>' : '<p class="tchr">'. $tchr['fio'] .'</p>';
+                            $nameIsOut = true;
+
+
+                            foreach($subjs as $s)
+                            {
+                                echo '<p class="data">' . $s . '</p>';
+                            }
                         }
+                        echo '<p class="br"/><p class="br"/><p class="data"> Итого: </p> <p class="data">'.$tchr['hours'].'</p>';
+                        echo '<p class="br"/><p class="br"/><p class="br"/><p class="br"/>';
                     }
-                    echo '<p class="br"/><p class="br"/><p class="data"> Итого: </p> <p class="data">'.$tchr['hours'].'</p>';
-                    echo '<p class="br"/><p class="br"/><p class="br"/><p class="br"/>';
-                }
-            ?>
+                ?>
             </div>
 
         </section>

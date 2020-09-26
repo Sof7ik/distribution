@@ -375,7 +375,7 @@ div.sort-subjects .sort-subjects__all {
   padding-left: 10px;
 }
 
-.update-subjects-group, .clear-subjects-group {
+.update-subjects-group, .clear-subjects-group, .create-teacher-file {
   font-size: 14px;
   font-weight: bold;
   display: flex;
@@ -390,11 +390,11 @@ div.sort-subjects .sort-subjects__all {
   border-radius: 10px;
   background-color: #3A3A3A;
 }
-.update-subjects-group:not(.disabled):hover, .clear-subjects-group:not(.disabled):hover {
+.update-subjects-group:not(.disabled):hover, .clear-subjects-group:not(.disabled):hover, .create-teacher-file:not(.disabled):hover {
   border-radius: 0;
   background-color: #4B2E83;
 }
-.update-subjects-group.disabled, .clear-subjects-group.disabled {
+.update-subjects-group.disabled, .clear-subjects-group.disabled, .create-teacher-file.disabled {
   cursor: not-allowed;
   opacity: 0.3;
 }
