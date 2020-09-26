@@ -96,14 +96,3 @@ $specNames = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `specialization
     </script>   
 </body>
 </html>
-
-<!-- const numberSp = 3;//первая цифра
-
-                let year = String(new Date().getFullYear());
-                let lastCharYear=strYear.charAt(strYear.length-1); //вторая цифра
-
-                let numberSpec = 1; //надо взять список спец
-
-                let numberGroup = numberSp + lastCharYear + numberSpec;
-                
-                document.getElementById('groupCode').value = numberGroup; -->

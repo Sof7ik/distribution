@@ -183,4 +183,9 @@ div.sort-subjects
         border-radius: 0;
         background-color: #4b2e83;
     }
+    &.disabled
+    {
+        background-color: #000;
+        cursor: not-allowed;
+    }
 }

@@ -102,11 +102,16 @@
                             <p class="subject-desc"><?=$teacher[2]?></p>
                         </div>
 
-                        <button class="removeSubject" id="removeTeacher">
-                            <span class="material-icons">
-                                person_remove
-                            </span>
-                        </button>
+                        <?php
+                            if(isset($_COOKIE['id_admin']) && ($teacher[1] !== $_COOKIE['id_admin']))
+                            {?>
+                                <button class="removeSubject" id="removeTeacher">
+                                    <span class="material-icons">
+                                        person_remove
+                                    </span>
+                                </button>
+                            <?}
+                        ?>
 
                     </div>
                     <?

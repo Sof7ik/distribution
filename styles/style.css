@@ -71,7 +71,6 @@ aside {
   min-height: -webkit-min-content;
   min-height: min-content;
   max-height: 100vh;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
@@ -388,6 +387,10 @@ div.sort-subjects .sort-subjects__all {
   border-radius: 0;
   background-color: #4b2e83;
 }
+.update-subjects-group.disabled {
+  background-color: #000;
+  cursor: not-allowed;
+}
 
 *, *::after, *::before {
   box-sizing: border-box;
@@ -457,7 +460,6 @@ aside {
   min-height: -webkit-min-content;
   min-height: min-content;
   max-height: 100vh;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;

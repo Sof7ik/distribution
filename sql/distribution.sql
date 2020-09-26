@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 25 2020 г., 13:56
--- Версия сервера: 5.7.19
--- Версия PHP: 7.1.7
+-- Время создания: Сен 26 2020 г., 13:26
+-- Версия сервера: 8.0.19
+-- Версия PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -29,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categories` (
-  `id_category` int(11) NOT NULL,
+  `id_category` int NOT NULL,
   `category_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -50,7 +49,7 @@ INSERT INTO `categories` (`id_category`, `category_name`) VALUES
 
 CREATE TABLE `group-subject` (
   `id_group` varchar(6) NOT NULL,
-  `id_subject` int(11) NOT NULL
+  `id_subject` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -58,67 +57,55 @@ CREATE TABLE `group-subject` (
 --
 
 INSERT INTO `group-subject` (`id_group`, `id_subject`) VALUES
-('3007', 11),
 ('3018', 11),
 ('3019', 11),
 ('3020в', 11),
 ('3021в', 11),
 ('3039', 11),
-('3007', 12),
 ('3018', 12),
 ('3019', 12),
 ('3020в', 12),
 ('3021в', 12),
 ('3039', 12),
-('3007', 13),
 ('3018', 13),
 ('3019', 13),
 ('3020в', 13),
 ('3021в', 13),
 ('3039', 13),
-('3007', 14),
 ('3018', 14),
 ('3019', 14),
 ('3020в', 14),
 ('3021в', 14),
 ('3039', 14),
-('3007', 15),
 ('3018', 15),
 ('3019', 15),
 ('3020в', 15),
 ('3021в', 15),
 ('3039', 15),
-('3007', 16),
 ('3018', 16),
 ('3019', 16),
 ('3020в', 16),
 ('3021в', 16),
 ('3039', 16),
-('3007', 17),
 ('3018', 17),
 ('3019', 17),
 ('3020в', 17),
 ('3021в', 17),
 ('3039', 17),
-('3007', 18),
 ('3018', 18),
 ('3019', 18),
 ('3020в', 18),
 ('3021в', 18),
 ('3039', 18),
-('3007', 19),
 ('3018', 19),
 ('3019', 19),
 ('3020в', 19),
 ('3021в', 19),
 ('3039', 19),
-('3007', 20),
 ('3020в', 20),
 ('3021в', 20),
-('3007', 21),
 ('3020в', 21),
 ('3021в', 21),
-('3007', 22),
 ('3020в', 22),
 ('3021в', 22),
 ('3018', 23),
@@ -298,7 +285,7 @@ INSERT INTO `groups` (`id_group`, `id_specialization`) VALUES
 --
 
 CREATE TABLE `profiles` (
-  `id_profile` int(11) NOT NULL,
+  `id_profile` int NOT NULL,
   `profile_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -332,7 +319,7 @@ INSERT INTO `profiles` (`id_profile`, `profile_name`) VALUES
 --
 
 CREATE TABLE `roles` (
-  `id_role` int(11) NOT NULL,
+  `id_role` int NOT NULL,
   `role_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -375,9 +362,26 @@ INSERT INTO `specializations` (`id_specialization`, `specialization_name`, `spec
 --
 
 CREATE TABLE `subject-specialization` (
-  `id_subject` int(11) NOT NULL,
+  `id_subject` int NOT NULL,
   `id_specialization` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `subject-specialization`
+--
+
+INSERT INTO `subject-specialization` (`id_subject`, `id_specialization`) VALUES
+(18, '08.01.71'),
+(27, '08.01.71'),
+(37, '08.01.71'),
+(55, '08.01.71'),
+(57, '08.01.71'),
+(77, '08.01.71'),
+(87, '08.01.71'),
+(102, '08.01.71'),
+(104, '08.01.71'),
+(105, '08.01.71'),
+(106, '08.01.71');
 
 -- --------------------------------------------------------
 
@@ -386,11 +390,11 @@ CREATE TABLE `subject-specialization` (
 --
 
 CREATE TABLE `subjects` (
-  `id_subject` int(11) NOT NULL,
-  `id_profile` int(11) NOT NULL,
+  `id_subject` int NOT NULL,
+  `id_profile` int NOT NULL,
   `subject_name` varchar(255) NOT NULL,
   `subject_desc` varchar(255) DEFAULT NULL,
-  `subject_hours` int(11) NOT NULL
+  `subject_hours` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -511,8 +515,8 @@ INSERT INTO `subjects` (`id_subject`, `id_profile`, `subject_name`, `subject_des
 --
 
 CREATE TABLE `teacher-profile` (
-  `id_teacher` int(11) NOT NULL,
-  `id_profile` int(11) NOT NULL
+  `id_teacher` int NOT NULL,
+  `id_profile` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -536,12 +540,12 @@ INSERT INTO `teacher-profile` (`id_teacher`, `id_profile`) VALUES
 --
 
 CREATE TABLE `teachers` (
-  `id_teacher` int(11) NOT NULL,
+  `id_teacher` int NOT NULL,
   `fio` varchar(255) NOT NULL,
-  `id_category` int(11) DEFAULT NULL,
+  `id_category` int DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `id_role` int(11) DEFAULT NULL
+  `id_role` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -554,7 +558,7 @@ INSERT INTO `teachers` (`id_teacher`, `fio`, `id_category`, `email`, `password`,
 (14, 'Хусаинова Индира Султановна', 3, 'husainova@mail.ru', '$2y$10$RKFyKRW8SkbDkBPiay9vqeeeT0CPLi0lHa56zm2bNEntMq3HtLxC2', 2),
 (15, 'Галлиулина Эльвира Сайфуловна', 3, 'galliulina@mail.ru', '$2y$10$9HmuJYmd2i/Eo1AU/F1aj.Ck0msD4tGY7/MDvwcG4LsrHhdHke3j6', 2),
 (16, 'Мелешкин Илья Петрович', 2, 'meleshkin@mail.ru', '$2y$10$kEavoIMSt/AIwoZS9fMt6OpFDBauV1sg8SRd5jJf15BxADY6wk5fW', 2),
-(17, 'Погудина Лада геннадьевна', 3, 'pogudina@mail.ru', '$2y$10$amdFZGQmmpsqzOXUkcm1M.4nC12E8yapuOHszD1HxeerwU8TEFkhu', 2),
+(17, 'Погудина Лада Геннадьевна', 3, 'pogudina@mail.ru', '$2y$10$amdFZGQmmpsqzOXUkcm1M.4nC12E8yapuOHszD1HxeerwU8TEFkhu', 2),
 (18, 'Соларёва Юлия Сергеевна', 3, 'solareva@mail.ru', '$2y$10$9vHbPMWgCfXNv1KHQjPII.3RMjwqyww0oiE7MCu6Q2v5qaCV1vIqa', 2),
 (19, 'Овчинников Антон Викторович', 3, 'ovchinnikov@mail.ru', '$2y$10$p4Mbo14MU/0nYx0pJMenteaaVpdig/QEtjU8vQ7soXuT.3P/hvkYS', 2),
 (20, 'Зудилина Елена Александровна', 2, 'zudilina@mail.ru', '$2y$10$t6BzxAa/LK3KOva29qW0hefp2N/JnuhQUXOhkM0pqg9jMoSqGoDoG', 1);
@@ -641,27 +645,32 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_category` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT для таблицы `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_profile` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT для таблицы `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_role` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT для таблицы `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id_subject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id_subject` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+
 --
 -- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id_teacher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_teacher` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --

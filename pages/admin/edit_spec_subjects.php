@@ -37,11 +37,18 @@ SELECT
 FROM
 `subject-specialization`
 WHERE
-`id_specialization` = '$idSpec')");
+`id_specialization` = '$idSpec')
+ORDER BY `subject_name`;");
 
 $subjects = mysqli_fetch_all($resultSbjc);
 $specs = mysqli_fetch_all($resultSpecs);
 
+$isEmpty = false;
+
+if (count($specs) == 0)
+{
+    $isEmpty = true;
+}
 
 ?>
 
@@ -78,14 +85,27 @@ $specs = mysqli_fetch_all($resultSpecs);
         <section>
             
             <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; align-items: center">
-                <h2>Вы редактируете специальность <?=$idGroup?> </h2>
+                <h2>Вы редактируете специальность <?=$idSpec?> </h2>
                 <button class="update-subjects-group"> Сохранить </button>
             </div>
 
 
             <div class="sort-subjects">
                 <div class="sort-subjects__group">
-                    <h3 style="text-align: center; margin-bottom: 15px;"> Предметы у специальност </h3>
+                    
+                <?php
+                        if ($isEmpty) 
+                        {?>
+                            <a href="" class="update-subjects-group disabled" style="margin: 15px 0; display: inline-block; min-width: 235px;">Очистить</a>
+                            
+                        <?}
+                        else 
+                        {?>
+                            <a href="./../../php/delete_subjects.php?idGroupToDelete=<?=$idGroup?>" class="update-subjects-group" style="margin: 15px 0; display: inline-block; min-width: 235px;">Очистить</a>
+                        <?}
+                    ?>
+
+                    <h3 style="text-align: center; margin-bottom: 15px;"> Предметы у специальности </h3>
                     <?
                         foreach ($subjects as $value)
                         {
@@ -97,6 +117,24 @@ $specs = mysqli_fetch_all($resultSpecs);
                 </div>
 
                 <div class="sort-subjects__all">
+
+                    <form action="./../../php/search_subjects.php" method="POST">
+                        <input 
+                            type="search" 
+                            name="search_subjects" 
+                            id="" 
+                            class="update-subjects-group" 
+                            style="
+                                margin: 15px 0; 
+                                width: 100%; 
+                                letter-spacing: 1px; 
+                                padding: 15px 20px; 
+                                cursor: text; 
+                                font-weight: normal;
+                            "
+                            placeholder="Введите название предмета">
+                    </form>
+                    
                     <h3 style="text-align: center; margin-bottom: 15px;"> Все предметы </h3>
                     <?
                         foreach ($specs as $value)

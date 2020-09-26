@@ -58,7 +58,12 @@ ORDER BY `subjects`.`subject_name`");
 $groups = mysqli_fetch_all($resultG);
 $subjects = mysqli_fetch_all($resultS);
 
+$isEmpty = false;
 
+if (count($groups) == 0)
+{
+    $isEmpty = true;
+}
 ?>
 
 <!DOCTYPE html>
@@ -101,6 +106,19 @@ $subjects = mysqli_fetch_all($resultS);
 
             <div class="sort-subjects">
                 <div class="sort-subjects__group">
+                    <?php
+                        if ($isEmpty) 
+                        {?>
+                            <a href="" class="update-subjects-group disabled" style="margin: 15px 0; display: inline-block; min-width: 235px;">Очистить</a>
+                            
+                        <?}
+                        else 
+                        {?>
+                            <a href="./../../php/delete_subjects.php?idGroupToDelete=<?=$idGroup?>" class="update-subjects-group" style="margin: 15px 0; display: inline-block; min-width: 235px;">Очистить</a>
+                        <?}
+                    ?>
+                    
+
                     <h3 style="text-align: center; margin-bottom: 15px;"> Предметы у группы </h3>
                     <?
                         foreach ($groups as $value)
