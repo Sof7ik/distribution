@@ -33,15 +33,15 @@ foreach($total as $tchr)
         {
             $sheet->setCellValue('A' . $cellValue, '');
             $sheet->setCellValue('B' . $cellValue, $item)->getStyle('B' . $cellValue)->getAlignment()->setHorizontal('left');
-            $sheet->setCellValue('C' . $cellValue, $group)->getStyle('C' . $cellValue)->getAlignment()->setHorizontal('center');
-            $sheet->setCellValue('D' . $cellValue, $hour)->getStyle('D' . $cellValue)->getAlignment()->setHorizontal('center');
+            $sheet->setCellValue('C' . $cellValue, $group)->getStyle('C' . $cellValue)->getAlignment()->setHorizontal('left');
+            $sheet->setCellValue('D' . $cellValue, $hour)->getStyle('D' . $cellValue)->getAlignment()->setHorizontal('left');
         }
         else
         {
             $sheet->setCellValue('A' . $cellValue, $tchr['fio'])->getStyle('A' . $cellValue)->getAlignment()->setHorizontal('right');
             $sheet->setCellValue('B' . $cellValue, $item)->getStyle('B' . $cellValue)->getAlignment()->setHorizontal('left');
-            $sheet->setCellValue('C' . $cellValue, $group)->getStyle('C' . $cellValue)->getAlignment()->setHorizontal('center');
-            $sheet->setCellValue('D' . $cellValue, $hour)->getStyle('D' . $cellValue)->getAlignment()->setHorizontal('center');
+            $sheet->setCellValue('C' . $cellValue, $group)->getStyle('C' . $cellValue)->getAlignment()->setHorizontal('left');
+            $sheet->setCellValue('D' . $cellValue, $hour)->getStyle('D' . $cellValue)->getAlignment()->setHorizontal('left');
             $nameIsOut = true;
         }
 

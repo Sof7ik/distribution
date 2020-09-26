@@ -13,14 +13,9 @@
 	padding: 10px 25px;
 }
 
-.workload_teacher > p:nth-child(4n+3)
+.workload_teacher > p:nth-child(4n+3), .workload_teacher > p:nth-child(4n+4)
 {
-	text-align: center;
-}
-
-.workload_teacher > p:nth-child(4n+4)
-{
-	text-align: center;
+	text-align: left;
 }
 
 

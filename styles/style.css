@@ -744,12 +744,8 @@ button.add_oneMore span {
   padding: 10px 25px;
 }
 
-.workload_teacher > p:nth-child(4n+3) {
-  text-align: center;
-}
-
-.workload_teacher > p:nth-child(4n+4) {
-  text-align: center;
+.workload_teacher > p:nth-child(4n+3), .workload_teacher > p:nth-child(4n+4) {
+  text-align: left;
 }
 
 .workload_teacher > p:not(.br):not(.heading):nth-child(4n+4)::after {
