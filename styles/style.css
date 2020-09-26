@@ -343,7 +343,6 @@ button.removeSubject span {
 div.sort-subjects {
   display: flex;
   flex-flow: row nowrap;
-  margin-top: 25px;
   -webkit-user-select: none;
           user-select: none;
 }
@@ -400,6 +399,27 @@ div.sort-subjects .sort-subjects__all {
   opacity: 0.3;
 }
 
+.search-subjects-group {
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  min-height: 50px;
+  cursor: pointer;
+  transition: 0.8s background, 0.6s border-radius;
+  letter-spacing: unset;
+  color: #FFFFFF;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background-color: #3A3A3A;
+}
+.search-subjects-group:hover {
+  border: 2px solid #4B2E83;
+  border-radius: 0;
+}
+
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -409,6 +429,15 @@ div.sort-subjects .sort-subjects__all {
 
 .sort-subjects .not-draggable {
   z-index: -5;
+}
+
+.titles {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: 35px;
+}
+.titles h3 {
+  flex-grow: 1;
 }
 
 *, *::after, *::before {

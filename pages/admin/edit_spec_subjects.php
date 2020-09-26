@@ -73,6 +73,7 @@ if (count($specs) == 0)
 
     <script src='./../../js/lib/Sortable.min.js' defer></script>
     <script src='./../../js/spec-subjects.js' defer></script>
+    <script src='./../../js/search-subjects.js' defer></script>
 </head>
 <body>
 
@@ -99,7 +100,7 @@ if (count($specs) == 0)
                     type="text" 
                     name="search_subjects" 
                     id="" 
-                    class="update-subjects-group" 
+                    class="search-subjects-group" 
                     style="
                         margin: 15px 0; 
                         width: 100%; 
@@ -110,12 +111,13 @@ if (count($specs) == 0)
                     placeholder="Введите название предмета">
             </form>
                 
+            <div class="titles">
+                <h3 style="text-align: center; margin-bottom: 15px;" class="not-draggable"> Предметы у группы </h3>
+                <h3 style="text-align: center; margin-bottom: 15px;" class="not-draggable"> Все предметы </h3>
+            </div>
+
             <div class="sort-subjects">
                 <div class="sort-subjects__group">
-                    
-
-
-                    <h3 style="text-align: center; margin-bottom: 15px;" class="not-draggable"> Предметы у специальности </h3>
                     <?
                         foreach ($subjects as $value)
                         {
@@ -127,12 +129,6 @@ if (count($specs) == 0)
                 </div>
 
                 <div class="sort-subjects__all">
-
-                    <h3 style="text-align: center; margin-bottom: 15px;" class="not-draggable"> Все предметы </h3>
-
-
-                    
-                    
                     <?
                         foreach ($specs as $value)
                         {
