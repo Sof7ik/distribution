@@ -23,7 +23,7 @@ include_once('./../../php/generate_table.php');
 
     <link rel='stylesheet' href='./../../styles/style.css'>
 
-    <script src='' defer></script>
+    <script src='./../../js/downloadExel.js' defer></script>
 </head>
 <body>
 

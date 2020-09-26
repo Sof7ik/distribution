@@ -78,11 +78,5 @@ $writer->save($fileName);
 
 if ($writer)
 {
-    ?>
-    <a href="<?=$fileName?>" download > фыв </a>';
-    <script> 
-        document.querySelector('a').click();
-        location.href = './../pages/admin/create_table.php';
-    </script>
-    <?php
+    echo json_encode($fileName);
 }
