@@ -91,7 +91,7 @@ if (count($specs) == 0)
             </div>
 
             <div class="buttons">
-                <a href="./../../php/delete_subjects.php?idGroupToDelete=<?=$idGroup?>" class="clear-subjects-group">Очистить</a>
+                <a href="./../../php/delete_subjects.php?idSpecToDelete=<?=$idSpec?>" class="clear-subjects-group">Очистить</a>
                 <button class="update-subjects-group"> Сохранить </button>
             </div>
             
