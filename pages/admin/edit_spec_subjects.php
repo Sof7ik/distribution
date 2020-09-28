@@ -95,7 +95,6 @@ if (count($specs) == 0)
                 <button class="update-subjects-group"> Сохранить </button>
             </div>
             
-            <form action="./../../php/search_subjects.php" method="POST">
                 <input 
                     type="text" 
                     name="search_subjects" 
@@ -109,10 +108,9 @@ if (count($specs) == 0)
                         cursor: text; 
                         font-weight: normal;"
                     placeholder="Введите название предмета">
-            </form>
                 
             <div class="titles">
-                <h3 style="text-align: center; margin-bottom: 15px;" class="not-draggable"> Предметы у группы </h3>
+                <h3 style="text-align: center; margin-bottom: 15px;" class="not-draggable"> Предметы у специальности </h3>
                 <h3 style="text-align: center; margin-bottom: 15px;" class="not-draggable"> Все предметы </h3>
             </div>
 

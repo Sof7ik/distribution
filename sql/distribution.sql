@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 26 2020 г., 13:26
--- Версия сервера: 8.0.19
--- Версия PHP: 7.4.5
+-- Время создания: Сен 28 2020 г., 15:20
+-- Версия сервера: 5.7.19
+-- Версия PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categories` (
-  `id_category` int NOT NULL,
+  `id_category` int(11) NOT NULL,
   `category_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -49,7 +50,7 @@ INSERT INTO `categories` (`id_category`, `category_name`) VALUES
 
 CREATE TABLE `group-subject` (
   `id_group` varchar(6) NOT NULL,
-  `id_subject` int NOT NULL
+  `id_subject` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -285,7 +286,7 @@ INSERT INTO `groups` (`id_group`, `id_specialization`) VALUES
 --
 
 CREATE TABLE `profiles` (
-  `id_profile` int NOT NULL,
+  `id_profile` int(11) NOT NULL,
   `profile_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -319,7 +320,7 @@ INSERT INTO `profiles` (`id_profile`, `profile_name`) VALUES
 --
 
 CREATE TABLE `roles` (
-  `id_role` int NOT NULL,
+  `id_role` int(11) NOT NULL,
   `role_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -362,7 +363,7 @@ INSERT INTO `specializations` (`id_specialization`, `specialization_name`, `spec
 --
 
 CREATE TABLE `subject-specialization` (
-  `id_subject` int NOT NULL,
+  `id_subject` int(11) NOT NULL,
   `id_specialization` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -371,17 +372,89 @@ CREATE TABLE `subject-specialization` (
 --
 
 INSERT INTO `subject-specialization` (`id_subject`, `id_specialization`) VALUES
+(11, '08.01.71'),
+(11, '09.02.06'),
+(11, '09.02.07'),
+(12, '08.01.71'),
+(12, '09.02.06'),
+(12, '09.02.07'),
+(13, '08.01.71'),
+(13, '09.02.06'),
+(13, '09.02.07'),
+(14, '08.01.71'),
+(14, '09.02.06'),
+(14, '09.02.07'),
+(15, '08.01.71'),
+(15, '09.02.06'),
+(15, '09.02.07'),
+(16, '08.01.71'),
+(16, '09.02.06'),
+(16, '09.02.07'),
+(17, '08.01.71'),
+(17, '09.02.06'),
+(17, '09.02.07'),
 (18, '08.01.71'),
-(27, '08.01.71'),
-(37, '08.01.71'),
-(55, '08.01.71'),
-(57, '08.01.71'),
-(77, '08.01.71'),
-(87, '08.01.71'),
+(18, '09.02.06'),
+(18, '09.02.07'),
+(19, '08.01.71'),
+(19, '09.02.06'),
+(19, '09.02.07'),
+(20, '08.01.71'),
+(21, '08.01.71'),
+(22, '08.01.71'),
+(23, '09.02.06'),
+(23, '09.02.07'),
+(24, '09.02.06'),
+(24, '09.02.07'),
+(26, '09.02.06'),
+(26, '09.02.07'),
+(27, '09.02.06'),
+(27, '09.02.07'),
+(28, '08.01.71'),
+(28, '09.02.06'),
+(29, '09.02.06'),
+(30, '09.02.06'),
+(31, '08.01.71'),
+(31, '09.02.06'),
+(32, '09.02.06'),
+(33, '09.02.06'),
+(34, '09.02.06'),
+(35, '09.02.06'),
+(36, '09.02.06'),
+(37, '09.02.06'),
+(38, '09.02.06'),
+(39, '09.02.06'),
+(40, '09.02.06'),
+(41, '09.02.06'),
+(42, '09.02.06'),
+(43, '09.02.06'),
+(44, '09.02.06'),
+(45, '09.02.06'),
+(78, '08.01.71'),
+(78, '09.02.07'),
+(92, '08.01.71'),
+(93, '08.01.71'),
+(94, '08.01.71'),
+(95, '08.01.71'),
+(96, '08.01.71'),
+(97, '08.01.71'),
+(98, '08.01.71'),
+(99, '08.01.71'),
+(100, '08.01.71'),
+(101, '08.01.71'),
 (102, '08.01.71'),
+(103, '08.01.71'),
 (104, '08.01.71'),
 (105, '08.01.71'),
-(106, '08.01.71');
+(106, '08.01.71'),
+(108, '08.01.71'),
+(109, '08.01.71'),
+(114, '08.01.71'),
+(115, '09.02.07'),
+(116, '09.02.07'),
+(117, '09.02.07'),
+(118, '09.02.07'),
+(120, '09.02.07');
 
 -- --------------------------------------------------------
 
@@ -390,11 +463,11 @@ INSERT INTO `subject-specialization` (`id_subject`, `id_specialization`) VALUES
 --
 
 CREATE TABLE `subjects` (
-  `id_subject` int NOT NULL,
-  `id_profile` int NOT NULL,
+  `id_subject` int(11) NOT NULL,
+  `id_profile` int(11) NOT NULL,
   `subject_name` varchar(255) NOT NULL,
   `subject_desc` varchar(255) DEFAULT NULL,
-  `subject_hours` int NOT NULL
+  `subject_hours` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -490,7 +563,7 @@ INSERT INTO `subjects` (`id_subject`, `id_profile`, `subject_name`, `subject_des
 (94, 4, 'Математика', '', 60),
 (95, 2, 'Информационные технологии в профессиональной деятельности', '', 56),
 (96, 11, 'Экономика организации', '', 66),
-(97, 14, 'Статистик', '', 51),
+(97, 14, 'Статистика', '', 51),
 (98, 11, 'Менеджмент', '', 51),
 (99, 13, 'ДОУ', 'Документационное обеспечение управления', 51),
 (100, 11, 'ПОПД', 'Правовое обеспечение профессиональной деятельности', 40),
@@ -506,7 +579,15 @@ INSERT INTO `subjects` (`id_subject`, `id_profile`, `subject_name`, `subject_des
 (110, 8, 'Основы философии', '', 40),
 (111, 14, 'Организация безналичных расчетов', '', 152),
 (112, 9, 'Адаптивная физическая культура', '', 85),
-(113, 14, 'Основы бухгалтерского учёта', '', 51);
+(113, 14, 'Основы бухгалтерского учёта', '', 51),
+(114, 17, 'Планирование карьеры выпускника ПОО МО', '', 32),
+(115, 7, 'ИЯ в ПД', 'Иностранный язык в профессиональной деятельности', 64),
+(116, 9, 'Физическая культура', '', 64),
+(117, 11, 'ПОПД ', 'Правовое обеспечение профессиональной деятельности', 32),
+(118, 11, 'Экономика отрасли', '', 32),
+(119, 2, 'Компьютерные сети', '', 72),
+(120, 1, 'Проектирование и дизайн информационных систем', '', 110),
+(121, 1, 'Тестирование информационных систем', '', 124);
 
 -- --------------------------------------------------------
 
@@ -515,8 +596,8 @@ INSERT INTO `subjects` (`id_subject`, `id_profile`, `subject_name`, `subject_des
 --
 
 CREATE TABLE `teacher-profile` (
-  `id_teacher` int NOT NULL,
-  `id_profile` int NOT NULL
+  `id_teacher` int(11) NOT NULL,
+  `id_profile` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -540,12 +621,12 @@ INSERT INTO `teacher-profile` (`id_teacher`, `id_profile`) VALUES
 --
 
 CREATE TABLE `teachers` (
-  `id_teacher` int NOT NULL,
+  `id_teacher` int(11) NOT NULL,
   `fio` varchar(255) NOT NULL,
-  `id_category` int DEFAULT NULL,
+  `id_category` int(11) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `id_role` int DEFAULT NULL
+  `id_role` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -645,32 +726,27 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_category` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id_profile` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT для таблицы `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id_role` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id_subject` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
-
+  MODIFY `id_subject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 --
 -- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id_teacher` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
+  MODIFY `id_teacher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
