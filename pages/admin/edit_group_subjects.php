@@ -132,10 +132,6 @@ if (count($groups) == 0)
 
             <div class="sort-subjects">
                 <div class="sort-subjects__group">
-
-                    
-
-                    
                     <?
                         foreach ($groups as $value)
                         {
@@ -147,7 +143,6 @@ if (count($groups) == 0)
                 </div>
 
                 <div class="sort-subjects__all">
-                    
                     <?
                         foreach ($subjects as $value)
                         {
