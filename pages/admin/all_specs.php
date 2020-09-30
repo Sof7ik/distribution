@@ -54,7 +54,20 @@ $specs = mysqli_fetch_all($result);
             <?
                 foreach ($specs as $value)
                 {
+                    if(strlen($value[2]) == 1)
+                    {
+                        $specCode = "0" . $value[2];
+                    }
+                    else if (strlen($value[2]) == 2)
+                    {
+                        $specCode = $value[2];
+                    }
+                    else
+                    {
+                        $specCode = $value[2];
+                    }
                     ?>
+
                     <a href="./edit_spec_subjects.php?id=<?=$value[0]?>" class="groups-wrapper" data-subjectId="<?=$value[0]?>">
 
                         <div>
@@ -63,7 +76,7 @@ $specs = mysqli_fetch_all($result);
 
                             <p class="group-name"><?=$value[1]?></p>
 
-                            <p class="group-desc"><?=$value[2]?></p>
+                            <p class="group-desc"><?=$specCode?></p>
 
                         </div>
 

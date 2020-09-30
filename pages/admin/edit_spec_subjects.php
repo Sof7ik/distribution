@@ -21,7 +21,8 @@ WHERE
 AND 
     `subject-specialization`.`id_specialization` = `specializations`.`id_specialization` 
 AND 
-    `subject-specialization`.`id_specialization` = '$idSpec';");
+    `subject-specialization`.`id_specialization` = '$idSpec'
+ORDER BY `subjects`.`subject_name`, `subjects`.`subject_hours`;");
 
 $resultSpecs = mysqli_query($link, 
 "SELECT 
@@ -38,7 +39,7 @@ FROM
 `subject-specialization`
 WHERE
 `id_specialization` = '$idSpec')
-ORDER BY `subject_name`;");
+ORDER BY `subjects`.`subject_name`, `subjects`.`subject_hours`;");
 
 $subjects = mysqli_fetch_all($resultSbjc);
 $specs = mysqli_fetch_all($resultSpecs);

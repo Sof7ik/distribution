@@ -25,13 +25,13 @@ function checkCollums()
 {
     if (document.querySelectorAll('.sort-subjects__group > .subject-name').length > 0)
     {
-        document.querySelector('.update-subjects-group').classList.remove('disabled');
-        document.querySelector('.clear-subjects-group').classList.remove('disabled');
+        clearButton.classList.remove('disabled');
+        clearButton.classList.remove('disabled');
     }
     else
     {
-        document.querySelector('.update-subjects-group').classList.add('disabled');
-        document.querySelector('.clear-subjects-group').classList.add('disabled');
+        clearButton.classList.add('disabled');
+        clearButton.classList.add('disabled');
     }
 }
 checkCollums();

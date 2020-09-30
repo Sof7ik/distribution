@@ -22,7 +22,8 @@ WHERE
 AND
     `subjects`.`id_profile` = `profiles`.`id_profile`
 AND
-    `id_group` = '$idGroup';");
+    `id_group` = '$idGroup';
+ORDER BY `subjects`.`subject_name`, `subjects`.`subject_hours`; ");
 
 $resultS = mysqli_query($link, 
 "SELECT
@@ -53,7 +54,7 @@ AND
                                             `group-subject`
                                         WHERE
                                             `id_group` = '$idGroup')
-ORDER BY `subjects`.`subject_name`");
+ORDER BY ORDER BY `subjects`.`subject_name`, `subjects`.`subject_hours` ");
 
 $groups = mysqli_fetch_all($resultG);
 $subjects = mysqli_fetch_all($resultS);
