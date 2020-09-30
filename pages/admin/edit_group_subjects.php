@@ -22,7 +22,7 @@ WHERE
 AND
     `subjects`.`id_profile` = `profiles`.`id_profile`
 AND
-    `id_group` = '$idGroup';
+    `id_group` = '$idGroup'
 ORDER BY `subjects`.`subject_name`, `subjects`.`subject_hours`; ");
 
 $resultS = mysqli_query($link, 
@@ -48,13 +48,13 @@ AND
     `subjects`.`id_profile` = `profiles`.`id_profile` 
 AND 
     `subjects`.`id_subject` NOT IN(
-                                        SELECT
-                                            `id_subject`
-                                        FROM
-                                            `group-subject`
-                                        WHERE
-                                            `id_group` = '$idGroup')
-ORDER BY ORDER BY `subjects`.`subject_name`, `subjects`.`subject_hours` ");
+    SELECT
+        `id_subject`
+    FROM
+        `group-subject`
+    WHERE
+        `id_group` = '$idGroup')
+ORDER BY `subjects`.`subject_name`, `subjects`.`subject_hours` ");
 
 $groups = mysqli_fetch_all($resultG);
 $subjects = mysqli_fetch_all($resultS);
