@@ -19,6 +19,7 @@ div.subject-wrapper, a.groups-wrapper
 	background-color: #2C343A;
 
 @include flex(row nowrap, space-between, center);
+
 	div
 	{
 		height: 100%;
@@ -133,6 +134,8 @@ div.sort-subjects
 	user-select: none;
 	.sort-subjects__all, .sort-subjects__group
 	{
+		width: 50%;
+
 		display: flex;
 		align-items: stretch;
 		flex-flow: column nowrap;
@@ -205,6 +208,19 @@ div.sort-subjects
 	}
 }
 
+.buttons-half
+{
+	width: 100%;
+
+	margin: 25px auto;
+	min-height: 40px;
+	opacity: 0.5;
+	&:hover
+	{
+		opacity: 0.8;
+	}
+}
+
 .search-subjects-group
 {
 	font-size: 14px;
@@ -222,8 +238,8 @@ div.sort-subjects
 	letter-spacing: unset;
 
 	color: #FFFFFF;
-    border: 2px solid transparent;
-    border-radius: 10px;
+	border: 2px solid transparent;
+	border-radius: 10px;
 	background-color: #3A3A3A;
 
 	&:hover
@@ -256,6 +272,7 @@ div.sort-subjects
 	div.header_wrapper
 	{
 		flex-grow: 1;
+		width: 50%;
 
 		a
 		{

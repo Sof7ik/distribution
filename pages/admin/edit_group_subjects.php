@@ -134,7 +134,7 @@ if (count($groups) == 0)
 
                 <div class="header_wrapper">
                     <h3 style="text-align: center;" class="not-draggable"> Все предметы </h3>
-                    <a href="./add_subject.php" class="update-subjects-group">Добавить новый предмет</a>
+                    <a href="./add_subject.php" class="update-subjects-group buttons-half">Добавить новый предмет</a>
                 </div>
                 
             </div>

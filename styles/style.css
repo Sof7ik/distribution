@@ -19,6 +19,7 @@ ul {
 }
 
 button {
+  cursor: pointer;
   border: none;
   outline: none;
   background-color: transparent;
@@ -40,16 +41,16 @@ html {
   height: 100%;
 }
 
-body, input, a, textarea {
+body, input, a, textarea, button {
   font-family: "Roboto", serif;
 }
 
 body {
-  min-height: 100%;
-  color: #FFFFFF;
-  background-color: #1d2329;
   display: flex;
   flex-flow: row nowrap;
+  min-height: 100%;
+  color: #FFFFFF;
+  background-color: #1D2329;
 }
 
 .container {
@@ -68,37 +69,37 @@ main section {
 }
 
 aside {
-  min-height: -webkit-min-content;
-  min-height: min-content;
-  max-height: 100vh;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
   display: flex;
+  overflow-x: hidden;
+  align-self: stretch;
   flex-flow: column nowrap;
   min-width: 300px;
   max-width: 300px;
-  align-self: stretch;
-  background-color: #16191c;
-  overflow-x: hidden;
+  min-height: -webkit-min-content;
+  min-height: min-content;
+  max-height: 100vh;
+  background-color: #16191C;
 }
 aside img {
-  opacity: 0.5;
+  height: 50px;
   margin: 10px auto;
   margin-top: 35px;
-  height: 50px;
   transition: 0.3s opacity;
+  opacity: 0.5;
 }
 aside img:hover {
   opacity: 0.8;
 }
 aside nav {
-  flex-grow: 1;
-  padding-top: 20px;
   display: flex;
   flex-flow: column nowrap;
+  flex-grow: 1;
   margin-bottom: 150px;
+  padding-top: 20px;
 }
 aside .logo-wrapper {
   width: -webkit-fit-content;
@@ -107,64 +108,63 @@ aside .logo-wrapper {
   margin: 0 auto;
 }
 aside a:not(.logo-wrapper) {
-  color: #FFFFFF;
   padding: 15px 25px;
   padding-right: 50px;
-  opacity: 0.5;
   transition: 0.5s background, 0.3s opacity;
+  opacity: 0.5;
+  color: #FFFFFF;
 }
 aside a:not(.logo-wrapper):hover {
-  background-color: rgba(255, 255, 255, 0.1);
   opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 aside form input {
-  color: #FFFFFF;
-  padding: 20px 25px;
-  opacity: 0.5;
-  cursor: pointer;
   width: 100%;
+  padding: 20px 25px;
+  cursor: pointer;
   transition: 0.5s background, 0.3s opacity;
+  opacity: 0.5;
+  color: #FFFFFF;
   background-color: transparent;
 }
 aside form input:hover {
-  background-color: rgba(255, 255, 255, 0.1);
   opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 header .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   min-height: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 header .container p {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 header .container p a {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100%;
-  opacity: 0.6;
+  justify-content: center;
   width: 100%;
-  color: #FFFFFF;
+  height: 100%;
   transition: 0.6s opacity;
+  opacity: 0.6;
+  color: #FFFFFF;
 }
 header .container p a:hover {
   opacity: 1;
 }
 header hr {
+  height: 1px;
   margin: 0 10px;
   opacity: 0.2;
-  height: 1px;
 }
 
 aside::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px transparent;
-  -webkit-box-shadow: inset 0 0 6px transparent;
   background-color: transparent;
+  box-shadow: inset 0 0 6px transparent;
 }
 
 aside::-webkit-scrollbar {
@@ -173,7 +173,7 @@ aside::-webkit-scrollbar {
 }
 
 aside::-webkit-scrollbar-thumb {
-  background-color: #3e474e;
+  background-color: #3E474E;
 }
 
 @media screen and (max-width: 900px) {
@@ -183,10 +183,10 @@ aside::-webkit-scrollbar-thumb {
   }
 }
 h3.empty {
-  margin: 55px 30px 20px 30px;
-  text-align: center;
   width: auto;
   width: -webkit-fill-available;
+  margin: 55px 30px 20px 30px;
+  text-align: center;
 }
 
 body.auth .container {
@@ -390,6 +390,7 @@ div.sort-subjects {
           user-select: none;
 }
 div.sort-subjects .sort-subjects__all, div.sort-subjects .sort-subjects__group {
+  width: 50%;
   display: flex;
   align-items: stretch;
   flex-flow: column nowrap;
@@ -442,6 +443,16 @@ div.sort-subjects .sort-subjects__all {
   opacity: 0.3;
 }
 
+.buttons-half {
+  width: 100%;
+  margin: 25px auto;
+  min-height: 40px;
+  opacity: 0.5;
+}
+.buttons-half:hover {
+  opacity: 0.8;
+}
+
 .search-subjects-group {
   font-size: 14px;
   font-weight: bold;
@@ -481,6 +492,7 @@ div.sort-subjects .sort-subjects__all {
 }
 .titles div.header_wrapper {
   flex-grow: 1;
+  width: 50%;
 }
 .titles div.header_wrapper a {
   margin-left: auto;
@@ -502,6 +514,7 @@ ul {
 }
 
 button {
+  cursor: pointer;
   border: none;
   outline: none;
   background-color: transparent;
@@ -523,16 +536,16 @@ html {
   height: 100%;
 }
 
-body, input, a, textarea {
+body, input, a, textarea, button {
   font-family: "Roboto", serif;
 }
 
 body {
-  min-height: 100%;
-  color: #FFFFFF;
-  background-color: #1d2329;
   display: flex;
   flex-flow: row nowrap;
+  min-height: 100%;
+  color: #FFFFFF;
+  background-color: #1D2329;
 }
 
 .container {
@@ -551,37 +564,37 @@ main section {
 }
 
 aside {
-  min-height: -webkit-min-content;
-  min-height: min-content;
-  max-height: 100vh;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
   display: flex;
+  overflow-x: hidden;
+  align-self: stretch;
   flex-flow: column nowrap;
   min-width: 300px;
   max-width: 300px;
-  align-self: stretch;
-  background-color: #16191c;
-  overflow-x: hidden;
+  min-height: -webkit-min-content;
+  min-height: min-content;
+  max-height: 100vh;
+  background-color: #16191C;
 }
 aside img {
-  opacity: 0.5;
+  height: 50px;
   margin: 10px auto;
   margin-top: 35px;
-  height: 50px;
   transition: 0.3s opacity;
+  opacity: 0.5;
 }
 aside img:hover {
   opacity: 0.8;
 }
 aside nav {
-  flex-grow: 1;
-  padding-top: 20px;
   display: flex;
   flex-flow: column nowrap;
+  flex-grow: 1;
   margin-bottom: 150px;
+  padding-top: 20px;
 }
 aside .logo-wrapper {
   width: -webkit-fit-content;
@@ -590,64 +603,63 @@ aside .logo-wrapper {
   margin: 0 auto;
 }
 aside a:not(.logo-wrapper) {
-  color: #FFFFFF;
   padding: 15px 25px;
   padding-right: 50px;
-  opacity: 0.5;
   transition: 0.5s background, 0.3s opacity;
+  opacity: 0.5;
+  color: #FFFFFF;
 }
 aside a:not(.logo-wrapper):hover {
-  background-color: rgba(255, 255, 255, 0.1);
   opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 aside form input {
-  color: #FFFFFF;
-  padding: 20px 25px;
-  opacity: 0.5;
-  cursor: pointer;
   width: 100%;
+  padding: 20px 25px;
+  cursor: pointer;
   transition: 0.5s background, 0.3s opacity;
+  opacity: 0.5;
+  color: #FFFFFF;
   background-color: transparent;
 }
 aside form input:hover {
-  background-color: rgba(255, 255, 255, 0.1);
   opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 header .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   min-height: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 header .container p {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 header .container p a {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100%;
-  opacity: 0.6;
+  justify-content: center;
   width: 100%;
-  color: #FFFFFF;
+  height: 100%;
   transition: 0.6s opacity;
+  opacity: 0.6;
+  color: #FFFFFF;
 }
 header .container p a:hover {
   opacity: 1;
 }
 header hr {
+  height: 1px;
   margin: 0 10px;
   opacity: 0.2;
-  height: 1px;
 }
 
 aside::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px transparent;
-  -webkit-box-shadow: inset 0 0 6px transparent;
   background-color: transparent;
+  box-shadow: inset 0 0 6px transparent;
 }
 
 aside::-webkit-scrollbar {
@@ -656,7 +668,7 @@ aside::-webkit-scrollbar {
 }
 
 aside::-webkit-scrollbar-thumb {
-  background-color: #3e474e;
+  background-color: #3E474E;
 }
 
 @media screen and (max-width: 900px) {
@@ -666,10 +678,10 @@ aside::-webkit-scrollbar-thumb {
   }
 }
 h3.empty {
-  margin: 55px 30px 20px 30px;
-  text-align: center;
   width: auto;
   width: -webkit-fill-available;
+  margin: 55px 30px 20px 30px;
+  text-align: center;
 }
 
 form.add {
