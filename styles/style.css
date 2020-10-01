@@ -436,8 +436,11 @@ div.sort-subjects .sort-subjects__all {
   flex-flow: row nowrap;
   margin-top: 35px;
 }
-.titles h3 {
+.titles div.header_wrapper {
   flex-grow: 1;
+}
+.titles div.header_wrapper a {
+  margin-left: auto;
 }
 
 *, *::after, *::before {

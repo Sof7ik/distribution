@@ -35,7 +35,7 @@
             
             <div class="login-wrapper">
                 <label for="login-pass" class="login-labels">Пароль</label>
-                <input type="text" placeholder="Введите свой пароль" id="login-pass" class="login-input" name="password">
+                <input type="password" placeholder="Введите свой пароль" id="login-pass" class="login-input" name="password">
             </div>
 
             <input type="submit" id="login" class="login" value="ВОЙТИ">

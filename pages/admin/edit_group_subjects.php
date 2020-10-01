@@ -127,8 +127,16 @@ if (count($groups) == 0)
             </form>
 
             <div class="titles">
-                <h3 style="text-align: center; margin-bottom: 15px;" class="not-draggable"> Предметы у группы </h3>
-                <h3 style="text-align: center; margin-bottom: 15px;" class="not-draggable"> Все предметы </h3>
+                
+                <div class="header_wrapper">
+                    <h3 style="text-align: center;" class="not-draggable"> Предметы у группы </h3>
+                </div>
+
+                <div class="header_wrapper">
+                    <h3 style="text-align: center;" class="not-draggable"> Все предметы </h3>
+                    <a href="./add_subject.php" class="update-subjects-group">Добавить новый предмет</a>
+                </div>
+                
             </div>
 
             <div class="sort-subjects">

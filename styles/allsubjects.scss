@@ -253,8 +253,13 @@ div.sort-subjects
 	flex-flow: row nowrap;
 
 	margin-top: 35px;
-	h3
+	div.header_wrapper
 	{
 		flex-grow: 1;
+
+		a
+		{
+			margin-left: auto;
+		}
 	}
 }

@@ -36,7 +36,7 @@ include_once('./../../php/generate_table.php');
         <section>
             <h2 style="padding: 15px 0;"> Преподавательская нагрузка </h2>
     
-            <a href="./../../php/createExelFile.php" class="create-teacher-file" style="margin: 15px 0 40px 0"> Создать .exel файл</a>
+            <a href="./../../php/createExelFile.php" class="create-teacher-file" style="margin: 15px 0 40px 0">Скачать Excel-файл (.xlsx)</a>
 
             <div class="workload_teacher">
                 <p class="heading"> ФИО препода </p>
