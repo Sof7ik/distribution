@@ -72,7 +72,7 @@ $profiles = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM `profiles`;"));
 
                 <div class="subjectHours">
                     <label for="">Введите часы предмета</label>
-                    <input type="number" name="subjectHours" class="add_input" required>
+                    <input type="number" name="subjectHours" class="add_input" min="1" required>
                 </div>
 
                 <input type="submit" value="Добавить" class="add_button">
