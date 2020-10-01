@@ -9,11 +9,13 @@ $query = mysqli_query($link, "SELECT * FROM `teachers` WHERE `email` = '$email';
 
 $count = mysqli_num_rows($query);
 
-if ($count == 1) {
+if ($count == 1) 
+{
 
     $user = mysqli_fetch_assoc($query);
 
-    if (password_verify($password, $user['password'])) {
+    if (password_verify($password, $user['password'])) 
+    {
         if ($user['id_role'] == 1) {
             setcookie(
                 'id_admin',
@@ -38,9 +40,14 @@ if ($count == 1) {
             header('Location: ./../../pages/lk/index.php');
         }
     }
-
-    else {
-        echo "Пароли не совпадают";
+    else 
+    {
+        setcookie("error", "Вы неправильно ввели пароль", time() + 2, '/');
+        header('Location: ./../../authorization.php');
     }
-
+}
+else 
+{
+    setcookie("error", "Вы неправильно ввели почту", time() + 2, '/');
+    header('Location: ./../../authorization.php');
 }

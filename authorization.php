@@ -26,16 +26,19 @@
     </header> -->
 
     <div class='container'>
+
+        <p class="error"><?=$_COOKIE['error']?></p>
+
         <form action="./php/login.php" method="POST" id="login-form">
 
             <div class="login-wrapper">
                 <label for="login-email" class="login-labels">Логин</label>
-                <input type="email" placeholder="Введите свой E-mail" id="login-email" class="login-input" name="login">
+                <input type="email" placeholder="Введите свой E-mail" id="login-email" class="login-input" name="login" required>
             </div>
             
             <div class="login-wrapper">
                 <label for="login-pass" class="login-labels">Пароль</label>
-                <input type="password" placeholder="Введите свой пароль" id="login-pass" class="login-input" name="password">
+                <input type="password" placeholder="Введите свой пароль" id="login-pass" class="login-input" name="password" required>
             </div>
 
             <input type="submit" id="login" class="login" value="ВОЙТИ">
