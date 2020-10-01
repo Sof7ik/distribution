@@ -65,7 +65,17 @@ include_once('./../../php/generate_table.php');
                             echo '<p class="br"/><p class="br"/><p class="data"> Итого: </p> <p class="data">'.$tchr['hours'].'</p>';
                             echo '<p class="br"/><p class="br"/><p class="br"/><p class="br"/>';
                         }
-                        
+                        else
+                        {
+                            echo "<h3 class='empty'> Вы ничего не ведёте </h3>";
+                            echo "
+                            <style>
+                                .workload_teacher > p, section > h2 { display: none !important; width: 0; height: 0; }
+                                .workload_teacher { display: flex; }
+                                main section { padding: 0; } .workload_teacher { margin-top: 0 }
+                            </style>";
+                            break;
+                        }
                     }
                 ?>
             </div>

@@ -55,27 +55,45 @@
 
         <?php include './includes/header.php'; ?>
 
+        <?php
+            if(!$subjects)
+            {
+                echo "<h3 class='empty'> Предметов нет </h3>";
+            }
+        ?>
+
+        <?php
+            if ($_COOKIE['id_admin'])
+            {
+                echo "<div class='buttons'>";
+                echo "  <a href='./../admin/add_subject.php' class='update-subjects-group' style='margin-left: 35px'> Добавить предмет </a>";
+                echo "</div>";
+            }
+        ?>
+
         <section class="all-subjects">
 
-            <?
-                foreach ($subjects as $value)
-                {
-                    ?>
-                    <div class="subject-wrapper" data-subjectId="<?=$value[0]?>">
+            <?php
 
-                        <div>
-                            <p class="subject-profile"><?=$value[4]?></p>
+            foreach ($subjects as $value)
+            {
+                ?>
+                <div class="subject-wrapper" data-subjectId="<?=$value[0]?>">
 
-                            <p class="subject-name"><?=$value[1]?></p>
+                    <div>
+                        <p class="subject-profile"><?=$value[4]?></p>
 
-                            <p class="subject-desc"><?=$value[2]?></p>
-                        </div>
+                        <p class="subject-name"><?=$value[1]?></p>
 
-                        <p class="subject-hours"><?=$value[3]?> ч.</p>
-
+                        <p class="subject-desc"><?=$value[2]?></p>
                     </div>
-                    <?
-                }
+
+                    <p class="subject-hours"><?=$value[3]?> ч.</p>
+
+                </div>
+                <?
+            }
+                
             ?>
 
         </section>

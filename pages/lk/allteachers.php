@@ -57,6 +57,22 @@
 
         <?php include './includes/header.php'; ?>
 
+        <?php
+            if(!$teachers)
+            {
+                echo "<h3 class='empty'> Преподавателей нет </h3>";
+            }
+        ?>
+
+        <?php
+            if ($_COOKIE['id_admin'])
+            {
+                echo "<div class='buttons'>";
+                echo "  <a href='./../admin/add_teacher.php' class='update-subjects-group' style='margin-left: 35px'> Добавить преподавателя </a>";
+                echo "</div>";
+            }
+        ?>
+
         <section class="all-subjects">
 
             <?

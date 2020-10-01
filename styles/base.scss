@@ -235,3 +235,11 @@ aside::-webkit-scrollbar-thumb
     	max-width: 250px;
 	}
 }
+
+h3.empty
+{
+	margin: 55px 30px 20px 30px;
+	text-align: center;
+	width: auto;
+	width: -webkit-fill-available;
+}
