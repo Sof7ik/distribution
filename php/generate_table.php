@@ -110,6 +110,7 @@ foreach ($subjects as $key => $subject)
                 array_push(
                     $total,
                     [
+                        'id_teacher' => $teacher['id_teacher'],
                         'fio' => $teacher['fio'],
                         'subjects' => [
                             [$subject['subject_name'], $subject['id_group'], $subject['subject_hours']]
